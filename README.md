@@ -9,6 +9,7 @@
 	2. [snare](https://github.com/mushorg/snare.git)
 	3. [tanner](https://github.com/mushorg/tanner.git) 
 6. [opencanary](https://github.com/thinkst/opencanary.git)
+7. [beeswarm](https://github.com/honeynet/beeswarm.git) [freebuf](https://www.freebuf.com/sectool/122214.html)
 
 # 蜜罐平台
 1. [MHN](https://github.com/threatstream/mhn)

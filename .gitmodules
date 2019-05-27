@@ -25,3 +25,6 @@
 [submodule "opencanary"]
 	path = opencanary
 	url = https://github.com/thinkst/opencanary.git
+[submodule "beeswarm"]
+	path = beeswarm
+	url = https://github.com/honeynet/beeswarm.git
