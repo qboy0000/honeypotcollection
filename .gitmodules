@@ -19,3 +19,6 @@
 [submodule "snare_tanner/tanner"]
 	path = snare_tanner/tanner
 	url = https://github.com/mushorg/tanner.git
+[submodule "platform/mhn"]
+	path = platform/mhn
+	url = https://github.com/threatstream/mhn.git
