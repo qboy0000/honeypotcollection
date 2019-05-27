@@ -22,3 +22,6 @@
 [submodule "platform/mhn"]
 	path = platform/mhn
 	url = https://github.com/threatstream/mhn.git
+[submodule "opencanary"]
+	path = opencanary
+	url = https://github.com/thinkst/opencanary.git

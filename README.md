@@ -7,7 +7,8 @@
 5. snare/tanner
 	1. [phpox](https://github.com/mushorg/phpox.git)
 	2. [snare](https://github.com/mushorg/snare.git)
-	3. [tanner](https://github.com/mushorg/tanner.git)
+	3. [tanner](https://github.com/mushorg/tanner.git) 
+6. [opencanary](https://github.com/thinkst/opencanary.git)
 
 # 蜜罐平台
 1. [MHN](https://github.com/threatstream/mhn)
