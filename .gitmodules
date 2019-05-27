@@ -4,3 +4,6 @@
 [submodule "cowrie"]
 	path = cowrie
 	url = https://github.com/cowrie/cowrie.git
+[submodule "p0f"]
+	path = p0f
+	url = https://github.com/p0f/p0f.git
