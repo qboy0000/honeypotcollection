@@ -1,3 +1,6 @@
 [submodule "dionaea"]
 	path = dionaea
 	url = https://github.com/DinoTools/dionaea.git
+[submodule "cowrie"]
+	path = cowrie
+	url = https://github.com/cowrie/cowrie.git
