@@ -10,3 +10,12 @@
 [submodule "conpot"]
 	path = conpot
 	url = https://github.com/mushorg/conpot.git
+[submodule "snare_tanner/phpox"]
+	path = snare_tanner/phpox
+	url = https://github.com/mushorg/phpox.git
+[submodule "snare_tanner/snare"]
+	path = snare_tanner/snare
+	url = https://github.com/mushorg/snare.git
+[submodule "snare_tanner/tanner"]
+	path = snare_tanner/tanner
+	url = https://github.com/mushorg/tanner.git
