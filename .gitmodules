@@ -7,3 +7,6 @@
 [submodule "p0f"]
 	path = p0f
 	url = https://github.com/p0f/p0f.git
+[submodule "conpot"]
+	path = conpot
+	url = https://github.com/mushorg/conpot.git
