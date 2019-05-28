@@ -1,0 +1,19 @@
+This release of B&S has it's plugin tailored to snort 1.9.1
+
+I've included the *current* plugin sourcecode files in the 
+bns/snort/non-production directory in case you want to use a different 
+version of snort. I've also included the old diff file for use with snort 
+1.9.0 if you haven't upgraded.
+
+More Information can be found at either:
+
+
+http://baitnswitch.sourceforge.net
+
+or
+
+http://www.violating.us/projects/baitnswitch
+
+
+Jack Whitsitt
+Violating Networks

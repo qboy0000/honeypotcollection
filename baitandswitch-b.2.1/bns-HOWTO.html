@@ -1,0 +1,1103 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 10">
+<meta name=Originator content="Microsoft Word 10">
+<link rel=File-List href="bns-HOWTO_files/filelist.xml">
+<title>Configuring Bait and Switch</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Jack Whitsitt</o:Author>
+  <o:LastAuthor>Parsons User</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>923</o:TotalTime>
+  <o:LastPrinted>2003-02-22T05:21:00Z</o:LastPrinted>
+  <o:Created>2003-02-22T17:12:00Z</o:Created>
+  <o:LastSaved>2003-02-22T17:13:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>1346</o:Words>
+  <o:Characters>7678</o:Characters>
+  <o:Company>Violating Networks</o:Company>
+  <o:Lines>63</o:Lines>
+  <o:Paragraphs>18</o:Paragraphs>
+  <o:CharactersWithSpaces>9006</o:CharactersWithSpaces>
+  <o:Version>10.3501</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:DoNotShowRevisions/>
+  <w:DoNotPrintRevisions/>
+  <w:DoNotShowMarkup/>
+  <w:DrawingGridHorizontalSpacing>0 pt</w:DrawingGridHorizontalSpacing>
+  <w:DrawingGridVerticalSpacing>0 pt</w:DrawingGridVerticalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:DrawingGridHorizontalOrigin>0 pt</w:DrawingGridHorizontalOrigin>
+  <w:DrawingGridVerticalOrigin>0 pt</w:DrawingGridVerticalOrigin>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"Nimbus Roman No9 L";
+	mso-font-alt:"Times New Roman";
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:0 0 0 0 0 0;}
+@font-face
+	{font-family:"HG Mincho Light J";
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 0 0 0 0 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	mso-hyphenate:none;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Nimbus Roman No9 L";
+	mso-fareast-font-family:"HG Mincho Light J";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	mso-hyphenate:none;
+	tab-stops:center 3.0in right 6.0in;
+	font-size:12.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Nimbus Roman No9 L";
+	mso-fareast-font-family:"HG Mincho Light J";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+a:link, span.MsoHyperlink
+	{mso-style-parent:"";
+	color:navy;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+span.NumberingSymbols
+	{mso-style-name:"Numbering Symbols";
+	mso-style-parent:"";}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+ /* Page Definitions */
+ @page
+	{mso-footnote-position:beneath-text;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-page-numbers:num-in-dash;
+	mso-even-footer:url("bns-HOWTO_files/header.html") ef1;
+	mso-footer:url("bns-HOWTO_files/header.html") f1;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;
+	mso-footnote-position:beneath-text;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:1;
+	mso-list-template-ids:1;}
+@list l0:level1
+	{mso-level-start-at:4;
+	mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:14.15pt;
+	text-indent:-14.15pt;}
+@list l0:level2
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:28.35pt;
+	text-indent:-14.15pt;}
+@list l0:level3
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:42.5pt;
+	text-indent:-14.15pt;}
+@list l0:level4
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:56.7pt;
+	text-indent:-14.15pt;}
+@list l0:level5
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:70.85pt;
+	text-indent:-14.15pt;}
+@list l0:level6
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:85.05pt;
+	text-indent:-14.15pt;}
+@list l0:level7
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:99.2pt;
+	text-indent:-14.15pt;}
+@list l0:level8
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:113.4pt;
+	text-indent:-14.15pt;}
+@list l0:level9
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:127.55pt;
+	text-indent:-14.15pt;}
+@list l1
+	{mso-list-id:2;
+	mso-list-template-ids:2;}
+@list l1:level1
+	{mso-level-start-at:7;
+	mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:14.15pt;
+	text-indent:-14.15pt;}
+@list l1:level2
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:28.35pt;
+	text-indent:-14.15pt;}
+@list l1:level3
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:42.5pt;
+	text-indent:-14.15pt;}
+@list l1:level4
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:56.7pt;
+	text-indent:-14.15pt;}
+@list l1:level5
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:70.85pt;
+	text-indent:-14.15pt;}
+@list l1:level6
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:85.05pt;
+	text-indent:-14.15pt;}
+@list l1:level7
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:99.2pt;
+	text-indent:-14.15pt;}
+@list l1:level8
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:113.4pt;
+	text-indent:-14.15pt;}
+@list l1:level9
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:127.55pt;
+	text-indent:-14.15pt;}
+@list l2
+	{mso-list-id:3;
+	mso-list-template-ids:3;}
+@list l2:level1
+	{mso-level-start-at:8;
+	mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:14.15pt;
+	text-indent:-14.15pt;}
+@list l2:level2
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:28.35pt;
+	text-indent:-14.15pt;}
+@list l2:level3
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:42.5pt;
+	text-indent:-14.15pt;}
+@list l2:level4
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:56.7pt;
+	text-indent:-14.15pt;}
+@list l2:level5
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:70.85pt;
+	text-indent:-14.15pt;}
+@list l2:level6
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:85.05pt;
+	text-indent:-14.15pt;}
+@list l2:level7
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:99.2pt;
+	text-indent:-14.15pt;}
+@list l2:level8
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:113.4pt;
+	text-indent:-14.15pt;}
+@list l2:level9
+	{mso-level-suffix:none;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:127.55pt;
+	text-indent:-14.15pt;}
+@list l3
+	{mso-list-id:4;
+	mso-list-template-ids:4;}
+@list l3:level1
+	{mso-level-number-format:none;
+	mso-level-suffix:none;
+	mso-level-text:"";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l3:level2
+	{mso-level-number-format:none;
+	mso-level-suffix:none;
+	mso-level-text:"";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l3:level3
+	{mso-level-number-format:none;
+	mso-level-suffix:none;
+	mso-level-text:"";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l3:level4
+	{mso-level-number-format:none;
+	mso-level-suffix:none;
+	mso-level-text:"";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l3:level5
+	{mso-level-number-format:none;
+	mso-level-suffix:none;
+	mso-level-text:"";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l3:level6
+	{mso-level-number-format:none;
+	mso-level-suffix:none;
+	mso-level-text:"";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l3:level7
+	{mso-level-number-format:none;
+	mso-level-suffix:none;
+	mso-level-text:"";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l3:level8
+	{mso-level-number-format:none;
+	mso-level-suffix:none;
+	mso-level-text:"";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l3:level9
+	{mso-level-number-format:none;
+	mso-level-suffix:none;
+	mso-level-text:"";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:0in;
+	text-indent:0in;}
+@list l4
+	{mso-list-id:116723341;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1371750816 -1937049576 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5
+	{mso-list-id:246231887;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1173542260 -1937049576 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l6
+	{mso-list-id:361440503;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1657665838 -1937049576 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l6:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:1.75in;
+	mso-level-number-position:left;
+	margin-left:1.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l7
+	{mso-list-id:565914447;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1360704128 -1937049576 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l8
+	{mso-list-id:1203326718;
+	mso-list-type:hybrid;
+	mso-list-template-ids:2104238054 -1937049576 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l8:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:98.5pt;
+	mso-level-number-position:left;
+	margin-left:98.5pt;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l9
+	{mso-list-id:1658001080;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1550911876 -1937049576 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=navy vlink=purple style='tab-interval:62.5pt;line-break:
+strict'>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt'>========<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt'>56:4E<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt'>========<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:18.0pt'>Configuring a <span class=GramE>Bait <span
+style='mso-spacerun:yes'> </span>&amp;</span> Switch Honeypot Router<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
+normal'><span style='mso-bidi-font-size:12.0pt'>Version b-1<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='tab-stops:348.75pt'><span style='mso-tab-count:1'>                                                                                                                    </span></p>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt'>About The Bait &amp; Switch Honeypot
+System:</span></b><span style='font-size:14.0pt'> <a
+href="http://www.violating.us/">Violating Networks</a> has produced a <a
+href="http://baitnswitch.sourceforge.net/">system</a> that reacts to hostile
+intrusion attempts by redirecting all traffic from “bad” IP’s to a honeypot
+that is partially mirroring your production server.&nbsp; Once switched, the
+would-be hacker is unknowingly attacking your honeypot instead of the real data
+while your clients and/or users still safely accessing the real system. Life
+goes on, your data is safe, and you are learning about the bad guy as an added
+benefit. Currently, the system is based on snort, <span class=SpellE>linux's</span>
+iproute2, <span class=SpellE>netfilter</span>, and custom code. We’re planning
+on porting it to the BSD’s as soon as possible.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt'>About This Document:</span></b><span
+style='font-size:14.0pt'> There are a number of components to running this
+system beyond the actual routing and switching mechanisms. You must be able to
+set up your honeypot, decide how similar to make your production system and
+your honeypot look, set up and configure snort, etc. This document only covers
+setting up the routing and switching mechanisms. There are excellent existing
+sources of information that explain these things in far more detail then we can
+here.<span style='mso-spacerun:yes'>  </span>To help with this, we will soon be
+releasing a separate document or tool outlining snort signatures that are
+useful in this environment and that will have the least potential for harm and
+abuse. Until then, you should know your pig!<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:16.0pt'>Before Getting Started<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt'>Requirements:</span></b><span
+style='font-size:14.0pt'> This system is designed to – for now – run on a
+standard <span class=SpellE>linux</span> distribution. This means (to me) that it
+is modern enough to have iproute2 and <span class=SpellE>iptables/netfilter</span>.
+You will also need…<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-align:justify;text-indent:-.25in;
+mso-list:l9 level1 lfo5;tab-stops:list .5in'><![if !supportLists]><span
+style='font-size:14.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:14.0pt'>The snort-1.9.0
+sources. We use a custom snort plug-in to communicate with the IDS and need to
+patch some of the snort files before compilation.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-align:justify;text-indent:-.25in;
+mso-list:l9 level1 lfo5;tab-stops:list .5in'><![if !supportLists]><span
+style='font-size:14.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:14.0pt'>A PC with 3
+network interfaces. Interface 1 is the gateway to your honeypot and production
+servers from the outside world. Interface 2 and 3 are the gateways from the
+production and honeypot servers respectively back out to the world.<span
+style='mso-spacerun:yes'>  </span>These interfaces can be any combination of
+real or <span class=SpellE>vmware</span> – whatever suits your network.
+Likewise, if you NAT back to your production/honeypot servers, the <span
+class=SpellE>NATing</span> shouldn’t be affected. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-align:justify;text-indent:-.25in;
+mso-list:l9 level1 lfo5;tab-stops:list .5in'><![if !supportLists]><span
+style='font-size:14.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:14.0pt'>Obviously, you
+need the version of <span class=SpellE>baitnswitch</span> that’s listed at the
+top of this document.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-align:justify;text-indent:-.25in;
+mso-list:l9 level1 lfo5;tab-stops:list .5in'><![if !supportLists]><span
+style='font-size:14.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:14.0pt'>UML? <span
+class=SpellE>Honeyd</span>? If anyone tests this with either of those Id *love*
+to know about it.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt'>What does the system *look* like: </span></b><span
+style='font-size:14.0pt'>The diagram found at <a
+href="http://violating.us/projects/baitnswitch/images/bns1.jpg">http://violating.us/projects/baitnswitch/images/bns1.jpg</a>
+shows a fairly simple example network using <span class=SpellE>vmware</span> to
+represent both your production server and your honeypot. A flow chart will be
+included with this document at a later date.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt'>Linux Configuration Notes:</span></b><span
+style='font-size:14.0pt'> <span style='mso-spacerun:yes'> </span>In order for
+the routing to work, I believe you need your internal gateway interfaces
+configured with /32 subnet masks.<span style='mso-spacerun:yes'>  </span><span
+class=GramE>Do this</span> before you continue with the configuration. (Or,
+don’t, and let me know if it works.)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='text-align:justify'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:16.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:16.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:16.0pt'>Configuring the System<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+style='font-size:16.0pt'>Setting up snort, <span class=SpellE>switchcore</span>,
+and routing<o:p></o:p></span></i></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>1. Download the current <span
+class=SpellE>baitnswitch</span> package from either: <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:98.5pt;text-indent:-.25in;mso-list:l8 level1 lfo8;
+tab-stops:list 98.5pt'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:14.0pt'><a
+href="http://baitnswitch.sourceforge.net/">http://baitnswitch.sourceforge.net</a>
+or <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:98.5pt;text-indent:-.25in;mso-list:l8 level1 lfo8;
+tab-stops:list 98.5pt'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:14.0pt'><a
+href="http://www.violating.us/projects/baitnswitch/">http://www.violating.us/projects/baitnswitch/</a>
+<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>2. Download <a
+href="http://snort-1.9.0.tar.gz/">snort-1.9.0.tar.gz</a> from <a
+href="http://www.snort.org/">http://www.snort.org</a><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>3. Extract B&amp;S to the
+directory where you want it to stay (&lt;<span class=SpellE>bnsroot</span>&gt;
+from now on)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.5pt'><span class=GramE><i
+style='mso-bidi-font-style:normal'><span style='font-size:14.0pt'>tar</span></i></span><i
+style='mso-bidi-font-style:normal'><span style='font-size:14.0pt'> -<span
+class=SpellE>zxvf</span> <span class=SpellE>baitnswitch</span>-**.<span
+class=SpellE>tar.gz</span> <o:p></o:p></span></i></p>
+
+<p class=MsoNormal style='text-indent:62.5pt'><span class=GramE><span
+style='font-size:14.0pt'>creates</span></span><span style='font-size:14.0pt'> a
+<span class=SpellE>bns</span> directory in &lt;<span class=SpellE>bnsroot</span>&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>4. Extract snort to some
+directory. (We don’t care which.) Do NOT configure or compile it at this point.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>5. <span class=SpellE><span
+class=GramE><i style='mso-bidi-font-style:normal'>cd</i></span></span><i
+style='mso-bidi-font-style:normal'> &lt;<span class=SpellE>bnsroot</span>&gt;/<span
+class=SpellE>bns/config</span></i><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>6. Bring up the configuration
+menu by running the ./<span class=SpellE>bns_conf.bash</span> script. <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>The first time you install
+B&amp;S, choose option #1. This will simply echo the names of new routing
+tables to /etc/iproute2/rt_tables -- so don’t select this option more than once
+per B&amp;S router.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>7. Back at the main menu,
+choose option #2 and answer the following questions:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>External Interface:</span></b><span style='font-size:
+14.0pt'> This is the public facing interface that is either the gateway or the <span
+class=SpellE>NATing</span> device to your production &amp; honeypot servers. I
+use eth0<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>External IP:</span></b><span style='font-size:14.0pt'>
+What is the IP of the external interface? Should *not* be on the same subnet as
+your honeypot/production server IP<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>Production Interface:</span></b><span
+style='font-size:14.0pt'> This is the internal device on your B&amp;S box that
+is your production server's gateway to the rest of the world. I’m using vmnet1.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>Production IP:</span></b><span style='font-size:14.0pt'>
+IP address on the Production GW Interface. Needs to be on the same subnet as
+your honeypot/production server IP<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>Honeypot Interface:</span></b><span style='font-size:
+14.0pt'> This is the internal device on your B&amp;S box that is your <span
+class=SpellE>honeypot's</span> gateway to the rest of the world. I’m using
+vmnet2.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span class=SpellE><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt'>Honeypot's</span></b></span><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt'> Gateway IP:</span></b><span
+style='font-size:14.0pt'> IP address on the Honeypot GW Interface. Needs<span
+style='mso-spacerun:yes'>  </span>to be on the same subnet as the production <span
+class=SpellE>gw</span> IP - which is the same subnet<span
+style='mso-spacerun:yes'>  </span>as your honeypot/production server IP:
+192.168.2.2 is what I use<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>IP of &lt;both&gt; Honeypot and Production Server:</span></b><span
+style='font-size:14.0pt'> Your honeypot and production server should be set up
+with the SAME IP address. In this case, mine have 192.168.2.10 as their address.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>Length of Time (in minutes) that the mark time should
+be incremented:</span></b><span style='font-size:14.0pt'> Every time snort alerts
+on a <span class=SpellE>sig</span>, B&amp;S increments the length of time that
+that source IP will be rerouted. How much should the time be incremented by per-incident?<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>Length of Time <span class=SpellE>DoS</span>
+Protection - Max Alerts:</span></b><span style='font-size:14.0pt'> We don’t
+want to have someone force a source to be rerouted forever, so we limit the
+number of marking increments per period of time that increment the rerouting
+time. Enter how many alerts per period of time is too any<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>Length of Time <span class=SpellE>DoS</span>
+Protection</span></b><span style='font-size:14.0pt'>: Period ((in seconds) to
+look for too many marks from a single IP): this is the time period referenced
+in the previous step<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>IP <span class=SpellE>DoS</span> Protection:</span></b><span
+style='font-size:14.0pt'> How many IP's per a certain amount of time is too many?
+We don’t want someone to spoof all our clients and quickly block them all, so
+we limit how many new source IP's per time period we'll reroute. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>IP <span class=SpellE>DoS</span> Protection:</span></b><span
+style='font-size:14.0pt'> Within what length of time should a certain number of
+IP's be too many? This is the time period in seconds referenced in the previous
+instruction.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span class=SpellE><span class=GramE><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt'>Fifo</span></b></span></span><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt'> File
+Location:</span></b><span style='font-size:14.0pt'> This is the named pipe that
+snort uses to talk to <span class=SpellE>baitnswitch</span>. Where do you want
+it and what should it be called? /<span class=SpellE>tmp/bns</span> or something
+should work fine.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>Log Location:</span></b><span style='font-size:14.0pt'>
+We log <span class=SpellE>DoS</span> alerts from B&amp;S. Where should they go?
+I use /<span class=SpellE>var/log/switchcore.log</span><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>Blacklist Location:</span></b><span style='font-size:
+14.0pt'> Certain IP’s should always be rerouted as they are known
+hostiles.<span style='mso-spacerun:yes'>  </span><span class=SpellE>Switchcore</span>
+reads a list of IP’s from a <span class=SpellE>textfile</span>. Where should
+this list be?<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-indent:-.25in;mso-list:l6 level1 lfo9;
+tab-stops:list .75in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>Path to snort:</span></b><span style='font-size:14.0pt'>
+What directory (full path to) did the snort <span class=SpellE>tarball</span>
+create? I use /root/dev/snort-1.9.0<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:62.25pt'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>You should now be brought
+back to the <span class=SpellE>Config</span> Menu. Choose 3 to <span
+class=GramE>patch<span style='mso-spacerun:yes'>  </span>snort</span> to include
+the <span class=SpellE>bns</span> output <span class=SpellE>plugin</span>.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-align:justify;text-indent:
+-.25in;mso-list:l4 level1 lfo10;tab-stops:list .75in'><![if !supportLists]><span
+style='font-size:14.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:14.0pt'>Path to <span
+class=SpellE>bns.dfff</span>: Should be &lt;<span class=SpellE>bnsroot</span>&gt;/<span
+class=SpellE>bns/snort/bns.diff</span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in;text-align:justify;text-indent:
+-.25in;mso-list:l4 level1 lfo10;tab-stops:list .75in'><![if !supportLists]><span
+style='font-size:14.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol'><span style='mso-list:Ignore'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:14.0pt'>6 or so files
+should be patched.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>You can choose e to exit here<span
+class=GramE>..</span><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>9. <span class=SpellE><span
+class=GramE><i style='mso-bidi-font-style:normal'>cd</i></span></span><i
+style='mso-bidi-font-style:normal'> &lt;<span class=SpellE>bnsroot</span>&gt;/<span
+class=SpellE>bns</span>/routing<o:p></o:p></i></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>10. Run <i style='mso-bidi-font-style:
+normal'>./<span class=SpellE>bnsroutes.bash</span></i> (<span class=SpellE>chmod</span>
++x it if needed)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>11. <span class=SpellE><span
+class=GramE><i style='mso-bidi-font-style:normal'>cd</i></span></span><i
+style='mso-bidi-font-style:normal'> &lt;<span class=SpellE>bnsroot</span>&gt;/<span
+class=SpellE>bns</span>/switching</i><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>12. Compile <span
+class=SpellE>switchcore.c</span> with: <span class=SpellE><i style='mso-bidi-font-style:
+normal'>gcc</i></span><i style='mso-bidi-font-style:normal'> -<span
+class=SpellE>lpthread</span> <span class=SpellE>switchcore.c</span> -o <span
+class=SpellE>switchcore</span></i><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>13. <span class=SpellE><span
+class=GramE>cd</span></span> to your snort source directory and go ahead and configure/make/install
+it. (Out of this document's scope)<o:p></o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt'>You are finished configuring the system, now to run
+it….<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:16.0pt'>Running Bait and Switch:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+style='font-size:16.0pt'>How to use snort and <span class=SpellE>switchcore</span>
+Together<o:p></o:p></span></i></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:16.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>There really isn't much to
+running Bait &amp; <span class=GramE>Switch,</span> the difficult part is
+setting it up.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>To run it, we first need to
+load <span class=SpellE>switchcore</span>. <span class=SpellE>Switchcore</span>
+handles the rerouting<o:p></o:p></span></p>
+
+<p class=MsoNormal><span class=GramE><span style='font-size:14.0pt'>and</span></span><span
+style='font-size:14.0pt'> normalizing of traffic and source IP's.<span
+style='mso-spacerun:yes'>  </span>To run it, simply type:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><span style='mso-tab-count:
+1'>                 </span><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><span style='mso-tab-count:
+1'>                 </span><i style='mso-bidi-font-style:normal'>&lt;<span
+class=SpellE><span class=GramE>bnsroot</span></span>&gt;/<span class=SpellE>bns/switching/switchcore</span><span
+style='mso-spacerun:yes'>   </span><o:p></o:p></i></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><span style='mso-tab-count:
+1'>                 </span><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>This should <span
+class=SpellE>daemonize</span> to the background and you <span class=SpellE>dont</span>
+have to touch it anymore.<span style='mso-spacerun:yes'>  </span>In order for
+snort to interact with this, you have - as part of the installation procedure -
+compiled in an output <span class=SpellE>plugin</span> called <span
+class=SpellE>bns_alert</span>.<span style='mso-spacerun:yes'>  </span>There is
+an example of how to use this output <span class=SpellE>plugin</span> in &lt;<span
+class=SpellE>bnsroot</span>&gt;/<span class=SpellE>bns</span>/snort<i
+style='mso-bidi-font-style:normal'> </i>called:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><span style='mso-tab-count:
+1'>                 </span><span style='mso-spacerun:yes'> </span><span
+class=SpellE><i style='mso-bidi-font-style:normal'>rules.script</i></span><i
+style='mso-bidi-font-style:normal'><span style='mso-spacerun:yes'>  </span><o:p></o:p></i></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>This is a simple conf file
+for snort that is only one, simple rule: redirect any<o:p></o:p></span></p>
+
+<p class=MsoNormal><span class=GramE><span style='font-size:14.0pt'>source</span></span><span
+style='font-size:14.0pt'> IP to the honeypot that is sending <span
+class=SpellE>icmp</span> data.<span style='mso-spacerun:yes'>  </span>To use
+the example, you can run:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><span style='mso-tab-count:
+1'>                 </span><span class=GramE><i style='mso-bidi-font-style:
+normal'>snort</i></span><i style='mso-bidi-font-style:normal'> -c &lt;<span
+class=SpellE>bnsroot</span>&gt;/<span class=SpellE>bns/snort/rules.script</span><o:p></o:p></i></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><span style='mso-tab-count:
+1'>                 </span><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>And then ping your production
+server IP (or the external if of the B&amp;S router if you're using NAT).
+Everything beyond the first packet or two should go to the honeypot.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>The only other feature that
+you need to worry about is the blacklist. If there <span class=GramE>are</span>
+any source IP’s that you absolutely know are bad, you can add them to the file
+you specified in the configuration section. Add one IP per line and that’s all
+you have to do. <span class=SpellE>Switchcore</span> reads this file at startup
+and puts static rerouting rules in for each IP. You’ll have to manually remove
+those rules if you want them gone.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>How do I stop <span
+class=SpellE>switchcore</span>? <span class=SpellE><span class=GramE>Uhm</span></span><span
+class=GramE>, for now?</span> <span class=SpellE><span class=GramE><i
+style='mso-bidi-font-style:normal'>killall</i></span></span><i
+style='mso-bidi-font-style:normal'> -9 <span class=SpellE>switchcore</span></i>
+or something.<o:p></o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:16.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+</div>
+
+</body>
+
+</html>

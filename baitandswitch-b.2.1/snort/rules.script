@@ -1,0 +1,3 @@
+output alert_bns:
+
+alert icmp any any <> any any (msg: "test shell";)

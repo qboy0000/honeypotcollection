@@ -17,6 +17,8 @@ git submodule foreach git pull
 	3. [tanner](https://github.com/mushorg/tanner.git) 
 6. [opencanary](https://github.com/thinkst/opencanary.git)
 7. [beeswarm](https://github.com/honeynet/beeswarm.git) [freebuf](https://www.freebuf.com/sectool/122214.html)
+8. Bait and Switch - 将恶意流量重定向到生产系统镜像的蜜罐 官网已经关闭，最近一次代码更新应该是在2003年，其源码下载自[sourceforge](https://sourceforge.net/projects/baitnswitch/)
+
 
 # 蜜罐平台
 1. [MHN](https://github.com/threatstream/mhn)
