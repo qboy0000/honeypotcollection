@@ -12,6 +12,7 @@ git submodule foreach git pull
 3. [p0f](https://github.com/p0f/p0f.git)
 4. [conpot](https://github.com/mushorg/conpot.git)
 5. snare/tanner
+> [Glastopf](https://github.com/mushorg/glastopf)替代者
 	1. [phpox](https://github.com/mushorg/phpox.git)
 	2. [snare](https://github.com/mushorg/snare.git)
 	3. [tanner](https://github.com/mushorg/tanner.git) 
@@ -21,3 +22,40 @@ git submodule foreach git pull
 # 蜜罐平台
 1. [MHN](https://github.com/threatstream/mhn)
 2. [tpot](https://github.com/EpistasisLab/tpot.git)
+
+## 待合并的蜜罐有
+* [Nova](https://github.com/DataSoft/Nova.git)
+* [thug](https://github.com/buffer/thug.git)
+* [Honeysink](http://www.honeynet.org/node/773) - 开源网络陷阱，提供了检测与阻止指定网络上恶意流量的机制
+* [Artillery](https://github.com/BinaryDefense/artillery) 炮兵监控工具和警报系统的组合
+* [miniprint](https://github.com/sa7mon/miniprint) 打印机蜜罐
+* [honeytrap](https://github.com/armedpot/honeytrap) 用于针对TCP或UDP服务的观察攻击的网络安全工具
+* [ciscoasa_honeypot](https://github.com/Cymmetria/ciscoasa_honeypot)适用于Cisco ASA组件的低交互蜜罐，能够检测CVE-2018-0101，DoS和远程代码执行漏洞 [官网](https://community.cymmetria.com/)
+* [mailoney](https://github.com/awhitehatter/mailoney)SMTP蜜罐
+* [rdpy](https://github.com/citronneur/rdpy) RDP
+* [medpot](https://github.com/schmalle/medpot) 
+* Amun - 漏洞模拟蜜罐
+* SIREN - 半智能蜜罐网络 - 蜜网只能虚拟环境
+* Honeyd
+* UDPot Honeypot - 简单 UDP / DNS 蜜罐脚本
+* Honeycomb - 使用蜜罐自动创建签名
+* hornet - 支持多虚拟主机的中交互 SSH 蜜罐
+* [LaBrea](http://labrea.sourceforge.net/) - 接管未使用的 IP 地址，创建对蠕虫、黑客有吸引力的虚拟服务 [帮助](https://www.mankier.com/1/labrea#) 2003年后未更新
+* KFSensor - 基于 Windows 的入侵检测系统蜜罐(收费)
+* [glutton](https://github.com/mushorg/glutton) Glutton提供SSH和TCP代理。SSH代理在攻击者和服务器之间充当MITM，以纯文本形式记录所有内容。TCP代理尚未提供日志记录功能
+* [heralding](https://github.com/johnnykv/heralding)收集凭据的简单蜜罐,目前支持以下协议：ftp，telnet，ssh，http，https，pop3，pop3s，imap，imaps，smtp，vnc，postgresql和socks5
+
+网络地址变换:    
+* [OFPot](https://github.com/upa/ofpot)
+ 
+高交互蜜罐:
+
+* [HIHAT](https://github.com/honeynet/HIHAT)
+
+其他:
+
+* honeynet [git](https://github.com/honeynet)      [home](https://www.honeynet.org/)
+
+* [SpiderFoot](https://github.com/smicallef/spiderfoot) 一个开源智能（OSINT）自动化工具。其目标是自动收集有关给定目标的情报过程 [官网](http：//www.spiderfoot.net)
+
+hpfriends - real-time social data-sharing - HPFriends 订阅系统的展示
