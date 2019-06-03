@@ -19,9 +19,10 @@ git submodule foreach git pull
 6. [opencanary](https://github.com/thinkst/opencanary.git)
 7. [beeswarm](https://github.com/honeynet/beeswarm.git) [freebuf](https://www.freebuf.com/sectool/122214.html)
 
-# 蜜罐平台
+# 平台
 1. [MHN](https://github.com/threatstream/mhn)
 2. [tpot](https://github.com/EpistasisLab/tpot.git)
+3. [SpiderFoot](https://github.com/smicallef/spiderfoot) 一个开源智能（OSINT）自动化工具。其目标是自动收集有关给定目标的情报过程 [官网](http：//www.spiderfoot.net)
 
 ## 待合并的蜜罐有
 * [Nova](https://github.com/DataSoft/Nova.git)

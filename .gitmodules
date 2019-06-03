@@ -28,3 +28,6 @@
 [submodule "beeswarm"]
 	path = beeswarm
 	url = https://github.com/honeynet/beeswarm.git
+[submodule "platform/spiderfoot"]
+	path = platform/spiderfoot
+	url = https://github.com/smicallef/spiderfoot.git
