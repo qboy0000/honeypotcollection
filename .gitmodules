@@ -31,3 +31,6 @@
 [submodule "platform/spiderfoot"]
 	path = platform/spiderfoot
 	url = https://github.com/smicallef/spiderfoot.git
+[submodule "HoneyPy"]
+	path = HoneyPy
+	url = https://github.com/foospidy/HoneyPy.git

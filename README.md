@@ -18,6 +18,7 @@ git submodule foreach git pull
 	3. [tanner](https://github.com/mushorg/tanner.git) 
 6. [opencanary](https://github.com/thinkst/opencanary.git)
 7. [beeswarm](https://github.com/honeynet/beeswarm.git) [freebuf](https://www.freebuf.com/sectool/122214.html)
+8. [HoneyPy](https://github.com/foospidy/HoneyPy) 低交互蜜罐，具有更多中等交互蜜罐的能力。
 
 # 平台
 1. [MHN](https://github.com/threatstream/mhn)
