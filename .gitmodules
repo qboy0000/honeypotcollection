@@ -34,3 +34,6 @@
 [submodule "HoneyPy"]
 	path = HoneyPy
 	url = https://github.com/foospidy/HoneyPy.git
+[submodule "drupot"]
+	path = drupot
+	url = https://github.com/d1str0/drupot.git

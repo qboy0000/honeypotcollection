@@ -42,6 +42,7 @@ git submodule foreach git pull
 * UDPot Honeypot - 简单 UDP / DNS 蜜罐脚本
 * Honeycomb - 使用蜜罐自动创建签名
 * hornet - 支持多虚拟主机的中交互 SSH 蜜罐
+* [drupot](https://github.com/d1str0/drupot) Drupal Honeypot Drupal是使用PHP语言编写的开源内容管理框架（CMF）
 * [LaBrea](http://labrea.sourceforge.net/) - 接管未使用的 IP 地址，创建对蠕虫、黑客有吸引力的虚拟服务 [帮助](https://www.mankier.com/1/labrea#) 2003年后未更新
 * KFSensor - 基于 Windows 的入侵检测系统蜜罐(收费)
 * [glutton](https://github.com/mushorg/glutton) Glutton提供SSH和TCP代理。SSH代理在攻击者和服务器之间充当MITM，以纯文本形式记录所有内容。TCP代理尚未提供日志记录功能
