@@ -19,6 +19,7 @@ git submodule foreach git pull
 6. [opencanary](https://github.com/thinkst/opencanary.git)
 7. [beeswarm](https://github.com/honeynet/beeswarm.git) [freebuf](https://www.freebuf.com/sectool/122214.html)
 8. [HoneyPy](https://github.com/foospidy/HoneyPy) 低交互蜜罐，具有更多中等交互蜜罐的能力。
+9. [Honeyd](https://github.com/DataSoft/Honeyd) Honeyd是一个小型守护进程，可以在网络上创建虚拟主机。该主机可以配置为运行任意服务及其TCP个性可以调整，使他们看起来运行确定操作系统的版本 [动态蜜罐发生器 - 基于honeyd](https://github.com/ppgirl/InfHoney)
 
 # 平台
 1. [MHN](https://github.com/threatstream/mhn)

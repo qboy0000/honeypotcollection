@@ -37,3 +37,6 @@
 [submodule "drupot"]
 	path = drupot
 	url = https://github.com/d1str0/drupot.git
+[submodule "Honeyd"]
+	path = Honeyd
+	url = https://github.com/DataSoft/Honeyd
