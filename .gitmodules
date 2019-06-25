@@ -40,3 +40,6 @@
 [submodule "Honeyd"]
 	path = Honeyd
 	url = https://github.com/DataSoft/Honeyd
+[submodule "miniprint"]
+	path = miniprint
+	url = https://github.com/sa7mon/miniprint.git
