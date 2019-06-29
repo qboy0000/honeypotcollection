@@ -21,6 +21,7 @@ git submodule foreach git pull
 8. [HoneyPy](https://github.com/foospidy/HoneyPy) 低交互蜜罐，具有更多中等交互蜜罐的能力。
 9. [Honeyd](https://github.com/DataSoft/Honeyd) Honeyd是一个小型守护进程，可以在网络上创建虚拟主机。该主机可以配置为运行任意服务及其TCP个性可以调整，使他们看起来运行确定操作系统的版本 [动态蜜罐发生器 - 基于honeyd](https://github.com/ppgirl/InfHoney)
 10. [miniprint](https://github.com/sa7mon/miniprint) 打印机蜜罐
+11. [Artillery](https://github.com/BinaryDefense/artillery) 炮兵监控工具和警报系统的组合
 
 # 平台
 1. [MHN](https://github.com/threatstream/mhn)
@@ -31,9 +32,8 @@ git submodule foreach git pull
 * [Nova](https://github.com/DataSoft/Nova.git)
 * [thug](https://github.com/buffer/thug.git)
 * [Honeysink](http://www.honeynet.org/node/773) - 开源网络陷阱，提供了检测与阻止指定网络上恶意流量的机制
-* [Artillery](https://github.com/BinaryDefense/artillery) 炮兵监控工具和警报系统的组合
-* [miniprint](https://github.com/sa7mon/miniprint) 打印机蜜罐
-* [honeytrap](https://github.com/armedpot/honeytrap) 用于针对TCP或UDP服务的观察攻击的网络安全工具
+
+* [D] [honeytrap](https://github.com/armedpot/honeytrap) 用于针对TCP或UDP服务的观察攻击的网络安全工具
 * [ciscoasa_honeypot](https://github.com/Cymmetria/ciscoasa_honeypot)适用于Cisco ASA组件的低交互蜜罐，能够检测CVE-2018-0101，DoS和远程代码执行漏洞 [官网](https://community.cymmetria.com/)
 * [mailoney](https://github.com/awhitehatter/mailoney)SMTP蜜罐
 * [rdpy](https://github.com/citronneur/rdpy) RDP

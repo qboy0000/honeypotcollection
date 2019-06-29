@@ -43,3 +43,6 @@
 [submodule "miniprint"]
 	path = miniprint
 	url = https://github.com/sa7mon/miniprint.git
+[submodule "artillery"]
+	path = artillery
+	url = https://github.com/BinaryDefense/artillery.git
