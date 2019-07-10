@@ -22,7 +22,8 @@ git submodule foreach git pull
 9. [Honeyd](https://github.com/DataSoft/Honeyd) Honeyd是一个小型守护进程，可以在网络上创建虚拟主机。该主机可以配置为运行任意服务及其TCP个性可以调整，使他们看起来运行确定操作系统的版本 [动态蜜罐发生器 - 基于honeyd](https://github.com/ppgirl/InfHoney)
 10. [miniprint](https://github.com/sa7mon/miniprint) 打印机蜜罐
 11. [Artillery](https://github.com/BinaryDefense/artillery) 炮兵监控工具和警报系统的组合
-
+12. [rdpy](https://github.com/citronneur/rdpy) RDP
+13. 
 # 平台
 1. [MHN](https://github.com/threatstream/mhn)
 2. [tpot](https://github.com/EpistasisLab/tpot.git)
@@ -43,7 +44,9 @@ git submodule foreach git pull
 * Honeyd
 * UDPot Honeypot - 简单 UDP / DNS 蜜罐脚本
 * Honeycomb - 使用蜜罐自动创建签名
-* hornet - 支持多虚拟主机的中交互 SSH 蜜罐
+* [D] hornet - 支持多虚拟主机的中交互 SSH 蜜罐
+* [sshd-honeypot](https://github.com/amv42/sshd-honeypot) sshd-honeypot旨在让Cowrie记录暴力攻击以及攻击者执行的shell交互。由于sshd-honeypot使用OpenSSH，因此无法根据协议偏差或错误消息的差异进行指纹识别
+* [HoneyBow](https://sourceforge.net/projects/honeybow/)  论文：[HoneyBow：一个基于高交互式蜜罐技术的恶意代码自动捕获器.pdf](./doc/HoneyBow：一个基于高交互式蜜罐技术的恶意代码自动捕获器.pdf)
 * [drupot](https://github.com/d1str0/drupot) Drupal Honeypot Drupal是使用PHP语言编写的开源内容管理框架（CMF）
 * [LaBrea](http://labrea.sourceforge.net/) - 接管未使用的 IP 地址，创建对蠕虫、黑客有吸引力的虚拟服务 [帮助](https://www.mankier.com/1/labrea#) 2003年后未更新
 * KFSensor - 基于 Windows 的入侵检测系统蜜罐(收费)

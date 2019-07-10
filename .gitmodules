@@ -46,3 +46,6 @@
 [submodule "artillery"]
 	path = artillery
 	url = https://github.com/BinaryDefense/artillery.git
+[submodule "rdpy"]
+	path = rdpy
+	url = https://github.com/citronneur/rdpy.git
