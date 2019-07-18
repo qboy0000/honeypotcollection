@@ -1,0 +1,61 @@
+\section{mod\_\-random.c File Reference}
+\label{mod__random_8c}\index{mod\_\-random.c@{mod\_\-random.c}}
+RANDOM module for honeybrid Decision Engine.  
+
+
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$time.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+{\tt \#include \char`\"{}modules.h\char`\"{}}\par
+{\tt \#include \char`\"{}netcode.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf mod\_\-random} (struct {\bf mod\_\-args} args)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+RANDOM module for honeybrid Decision Engine. 
+
+This module is called by a boolean decision \doxyref{tree}{p.}{structtree} to filter attacker randomly using a probability given as an argument
+
+\begin{Desc}
+\item[Author:]Robin Berthier 2009 \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{mod\_\-random.c@{mod\_\-random.c}!mod\_\-random@{mod\_\-random}}
+\index{mod\_\-random@{mod\_\-random}!mod_random.c@{mod\_\-random.c}}
+\subsubsection[{mod\_\-random}]{\setlength{\rightskip}{0pt plus 5cm}void mod\_\-random (struct {\bf mod\_\-args} {\em args})}\label{mod__random_8c_2805c4311dbe90420de0b250ca5526c6}
+
+
+mod\_\-random requires the configuration of the following mandatory parameter:\begin{itemize}
+\item \char`\"{}value\char`\"{}, to define a basis for the probability to accept the \doxyref{packet}{p.}{structpacket}, which is 1 out of value\end{itemize}
+
+
+mod\_\-random \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em args,struct}]that contain the \doxyref{node}{p.}{structnode} and the data to process \end{description}
+\end{Desc}
+
+
+getting the value provided as parameter
+
+We can't decide
+
+We can't decide
+
+deciding based on a probability of 1 out of \char`\"{}value\char`\"{}:
+
+We accept this \doxyref{packet}{p.}{structpacket}
+
+We reject this \doxyref{packet}{p.}{structpacket} 
+
+References node::arg, pkt\_\-struct::conn, H, conn\_\-struct::id, mod\_\-args::node, mod\_\-args::pkt, and node::result.
+
+Referenced by get\_\-module(), and run\_\-module().

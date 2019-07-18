@@ -1,0 +1,136 @@
+\section{pcap\_\-tool.h File Reference}
+\label{pcap__tool_8h}\index{pcap\_\-tool.h@{pcap\_\-tool.h}}
+{\tt \#include $<$pcap.h$>$}\par
+{\tt \#include $<$linux/netfilter.h$>$}\par
+{\tt \#include $<$libnetfilter\_\-queue/libnetfilter\_\-queue.h$>$}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf PCAPSIZE}~2048
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int {\bf record\_\-pkt} (struct nfq\_\-data $\ast$tb, char $\ast$p, int mode)
+\begin{CompactList}\small\item\em record a \doxyref{packet}{p.}{structpacket} in the current pcap file descriptor \item\end{CompactList}\item 
+int {\bf close\_\-pcap\_\-context} ()
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+int {\bf pcap\_\-record}
+\item 
+pcap\_\-t $\ast$ {\bf pcap\_\-main\_\-desc}
+\item 
+pcap\_\-dumper\_\-t $\ast$ {\bf pcap\_\-output\_\-current}
+\item 
+pcap\_\-dumper\_\-t $\ast$ {\bf pcap\_\-output\_\-redirected}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{pcap\_\-tool.h@{pcap\_\-tool.h}!PCAPSIZE@{PCAPSIZE}}
+\index{PCAPSIZE@{PCAPSIZE}!pcap_tool.h@{pcap\_\-tool.h}}
+\subsubsection[{PCAPSIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define PCAPSIZE~2048}\label{pcap__tool_8h_4e40701942ebfd0973e9d1e3295ea508}
+
+
+max size of a \doxyref{packet}{p.}{structpacket} in PCAP 
+
+Referenced by init\_\-pcap\_\-context().
+
+\subsection{Function Documentation}
+\index{pcap\_\-tool.h@{pcap\_\-tool.h}!close\_\-pcap\_\-context@{close\_\-pcap\_\-context}}
+\index{close\_\-pcap\_\-context@{close\_\-pcap\_\-context}!pcap_tool.h@{pcap\_\-tool.h}}
+\subsubsection[{close\_\-pcap\_\-context}]{\setlength{\rightskip}{0pt plus 5cm}int close\_\-pcap\_\-context ()}\label{pcap__tool_8h_8809f8a26967cdc4c996d596fc2262b4}
+
+
+close\_\-pcap\_\-context, close the descriptors \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em $\backslash$return}]0 on success, anything else otherwise \end{description}
+\end{Desc}
+
+
+References pcap\_\-main\_\-desc, pcap\_\-output\_\-current, and pcap\_\-output\_\-redirected.\index{pcap\_\-tool.h@{pcap\_\-tool.h}!record\_\-pkt@{record\_\-pkt}}
+\index{record\_\-pkt@{record\_\-pkt}!pcap_tool.h@{pcap\_\-tool.h}}
+\subsubsection[{record\_\-pkt}]{\setlength{\rightskip}{0pt plus 5cm}int record\_\-pkt (struct nfq\_\-data $\ast$ {\em tb}, \/  char $\ast$ {\em p}, \/  int {\em mode})}\label{pcap__tool_8h_5d1b6b8c7266a5d1b7ac6e805fa977b8}
+
+
+record a \doxyref{packet}{p.}{structpacket} in the current pcap file descriptor 
+
+record\_\-pkt
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em nfq\_\-data}]$\ast$tb, raw \doxyref{packet}{p.}{structpacket} ( used with nfqueue) \item[\mbox{$\leftarrow$} {\em $\ast$payload,\doxyref{packet}{p.}{structpacket}}]to record (used outside of nfqueue) \item[\mbox{$\leftarrow$} {\em mode,0}]for non redirected connection, 1 for redirected connections, 2 for redirected outside nfqueue, 3 for non redirected outside nfqueue\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, anything else otherwise \end{Desc}
+
+
+if pcap desc doesn't exist, init pcap context
+
+switch the descriptor regarding to the mode (redirected or not)
+
+if the actual pcap output file is bigger than 10mo, create a new one
+
+close the current descriptor
+
+create output filename based on the conf and the time value
+
+open the new file descriptor
+
+L(33,\char`\"{}RECORD\_\-PKT\char`\"{},file\_\-name-$>$str, 5);
+
+L(34,\char`\"{}RECORD\_\-PKT\char`\"{},file\_\-name-$>$str,5);
+
+store new descriptor in global descriptor
+
+create pcap specific header
+
+mode 2 and 3 are used when we need to record a \doxyref{packet}{p.}{structpacket} received outside of the netfilter queue
+
++1 because the '' is not included
+
+pcap\_\-dump, write pcap header and \doxyref{packet}{p.}{structpacket} data to the output file \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pcap\_\-output\_\-current,descriptor}]to the current output file \item[\mbox{$\leftarrow$} {\em \&phdr,pcap}]header \item[\mbox{$\leftarrow$} {\em payload,\doxyref{packet}{p.}{structpacket}}]data\end{description}
+\end{Desc}
+pcap\_\-dump, write pcap header and \doxyref{packet}{p.}{structpacket} data to the output file \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pcap\_\-output\_\-current,descriptor}]to the current output file \item[\mbox{$\leftarrow$} {\em \&phdr,pcap}]header \item[\mbox{$\leftarrow$} {\em (const}]u\_\-char $\ast$)nf\_\-packet, \doxyref{packet}{p.}{structpacket} data from netfilter queue\end{description}
+\end{Desc}
+L(36,\char`\"{}RECORD\_\-PKT\char`\"{},NULL, 5); 
+
+References create\_\-pcap\_\-filename(), init\_\-pcap\_\-context(), pcap\_\-main\_\-desc, pcap\_\-output\_\-current, and pcap\_\-output\_\-redirected.
+
+\subsection{Variable Documentation}
+\index{pcap\_\-tool.h@{pcap\_\-tool.h}!pcap\_\-main\_\-desc@{pcap\_\-main\_\-desc}}
+\index{pcap\_\-main\_\-desc@{pcap\_\-main\_\-desc}!pcap_tool.h@{pcap\_\-tool.h}}
+\subsubsection[{pcap\_\-main\_\-desc}]{\setlength{\rightskip}{0pt plus 5cm}pcap\_\-t$\ast$ {\bf pcap\_\-main\_\-desc}}\label{pcap__tool_8h_a3e2854659adba6f0af5737f4c2274e3}
+
+
+
+
+Referenced by close\_\-pcap\_\-context(), init\_\-pcap\_\-context(), and record\_\-pkt().\index{pcap\_\-tool.h@{pcap\_\-tool.h}!pcap\_\-output\_\-current@{pcap\_\-output\_\-current}}
+\index{pcap\_\-output\_\-current@{pcap\_\-output\_\-current}!pcap_tool.h@{pcap\_\-tool.h}}
+\subsubsection[{pcap\_\-output\_\-current}]{\setlength{\rightskip}{0pt plus 5cm}pcap\_\-dumper\_\-t$\ast$ {\bf pcap\_\-output\_\-current}}\label{pcap__tool_8h_db4b98cd91e6c95dadb7a8e6a60ef668}
+
+
+
+
+Referenced by close\_\-pcap\_\-context(), init\_\-pcap\_\-context(), and record\_\-pkt().\index{pcap\_\-tool.h@{pcap\_\-tool.h}!pcap\_\-output\_\-redirected@{pcap\_\-output\_\-redirected}}
+\index{pcap\_\-output\_\-redirected@{pcap\_\-output\_\-redirected}!pcap_tool.h@{pcap\_\-tool.h}}
+\subsubsection[{pcap\_\-output\_\-redirected}]{\setlength{\rightskip}{0pt plus 5cm}pcap\_\-dumper\_\-t$\ast$ {\bf pcap\_\-output\_\-redirected}}\label{pcap__tool_8h_99273a6ff244861fe51b5caa528bceb9}
+
+
+
+
+Referenced by close\_\-pcap\_\-context(), init\_\-pcap\_\-context(), and record\_\-pkt().\index{pcap\_\-tool.h@{pcap\_\-tool.h}!pcap\_\-record@{pcap\_\-record}}
+\index{pcap\_\-record@{pcap\_\-record}!pcap_tool.h@{pcap\_\-tool.h}}
+\subsubsection[{pcap\_\-record}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf pcap\_\-record}}\label{pcap__tool_8h_067b1a1ed99de594d97b4a09577174ac}
+
+

@@ -1,0 +1,83 @@
+\section{mod\_\-control.c File Reference}
+\label{mod__control_8c}\index{mod\_\-control.c@{mod\_\-control.c}}
+Source IP based control engine to rate limit high interaction honeypot.  
+
+
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$time.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+{\tt \#include \char`\"{}modules.h\char`\"{}}\par
+{\tt \#include \char`\"{}netcode.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf mod\_\-control} (struct {\bf mod\_\-args} args)
+\begin{CompactList}\small\item\em calculate the number of packets sent by a same source over a given period of time. If too many packets are sent, following packets are rejected Parameters required: function = hash; backup = /etc/honeybrid/control.tb expiration = 600 max\_\-packet = 1000 \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Source IP based control engine to rate limit high interaction honeypot. 
+
+\begin{Desc}
+\item[Author:]Robin Berthier 2009 \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{mod\_\-control.c@{mod\_\-control.c}!mod\_\-control@{mod\_\-control}}
+\index{mod\_\-control@{mod\_\-control}!mod_control.c@{mod\_\-control.c}}
+\subsubsection[{mod\_\-control}]{\setlength{\rightskip}{0pt plus 5cm}void mod\_\-control (struct {\bf mod\_\-args} {\em args})}\label{mod__control_8c_5aabf7b0a283d46e498be4caeaaab9af}
+
+
+calculate the number of packets sent by a same source over a given period of time. If too many packets are sent, following packets are rejected Parameters required: function = hash; backup = /etc/honeybrid/control.tb expiration = 600 max\_\-packet = 1000 
+
+control \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pkts,struct}]that contain the \doxyref{packet}{p.}{structpacket} to control \item[\mbox{$\rightarrow$} {\em set}]result to 1 if rate limit reached, 0 otherwise \end{description}
+\end{Desc}
+
+
+get the IP address from the \doxyref{packet}{p.}{structpacket}
+
+get the backup file for this module
+
+We can't decide
+
+get the backup file path for this module
+
+We can't decide
+
+get control parameters
+
+no value set for expiration, we go with the default one
+
+no value set for expiration, we go with the default one
+
+20 characters should be enough to hold even very large numbers
+
+counter
+
+first seen
+
+duration
+
+We check if we need to expire this entry
+
+counter
+
+first seen
+
+duration
+
+counter
+
+duration
+
+clean and exit 
+
+References node::arg, pkt\_\-struct::conn, H, conn\_\-struct::id, pkt\_\-struct::key\_\-src, mod\_\-args::node, now(), mod\_\-args::pkt, node::result, and save\_\-backup().
+
+Referenced by run\_\-module().

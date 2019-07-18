@@ -1,0 +1,48 @@
+\section{err.c File Reference}
+\label{err_8c}\index{err.c@{err.c}}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$stdarg.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf err} (int eval, const char $\ast$fmt,...)
+\item 
+void {\bf warn} (const char $\ast$fmt,...)
+\item 
+void {\bf errx} (int eval, const char $\ast$fmt,...)
+\item 
+void {\bf warnx} (const char $\ast$fmt,...)
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\index{err.c@{err.c}!err@{err}}
+\index{err@{err}!err.c@{err.c}}
+\subsubsection[{err}]{\setlength{\rightskip}{0pt plus 5cm}void err (int {\em eval}, \/  const char $\ast$ {\em fmt}, \/   {\em ...})}\label{err_8c_ac7e66a886f062322beba3cb396968aa}
+
+
+
+
+Referenced by init\_\-parser(), main(), open\_\-connection\_\-log(), and open\_\-debug\_\-log().\index{err.c@{err.c}!errx@{errx}}
+\index{errx@{errx}!err.c@{err.c}}
+\subsubsection[{errx}]{\setlength{\rightskip}{0pt plus 5cm}void errx (int {\em eval}, \/  const char $\ast$ {\em fmt}, \/   {\em ...})}\label{err_8c_eaca83913c785b95d6c50f35207ff739}
+
+
+
+
+Referenced by config\_\-lookup(), DE\_\-build\_\-subtree(), get\_\-module(), init\_\-modules(), init\_\-signal(), init\_\-variables(), main(), netlink\_\-loop(), open\_\-connection\_\-log(), open\_\-debug\_\-log(), and yyparse().\index{err.c@{err.c}!warn@{warn}}
+\index{warn@{warn}!err.c@{err.c}}
+\subsubsection[{warn}]{\setlength{\rightskip}{0pt plus 5cm}void warn (const char $\ast$ {\em fmt}, \/   {\em ...})}\label{err_8c_f80d19f1297a11626fab61a248959c71}
+
+
+\index{err.c@{err.c}!warnx@{warnx}}
+\index{warnx@{warnx}!err.c@{err.c}}
+\subsubsection[{warnx}]{\setlength{\rightskip}{0pt plus 5cm}void warnx (const char $\ast$ {\em fmt}, \/   {\em ...})}\label{err_8c_58f3d9691c146f86e562022d39567b7f}
+
+
+
+
+Referenced by open\_\-connection\_\-log(), and open\_\-debug\_\-log().

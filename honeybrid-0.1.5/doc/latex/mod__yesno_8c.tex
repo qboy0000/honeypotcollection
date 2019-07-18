@@ -1,0 +1,38 @@
+\section{mod\_\-yesno.c File Reference}
+\label{mod__yesno_8c}\index{mod\_\-yesno.c@{mod\_\-yesno.c}}
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include \char`\"{}modules.h\char`\"{}}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf mod\_\-yesno} (struct {\bf mod\_\-args} args)
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\index{mod\_\-yesno.c@{mod\_\-yesno.c}!mod\_\-yesno@{mod\_\-yesno}}
+\index{mod\_\-yesno@{mod\_\-yesno}!mod_yesno.c@{mod\_\-yesno.c}}
+\subsubsection[{mod\_\-yesno}]{\setlength{\rightskip}{0pt plus 5cm}void mod\_\-yesno (struct {\bf mod\_\-args} {\em args})}\label{mod__yesno_8c_21e60162c8153653075451d9b28b30e9}
+
+
+mod\_\-yesno requires the configuration of the following mandatory parameter:\begin{itemize}
+\item \char`\"{}value\char`\"{}, if 0 it rejects everything, if 1 it accepts everything\end{itemize}
+
+
+mod\_\-yesno \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em args,struct}]that contain the \doxyref{node}{p.}{structnode} and the datas to process\item[\mbox{$\rightarrow$} {\em set}]result to 1 when 'arg' is \char`\"{}yes\char`\"{}, 0 otherwise \end{description}
+\end{Desc}
+
+
+We can't decide
+
+We accept this \doxyref{packet}{p.}{structpacket}
+
+We reject this \doxyref{packet}{p.}{structpacket} 
+
+References node::arg, pkt\_\-struct::conn, H, conn\_\-struct::id, mod\_\-args::node, mod\_\-args::pkt, and node::result.
+
+Referenced by get\_\-module(), and run\_\-module().

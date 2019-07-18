@@ -1,0 +1,60 @@
+\section{packet Struct Reference}
+\label{structpacket}\index{packet@{packet}}
+{\tt \#include $<$types.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+struct iphdr $\ast$ {\bf ip}
+\item 
+struct tcphdr $\ast$ {\bf tcp}
+\item 
+struct udphdr $\ast$ {\bf udp}
+\item 
+char $\ast$ {\bf payload}
+\item 
+char $\ast$ {\bf FRAME}
+\end{CompactItemize}
+
+
+\subsection{Field Documentation}
+\index{packet@{packet}!FRAME@{FRAME}}
+\index{FRAME@{FRAME}!packet@{packet}}
+\subsubsection[{FRAME}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf packet::FRAME}}\label{structpacket_f92293116debde497eb17ffe9c7c934a}
+
+
+
+
+Referenced by free\_\-pkt(), init\_\-conn(), and init\_\-pkt().\index{packet@{packet}!ip@{ip}}
+\index{ip@{ip}!packet@{packet}}
+\subsubsection[{ip}]{\setlength{\rightskip}{0pt plus 5cm}struct iphdr$\ast$ {\bf packet::ip}\hspace{0.3cm}{\tt  [read]}}\label{structpacket_db0a78e8409806cae34e788c3d91bd7e}
+
+
+
+
+Referenced by define\_\-expected\_\-data(), forward(), free\_\-pkt(), init\_\-conn(), init\_\-pkt(), reply\_\-reset(), reset\_\-lih(), and test\_\-expected().\index{packet@{packet}!payload@{payload}}
+\index{payload@{payload}!packet@{packet}}
+\subsubsection[{payload}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf packet::payload}}\label{structpacket_c2d864665aaa762fd6a303f26feaff7d}
+
+
+
+
+Referenced by define\_\-expected\_\-data(), init\_\-pkt(), mod\_\-hash(), and test\_\-expected().\index{packet@{packet}!tcp@{tcp}}
+\index{tcp@{tcp}!packet@{packet}}
+\subsubsection[{tcp}]{\setlength{\rightskip}{0pt plus 5cm}struct tcphdr$\ast$ {\bf packet::tcp}\hspace{0.3cm}{\tt  [read]}}\label{structpacket_af31dd9e6a81f1835d146ecb9d220841}
+
+
+
+
+Referenced by define\_\-expected\_\-data(), forward(), init\_\-conn(), init\_\-pkt(), reply\_\-reset(), and test\_\-expected().\index{packet@{packet}!udp@{udp}}
+\index{udp@{udp}!packet@{packet}}
+\subsubsection[{udp}]{\setlength{\rightskip}{0pt plus 5cm}struct udphdr$\ast$ {\bf packet::udp}\hspace{0.3cm}{\tt  [read]}}\label{structpacket_f32a568eb0cb5d65a63f87f16343980e}
+
+
+
+
+Referenced by init\_\-pkt().
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf types.h}\end{CompactItemize}

@@ -1,0 +1,116 @@
+\section{modules.c File Reference}
+\label{modules_8c}\index{modules.c@{modules.c}}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$err.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$glib.h$>$}\par
+{\tt \#include $<$glib/gprintf.h$>$}\par
+{\tt \#include $<$glib/gstdio.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$sys/stat.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include \char`\"{}modules.h\char`\"{}}\par
+{\tt \#include \char`\"{}log.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf init\_\-modules} ()
+\begin{CompactList}\small\item\em setup modules that need to be initialized \item\end{CompactList}\item 
+void {\bf run\_\-module} (char $\ast$module\_\-name, struct {\bf mod\_\-args} args)
+\begin{CompactList}\small\item\em test of a new function to run module based on module name (without calling get\_\-module) \item\end{CompactList}\item 
+void($\ast$)(struct {\bf mod\_\-args}) {\bf get\_\-module} (char $\ast$modname)
+\begin{CompactList}\small\item\em return the module function pointer from name \item\end{CompactList}\item 
+int {\bf write\_\-backup} (char $\ast$filename, GKeyFile $\ast$data, void $\ast$userdata)
+\begin{CompactList}\small\item\em This function write a module backup memory to a file. \item\end{CompactList}\item 
+void {\bf save\_\-backup\_\-handler} ()
+\begin{CompactList}\small\item\em This function handles the automatic saving of modules to external files. It works by checking an array in which modules to save have been registered This array is updated after each module run. \item\end{CompactList}\item 
+int {\bf save\_\-backup} (GKeyFile $\ast$data, char $\ast$filename)
+\begin{CompactList}\small\item\em This function adds a module backup memory to a queue in order to be written to a file later. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\index{modules.c@{modules.c}!get\_\-module@{get\_\-module}}
+\index{get\_\-module@{get\_\-module}!modules.c@{modules.c}}
+\subsubsection[{get\_\-module}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$)(struct {\bf mod\_\-args}) get\_\-module (char $\ast$ {\em modname})}\label{modules_8c_c9236bf17aa49c868c168ecc5320aded}
+
+
+return the module function pointer from name 
+
+get\_\-module \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em modname,:}]module name \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]function pointer to the module \end{Desc}
+
+
+References errx(), H, mod\_\-counter(), mod\_\-hash(), mod\_\-random(), mod\_\-source(), and mod\_\-yesno().
+
+Referenced by yyparse().\index{modules.c@{modules.c}!init\_\-modules@{init\_\-modules}}
+\index{init\_\-modules@{init\_\-modules}!modules.c@{modules.c}}
+\subsubsection[{init\_\-modules}]{\setlength{\rightskip}{0pt plus 5cm}void init\_\-modules ()}\label{modules_8c_c5400410e3513d2fbea9b3a2421a2c21}
+
+
+setup modules that need to be initialized 
+
+\begin{Desc}
+\item[{\bf Todo}]create two functions to handle module backup to file:\begin{itemize}
+\item a function called by modules to add themselves to a backup queue\item a timer event callback function to process the backup queue periodically, and save backups to files \end{itemize}
+\end{Desc}
+
+
+init\_\-modules 
+
+create a thread that will save module memory every minute 
+
+References errx(), H, init\_\-mod\_\-hash(), module\_\-to\_\-save, and save\_\-backup\_\-handler().
+
+Referenced by main().\index{modules.c@{modules.c}!run\_\-module@{run\_\-module}}
+\index{run\_\-module@{run\_\-module}!modules.c@{modules.c}}
+\subsubsection[{run\_\-module}]{\setlength{\rightskip}{0pt plus 5cm}void run\_\-module (char $\ast$ {\em module\_\-name}, \/  struct {\bf mod\_\-args} {\em args})}\label{modules_8c_6df156759566c2d091ef852a17e2fa78}
+
+
+test of a new function to run module based on module name (without calling get\_\-module) 
+
+run\_\-module 
+
+References pkt\_\-struct::conn, H, conn\_\-struct::id, mod\_\-control(), mod\_\-counter(), mod\_\-hash(), mod\_\-random(), mod\_\-source(), mod\_\-yesno(), mod\_\-args::node, mod\_\-args::pkt, and node::result.
+
+Referenced by decide().\index{modules.c@{modules.c}!save\_\-backup@{save\_\-backup}}
+\index{save\_\-backup@{save\_\-backup}!modules.c@{modules.c}}
+\subsubsection[{save\_\-backup}]{\setlength{\rightskip}{0pt plus 5cm}int save\_\-backup (GKeyFile $\ast$ {\em data}, \/  char $\ast$ {\em filename})}\label{modules_8c_6a6a789efa2db64ed2bbe9b223efb1b1}
+
+
+This function adds a module backup memory to a queue in order to be written to a file later. 
+
+save\_\-backup 
+
+References H, and module\_\-to\_\-save.
+
+Referenced by mod\_\-control(), mod\_\-hash(), and mod\_\-source().\index{modules.c@{modules.c}!save\_\-backup\_\-handler@{save\_\-backup\_\-handler}}
+\index{save\_\-backup\_\-handler@{save\_\-backup\_\-handler}!modules.c@{modules.c}}
+\subsubsection[{save\_\-backup\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}void save\_\-backup\_\-handler ()}\label{modules_8c_3f39ac5d36f425de26ef1076cf613315}
+
+
+This function handles the automatic saving of modules to external files. It works by checking an array in which modules to save have been registered This array is updated after each module run. 
+
+save\_\-backup\_\-handler 
+
+saving module every 60 seconds 
+
+References H, module\_\-to\_\-save, OK, threading, and write\_\-backup().
+
+Referenced by init\_\-modules().\index{modules.c@{modules.c}!write\_\-backup@{write\_\-backup}}
+\index{write\_\-backup@{write\_\-backup}!modules.c@{modules.c}}
+\subsubsection[{write\_\-backup}]{\setlength{\rightskip}{0pt plus 5cm}int write\_\-backup (char $\ast$ {\em filename}, \/  GKeyFile $\ast$ {\em data}, \/  void $\ast$ {\em userdata})}\label{modules_8c_6192a290b974369920784a792fc1044b}
+
+
+This function write a module backup memory to a file. 
+
+write\_\-backup 
+
+References H.
+
+Referenced by save\_\-backup\_\-handler().

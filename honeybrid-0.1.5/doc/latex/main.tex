@@ -1,0 +1,6 @@
+\section{Introduction}\label{main_Introduction}
+This project is a honeypot architecture able to combine low and high interaction honeypots in the same framework. The objective is to have a scalable solutions and to collect detailed attack processes. The core of the project is a software gateway based on Iptables and built upon two engines: a Redirection Engine and a Decision Engine. The concept of the architecture is to use a front end of low interaction honeypot to reply to all incoming traffic. Then the goal of the Decision Engine is to filter interesting attacks from the noise of incoming traffic received. Filtered attacks are forwarded to the Redirection Engine which is able to actively redirect the destination of the connection, so that it can be further investigated using a high interaction back-end.\section{Requirements}\label{main_Requirements}
+Dependencies:\begin{itemize}
+\item linux kernel $>$= 2.6.18 \& $<$=2.6.23\item libnetfilter-queue-dev \& libnetfilter-queue1\item libnfnetlink $>$= 0.0.25\item libglib2.0-dev \& libglib2.0-0\item openssl\item libssl-dev\item libev\end{itemize}
+\section{Installation}\label{main_Installation}
+Installation is defined in the INSTALL file. 

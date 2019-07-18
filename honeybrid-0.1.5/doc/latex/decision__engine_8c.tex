@@ -1,0 +1,213 @@
+\section{decision\_\-engine.c File Reference}
+\label{decision__engine_8c}\index{decision\_\-engine.c@{decision\_\-engine.c}}
+Decision Engine for honeybrid.  
+
+
+{\tt \#include $<$malloc.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$glib.h$>$}\par
+{\tt \#include \char`\"{}decision\_\-engine.h\char`\"{}}\par
+{\tt \#include \char`\"{}netcode.h\char`\"{}}\par
+{\tt \#include \char`\"{}modules.h\char`\"{}}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+{\tt \#include \char`\"{}log.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+struct {\bf node} $\ast$ {\bf DE\_\-build\_\-subtree} (const gchar $\ast$expr)
+\begin{CompactList}\small\item\em recursively process the expression and creates the nodes \item\end{CompactList}\item 
+void $\ast$ {\bf DE\_\-create\_\-tree} (const gchar $\ast$equation)
+\begin{CompactList}\small\item\em build a boolean decision \doxyref{tree}{p.}{structtree} for a given equation \item\end{CompactList}\item 
+int {\bf decide} (struct {\bf pkt\_\-struct} $\ast$pkt)
+\begin{CompactList}\small\item\em decide upon a given paken if the connection is to be redirected or not \item\end{CompactList}\item 
+int {\bf DE\_\-process\_\-packet} (struct {\bf pkt\_\-struct} $\ast$pkt)
+\begin{CompactList}\small\item\em submit packets for decision using decision rules and decision modules \item\end{CompactList}\item 
+void {\bf DE\_\-submit\_\-packet} ()
+\begin{CompactList}\small\item\em handle connections being decided and submits packets for decision \item\end{CompactList}\item 
+void {\bf DE\_\-push\_\-pkt} (struct {\bf pkt\_\-struct} $\ast$pkt)
+\begin{CompactList}\small\item\em push \doxyref{packet}{p.}{structpacket} to the DE\_\-submit\_\-pkt queue (equivalent of \doxyref{DE\_\-submit\_\-packet()}{p.}{decision__engine_8c_ed34912c70e4db4b07f42ff72495c5df} but without using a thread) \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Decision Engine for honeybrid. 
+
+This engine creates boolean decision trees from a rule list and process incoming connection using those trees. If the \doxyref{tree}{p.}{structtree} return TRUE, the redirected value of the connection is set to 1.
+
+\begin{Desc}
+\item[Author:]Julien Vehent, 2007 
+
+Thomas Coquelin, 2008 \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{decision\_\-engine.c@{decision\_\-engine.c}!DE\_\-build\_\-subtree@{DE\_\-build\_\-subtree}}
+\index{DE\_\-build\_\-subtree@{DE\_\-build\_\-subtree}!decision_engine.c@{decision\_\-engine.c}}
+\subsubsection[{DE\_\-build\_\-subtree}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf node}$\ast$ DE\_\-build\_\-subtree (const gchar $\ast$ {\em expr})\hspace{0.3cm}{\tt  [read]}}\label{decision__engine_8c_d52851b04cf58a598a0488e52705cb41}
+
+
+recursively process the expression and creates the nodes 
+
+build\_\-subtree \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em expr,a}]part of the boolean equation \end{description}
+\end{Desc}
+
+
+TODO: to be freed when destroying DE\_\-rules
+
+test presence of AND operator
+
+composed expression: separate the left part
+
+split on \char`\"{}AND\char`\"{} operator
+
+process left part of the AND
+
+call function with right side of expr
+
+single module in expression, just add the leaf
+
+get module structure from DE\_\-mod
+
+return pointer to this leaf 
+
+References node::arg, errx(), node::false, node::function, module, node::module, node::module\_\-name, and node::true.
+
+Referenced by DE\_\-create\_\-tree().\index{decision\_\-engine.c@{decision\_\-engine.c}!DE\_\-create\_\-tree@{DE\_\-create\_\-tree}}
+\index{DE\_\-create\_\-tree@{DE\_\-create\_\-tree}!decision_engine.c@{decision\_\-engine.c}}
+\subsubsection[{DE\_\-create\_\-tree}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ DE\_\-create\_\-tree (const gchar $\ast$ {\em equation})}\label{decision__engine_8c_4235b084499261f6e0e6faf8bc529951}
+
+
+build a boolean decision \doxyref{tree}{p.}{structtree} for a given equation 
+
+DE\_\-create\_\-tree \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em equation}]a boolean equation\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]tree\_\-root a pointer to the root of the boolean decision \doxyref{tree}{p.}{structtree} \end{Desc}
+
+
+create a glib table to store the equation
+
+first subgroup
+
+store address of the root
+
+for all the other subgroups
+
+get the pointer to the beginning of the new subtree
+
+connect new subtree to the previous one subtree (n) is a son of subtree(n-1)
+
+and go to the next one
+
+in subtree (n-1), each FALSE branch is connected to the head of subtree(n)
+
+this subtree is done, so n become n-1 
+
+References DE\_\-build\_\-subtree(), node::false, and node::true.
+
+Referenced by yyparse().\index{decision\_\-engine.c@{decision\_\-engine.c}!DE\_\-process\_\-packet@{DE\_\-process\_\-packet}}
+\index{DE\_\-process\_\-packet@{DE\_\-process\_\-packet}!decision_engine.c@{decision\_\-engine.c}}
+\subsubsection[{DE\_\-process\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}int DE\_\-process\_\-packet (struct {\bf pkt\_\-struct} $\ast$ {\em pkt})}\label{decision__engine_8c_5c13a1120e04937d7e462e468a1ef508}
+
+
+submit packets for decision using decision rules and decision modules 
+
+DE\_\-process\_\-packet 
+
+default is to return \char`\"{}drop\char`\"{} to the QUEUE
+
+we update the state
+
+we release the \doxyref{packet}{p.}{structpacket}
+
+no backend defined, so we simply forward the packets to its destination
+
+backend defined, so we'll use the backend\_\-rule for the next \doxyref{packet}{p.}{structpacket}
+
+we leave the state unmodified (the rule probably needs more material to decide), and we release the \doxyref{packet}{p.}{structpacket} 
+
+References target::back\_\-rule, pkt\_\-struct::conn, CONTROL, target::control\_\-rule, DE\_\-ACCEPT, DE\_\-NO\_\-RULE, DE\_\-REJECT, DE\_\-UNKNOWN, decide(), DECISION, conn\_\-struct::decision\_\-packet\_\-id, DROP, target::front\_\-rule, H, conn\_\-struct::id, INIT, conn\_\-struct::key, OK, PROXY, setup\_\-redirection(), conn\_\-struct::state, switch\_\-state(), conn\_\-struct::target, and conn\_\-struct::total\_\-packet.
+
+Referenced by DE\_\-submit\_\-packet().\index{decision\_\-engine.c@{decision\_\-engine.c}!DE\_\-push\_\-pkt@{DE\_\-push\_\-pkt}}
+\index{DE\_\-push\_\-pkt@{DE\_\-push\_\-pkt}!decision_engine.c@{decision\_\-engine.c}}
+\subsubsection[{DE\_\-push\_\-pkt}]{\setlength{\rightskip}{0pt plus 5cm}void DE\_\-push\_\-pkt (struct {\bf pkt\_\-struct} $\ast$ {\em pkt})}\label{decision__engine_8c_f8865693460ce6b4b4d8e9334597c266}
+
+
+push \doxyref{packet}{p.}{structpacket} to the DE\_\-submit\_\-pkt queue (equivalent of \doxyref{DE\_\-submit\_\-packet()}{p.}{decision__engine_8c_ed34912c70e4db4b07f42ff72495c5df} but without using a thread) 
+
+DE\_\-push\_\-pkt DEPRECATED, \begin{Desc}
+\item[{\bf Todo}]to remove \end{Desc}
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pkt,:}]\doxyref{packet}{p.}{structpacket} to push \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]OK \end{Desc}
+
+
+References pkt\_\-struct::conn, DE\_\-queue, DE\_\-queue\_\-lock, H, and conn\_\-struct::id.\index{decision\_\-engine.c@{decision\_\-engine.c}!DE\_\-submit\_\-packet@{DE\_\-submit\_\-packet}}
+\index{DE\_\-submit\_\-packet@{DE\_\-submit\_\-packet}!decision_engine.c@{decision\_\-engine.c}}
+\subsubsection[{DE\_\-submit\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}void DE\_\-submit\_\-packet ()}\label{decision__engine_8c_ed34912c70e4db4b07f42ff72495c5df}
+
+
+handle connections being decided and submits packets for decision 
+
+DE\_\-submit\_\-packet DEPRECATED, \begin{Desc}
+\item[{\bf Todo}]to remove \end{Desc}
+
+
+Now that this entry was processed, we can remove it from the DE queue 
+
+References DE\_\-process\_\-packet(), DE\_\-queue, DE\_\-queue\_\-lock, OK, and threading.
+
+Referenced by main().\index{decision\_\-engine.c@{decision\_\-engine.c}!decide@{decide}}
+\index{decide@{decide}!decision_engine.c@{decision\_\-engine.c}}
+\subsubsection[{decide}]{\setlength{\rightskip}{0pt plus 5cm}int decide (struct {\bf pkt\_\-struct} $\ast$ {\em pkt})}\label{decision__engine_8c_cffa39c5d5f7614fc22b0792f6235a4e}
+
+
+decide upon a given paken if the connection is to be redirected or not 
+
+decide \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pkt,:}]\doxyref{packet}{p.}{structpacket} used to decide \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]decision \end{Desc}
+
+
+globalresult is used to store the final result of the boolean equation of module 3 possible outcome: \char`\"{}-1\char`\"{} means \char`\"{}can't decide, needs more data to decide\char`\"{} \char`\"{}0\char`\"{} means \char`\"{}reject\char`\"{} \char`\"{}1\char`\"{} means \char`\"{}accept\char`\"{}
+
+start processing the \doxyref{tree}{p.}{structtree} from the root
+
+node-$>$result is used to store the outcome of an individual module
+
+node-$>$info\_\-result is used to store additional information about the decision
+
+call module
+
+if result is true, forward to true \doxyref{node}{p.}{structnode} or exit with 1
+
+update decision\_\-rule information
+
+go to next \doxyref{node}{p.}{structnode}
+
+end of the \doxyref{tree}{p.}{structtree}, exit
+
+end of the \doxyref{tree}{p.}{structtree}, exit
+
+result is false (result == 0), forward to false \doxyref{node}{p.}{structnode} or exit with 0
+
+go to the next subgroup
+
+end of the \doxyref{tree}{p.}{structtree}, exit 
+
+References pkt\_\-struct::conn, conn\_\-struct::decision\_\-rule, H, conn\_\-struct::id, mod\_\-args::node, mod\_\-args::pkt, and run\_\-module().
+
+Referenced by DE\_\-process\_\-packet().

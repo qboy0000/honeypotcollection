@@ -1,0 +1,35 @@
+digraph "modules.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="modules.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="glib.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="openssl/evp.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ctype.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="log.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$log_8h.html"];
+  Node5 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="types.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$types_8h.html"];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="netinet/tcp.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="netinet/udp.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="netinet/ip.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="pcap.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="dumbnet.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="tables.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tables_8h.html"];
+  Node12 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="err.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node12 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

@@ -1,0 +1,54 @@
+\section{types.h File Reference}
+\label{types_8h}\index{types.h@{types.h}}
+{\tt \#include $<$netinet/tcp.h$>$}\par
+{\tt \#include $<$netinet/udp.h$>$}\par
+{\tt \#include $<$netinet/ip.h$>$}\par
+{\tt \#include $<$pcap.h$>$}\par
+{\tt \#include $<$dumbnet.h$>$}\par
+{\tt \#include \char`\"{}modules.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct {\bf target}
+\item 
+struct {\bf ethernet\_\-hdr}
+\item 
+struct {\bf packet}
+\item 
+struct {\bf tcp\_\-packet}
+\item 
+struct {\bf udp\_\-packet}
+\item 
+struct {\bf hih\_\-struct}
+\begin{CompactList}\small\item\em hih info \item\end{CompactList}\item 
+struct {\bf expected\_\-data\_\-struct}
+\begin{CompactList}\small\item\em \doxyref{expected\_\-data\_\-struct}{p.}{structexpected__data__struct} info \item\end{CompactList}\item 
+struct {\bf conn\_\-struct}
+\begin{CompactList}\small\item\em The meta informations of a connection stored in the main Binary Tree. \item\end{CompactList}\item 
+struct {\bf pkt\_\-struct}
+\begin{CompactList}\small\item\em The meta information of a \doxyref{packet}{p.}{structpacket} stored in the \doxyref{conn\_\-struct}{p.}{structconn__struct} connection structure. \item\end{CompactList}\item 
+struct {\bf DE\_\-submit\_\-args}
+\begin{CompactList}\small\item\em Structure to pass arguments to the Decision Engine. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf ETHER\_\-ADDR\_\-LEN}~6
+\item 
+\#define {\bf ETHER\_\-HDR\_\-LEN}~14
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{types.h@{types.h}!ETHER\_\-ADDR\_\-LEN@{ETHER\_\-ADDR\_\-LEN}}
+\index{ETHER\_\-ADDR\_\-LEN@{ETHER\_\-ADDR\_\-LEN}!types.h@{types.h}}
+\subsubsection[{ETHER\_\-ADDR\_\-LEN}]{\setlength{\rightskip}{0pt plus 5cm}\#define ETHER\_\-ADDR\_\-LEN~6}\label{types_8h_bf4fcaacb1ad2010711b7c880ec2ed20}
+
+
+\index{types.h@{types.h}!ETHER\_\-HDR\_\-LEN@{ETHER\_\-HDR\_\-LEN}}
+\index{ETHER\_\-HDR\_\-LEN@{ETHER\_\-HDR\_\-LEN}!types.h@{types.h}}
+\subsubsection[{ETHER\_\-HDR\_\-LEN}]{\setlength{\rightskip}{0pt plus 5cm}\#define ETHER\_\-HDR\_\-LEN~14}\label{types_8h_4e7484afbe095e65767c43feb3a106cf}
+
+
+
+
+Referenced by init\_\-conn(), and init\_\-pkt().

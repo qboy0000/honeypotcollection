@@ -1,0 +1,85 @@
+\section{mod\_\-source.c File Reference}
+\label{mod__source_8c}\index{mod\_\-source.c@{mod\_\-source.c}}
+Source IP based filtering Module for honeybrid Decision Engine.  
+
+
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$time.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+{\tt \#include \char`\"{}modules.h\char`\"{}}\par
+{\tt \#include \char`\"{}netcode.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf mod\_\-source} (struct {\bf mod\_\-args} args)
+\begin{CompactList}\small\item\em check if the source IP has already been seen in a prior connection Parameters required: function = hash; backup = /etc/honeybrid/source.tb \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Source IP based filtering Module for honeybrid Decision Engine. 
+
+This module is called by a boolean decision \doxyref{tree}{p.}{structtree} to filter attacker based on their IP address
+
+\begin{Desc}
+\item[Author:]Robin Berthier 2009 \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{mod\_\-source.c@{mod\_\-source.c}!mod\_\-source@{mod\_\-source}}
+\index{mod\_\-source@{mod\_\-source}!mod_source.c@{mod\_\-source.c}}
+\subsubsection[{mod\_\-source}]{\setlength{\rightskip}{0pt plus 5cm}void mod\_\-source (struct {\bf mod\_\-args} {\em args})}\label{mod__source_8c_a5515368d4d08af9fd292e8c414a58a5}
+
+
+check if the source IP has already been seen in a prior connection Parameters required: function = hash; backup = /etc/honeybrid/source.tb 
+
+mod\_\-source \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em args,struct}]that contain the \doxyref{node}{p.}{structnode} and the data to process \item[\mbox{$\leftarrow$} {\em user\_\-data,not}]used\item[\mbox{$\rightarrow$} {\em set}]result to 0 if attacker ip is found in search table, 1 if not \end{description}
+\end{Desc}
+
+
+get the IP address from the \doxyref{packet}{p.}{structpacket}
+
+get the backup file for this module
+
+We can't decide
+
+get the backup file path for this module
+
+We can't decide
+
+Unknown IP, so we accept the \doxyref{packet}{p.}{structpacket}
+
+20 characters should be enough to hold even very large numbers
+
+counter
+
+first seen
+
+duration
+
+We check if we need to expire this entry
+
+Known IP but entry expired, so we accept the \doxyref{packet}{p.}{structpacket}
+
+counter
+
+first seen
+
+duration
+
+Known IP, so we reject the \doxyref{packet}{p.}{structpacket}
+
+counter
+
+duration
+
+clean and exit 
+
+References node::arg, pkt\_\-struct::conn, H, conn\_\-struct::id, pkt\_\-struct::key\_\-src, mod\_\-args::node, now(), mod\_\-args::pkt, node::result, and save\_\-backup().
+
+Referenced by get\_\-module(), and run\_\-module().

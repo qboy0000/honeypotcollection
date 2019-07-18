@@ -1,0 +1,298 @@
+\section{log.h File Reference}
+\label{log_8h}\index{log.h@{log.h}}
+{\tt \#include $<$glib.h$>$}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct {\bf log\_\-event}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf LOG\_\-MIN}~1
+\item 
+\#define {\bf LOG\_\-LOW}~2
+\item 
+\#define {\bf LOG\_\-MED}~3
+\item 
+\#define {\bf LOG\_\-HIGH}~4
+\item 
+\#define {\bf LOG\_\-ALL}~5
+\item 
+\#define {\bf LOG\_\-OTHER}~0
+\item 
+\#define {\bf LOG\_\-MAIN}~1
+\item 
+\#define {\bf LOG\_\-SIGNAL}~2
+\item 
+\#define {\bf LOG\_\-CONFIG}~3
+\item 
+\#define {\bf LOG\_\-UNKNOWN}~4
+\item 
+\#define {\bf LOG\_\-PCAP}~5
+\item 
+\#define {\bf LOG\_\-MODULES}~6
+\item 
+\#define {\bf LOG\_\-LOG}~7
+\item 
+\#define {\bf LOG\_\-CLEAN}~8
+\item 
+\#define {\bf LOG\_\-HONEYPOT}~9
+\item 
+\#define {\bf L}(sdata, ddata, level, id)~if (0 != honeylog(sdata,ddata,level,id))\{g\_\-print(\char`\"{}$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$LOG ENGINE ERROR$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\backslash$n\char`\"{});\}
+\item 
+\#define {\bf H}(id)~log\_\-header(\_\-\_\-func\_\-\_\-, id)
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+char $\ast$ {\bf log\_\-header} (const char $\ast$function\_\-name, int id)
+\begin{CompactList}\small\item\em return a header for debug log messages, including the timestamp and the name of the function \item\end{CompactList}\item 
+char $\ast$ {\bf now} (void)
+\begin{CompactList}\small\item\em return the current timestamp as a string \item\end{CompactList}\item 
+int {\bf honeylog} (char $\ast$sdata, char $\ast$ddata, int level, unsigned id)
+\begin{CompactList}\small\item\em add a log entry in the singly linked list \item\end{CompactList}\item 
+int {\bf open\_\-debug\_\-log} (void)
+\item 
+int {\bf close\_\-connection\_\-log} (void)
+\item 
+void {\bf open\_\-connection\_\-log} (void)
+\begin{CompactList}\small\item\em open the file honeybrid.log \item\end{CompactList}\item 
+void {\bf rotate\_\-connection\_\-log} (int signal\_\-nb)
+\begin{CompactList}\small\item\em rotate the file honeybrid.log every hour \item\end{CompactList}\item 
+void {\bf connection\_\-log} ()
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+int {\bf LOG\_\-LEVEL}
+\item 
+GSList $\ast$ {\bf log\_\-list}
+\item 
+GStaticRWLock {\bf loglock}
+\item 
+GHashTable $\ast$ {\bf log\_\-table}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{log.h@{log.h}!H@{H}}
+\index{H@{H}!log.h@{log.h}}
+\subsubsection[{H}]{\setlength{\rightskip}{0pt plus 5cm}\#define H(id)~log\_\-header(\_\-\_\-func\_\-\_\-, id)}\label{log_8h_ee722791bac86c287527610799a9d221}
+
+
+
+
+Referenced by addr2int(), DE\_\-process\_\-packet(), DE\_\-push\_\-pkt(), decide(), expire\_\-conn(), forward(), free\_\-conn(), get\_\-module(), init\_\-conn(), init\_\-mod\_\-hash(), init\_\-modules(), init\_\-pkt(), lookup\_\-honeypot\_\-addr(), main(), mod\_\-control(), mod\_\-counter(), mod\_\-hash(), mod\_\-random(), mod\_\-source(), mod\_\-yesno(), netlink\_\-loop(), replay(), reply\_\-reset(), reset\_\-lih(), run\_\-module(), save\_\-backup(), save\_\-backup\_\-handler(), send\_\-raw(), setup\_\-redirection(), store\_\-pkt(), switch\_\-state(), test\_\-expected(), and write\_\-backup().\index{log.h@{log.h}!L@{L}}
+\index{L@{L}!log.h@{log.h}}
+\subsubsection[{L}]{\setlength{\rightskip}{0pt plus 5cm}\#define L(sdata, \/  ddata, \/  level, \/  id)~if (0 != honeylog(sdata,ddata,level,id))\{g\_\-print(\char`\"{}$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$LOG ENGINE ERROR$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\backslash$n\char`\"{});\}}\label{log_8h_01f7abe12dee0dec71077c7da26234d7}
+
+
+
+
+Referenced by rotate\_\-connection\_\-log().\index{log.h@{log.h}!LOG\_\-ALL@{LOG\_\-ALL}}
+\index{LOG\_\-ALL@{LOG\_\-ALL}!log.h@{log.h}}
+\subsubsection[{LOG\_\-ALL}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-ALL~5}\label{log_8h_7574ce4aa047de1f4a564c9b441e69dc}
+
+
+
+
+Referenced by rotate\_\-connection\_\-log().\index{log.h@{log.h}!LOG\_\-CLEAN@{LOG\_\-CLEAN}}
+\index{LOG\_\-CLEAN@{LOG\_\-CLEAN}!log.h@{log.h}}
+\subsubsection[{LOG\_\-CLEAN}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-CLEAN~8}\label{log_8h_73f9ed7c8838eafbefa1d8963168f304}
+
+
+\index{log.h@{log.h}!LOG\_\-CONFIG@{LOG\_\-CONFIG}}
+\index{LOG\_\-CONFIG@{LOG\_\-CONFIG}!log.h@{log.h}}
+\subsubsection[{LOG\_\-CONFIG}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-CONFIG~3}\label{log_8h_009fd3c675aa694038eb49bb70abe3a2}
+
+
+\index{log.h@{log.h}!LOG\_\-HIGH@{LOG\_\-HIGH}}
+\index{LOG\_\-HIGH@{LOG\_\-HIGH}!log.h@{log.h}}
+\subsubsection[{LOG\_\-HIGH}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-HIGH~4}\label{log_8h_2ef305a344642bd0b097995b314c145f}
+
+
+
+
+Referenced by rotate\_\-connection\_\-log().\index{log.h@{log.h}!LOG\_\-HONEYPOT@{LOG\_\-HONEYPOT}}
+\index{LOG\_\-HONEYPOT@{LOG\_\-HONEYPOT}!log.h@{log.h}}
+\subsubsection[{LOG\_\-HONEYPOT}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-HONEYPOT~9}\label{log_8h_3fc8ad1feedce35117f5e6bad20d5f6b}
+
+
+\index{log.h@{log.h}!LOG\_\-LOG@{LOG\_\-LOG}}
+\index{LOG\_\-LOG@{LOG\_\-LOG}!log.h@{log.h}}
+\subsubsection[{LOG\_\-LOG}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-LOG~7}\label{log_8h_6d4dfa49b8511837f24daec3339f73b8}
+
+
+
+
+Referenced by rotate\_\-connection\_\-log().\index{log.h@{log.h}!LOG\_\-LOW@{LOG\_\-LOW}}
+\index{LOG\_\-LOW@{LOG\_\-LOW}!log.h@{log.h}}
+\subsubsection[{LOG\_\-LOW}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-LOW~2}\label{log_8h_773ce4735da5e1fff3b2d8276f387c66}
+
+
+\index{log.h@{log.h}!LOG\_\-MAIN@{LOG\_\-MAIN}}
+\index{LOG\_\-MAIN@{LOG\_\-MAIN}!log.h@{log.h}}
+\subsubsection[{LOG\_\-MAIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-MAIN~1}\label{log_8h_484ab975ea26b5cbc838f52c10bb06d0}
+
+
+\index{log.h@{log.h}!LOG\_\-MED@{LOG\_\-MED}}
+\index{LOG\_\-MED@{LOG\_\-MED}!log.h@{log.h}}
+\subsubsection[{LOG\_\-MED}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-MED~3}\label{log_8h_5e365f05fc6d85164841cedf2b770aa2}
+
+
+
+
+Referenced by rotate\_\-connection\_\-log().\index{log.h@{log.h}!LOG\_\-MIN@{LOG\_\-MIN}}
+\index{LOG\_\-MIN@{LOG\_\-MIN}!log.h@{log.h}}
+\subsubsection[{LOG\_\-MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-MIN~1}\label{log_8h_3ef6a4f075fb655a800e4657f2ff70e4}
+
+
+\index{log.h@{log.h}!LOG\_\-MODULES@{LOG\_\-MODULES}}
+\index{LOG\_\-MODULES@{LOG\_\-MODULES}!log.h@{log.h}}
+\subsubsection[{LOG\_\-MODULES}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-MODULES~6}\label{log_8h_a22a66d01a921d7089b23da09c3b05ef}
+
+
+\index{log.h@{log.h}!LOG\_\-OTHER@{LOG\_\-OTHER}}
+\index{LOG\_\-OTHER@{LOG\_\-OTHER}!log.h@{log.h}}
+\subsubsection[{LOG\_\-OTHER}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-OTHER~0}\label{log_8h_9449cd1defc2f6fd46284a2a2fbd5d46}
+
+
+\index{log.h@{log.h}!LOG\_\-PCAP@{LOG\_\-PCAP}}
+\index{LOG\_\-PCAP@{LOG\_\-PCAP}!log.h@{log.h}}
+\subsubsection[{LOG\_\-PCAP}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-PCAP~5}\label{log_8h_930a231e74aa1dac6ec599ba02169cbd}
+
+
+\index{log.h@{log.h}!LOG\_\-SIGNAL@{LOG\_\-SIGNAL}}
+\index{LOG\_\-SIGNAL@{LOG\_\-SIGNAL}!log.h@{log.h}}
+\subsubsection[{LOG\_\-SIGNAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-SIGNAL~2}\label{log_8h_d1fb89e103e4048224e20bf052dd826d}
+
+
+\index{log.h@{log.h}!LOG\_\-UNKNOWN@{LOG\_\-UNKNOWN}}
+\index{LOG\_\-UNKNOWN@{LOG\_\-UNKNOWN}!log.h@{log.h}}
+\subsubsection[{LOG\_\-UNKNOWN}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-UNKNOWN~4}\label{log_8h_edb0e263c286804ef2ddbe8d7593e7c5}
+
+
+
+
+\subsection{Function Documentation}
+\index{log.h@{log.h}!close\_\-connection\_\-log@{close\_\-connection\_\-log}}
+\index{close\_\-connection\_\-log@{close\_\-connection\_\-log}!log.h@{log.h}}
+\subsubsection[{close\_\-connection\_\-log}]{\setlength{\rightskip}{0pt plus 5cm}int close\_\-connection\_\-log (void)}\label{log_8h_1ae92e71479564f8439adc5636c15212}
+
+
+
+
+Referenced by close\_\-conn\_\-tree().\index{log.h@{log.h}!connection\_\-log@{connection\_\-log}}
+\index{connection\_\-log@{connection\_\-log}!log.h@{log.h}}
+\subsubsection[{connection\_\-log}]{\setlength{\rightskip}{0pt plus 5cm}void connection\_\-log ()}\label{log_8h_59e4c7db1c7dc67e906d56043168327b}
+
+
+\index{log.h@{log.h}!honeylog@{honeylog}}
+\index{honeylog@{honeylog}!log.h@{log.h}}
+\subsubsection[{honeylog}]{\setlength{\rightskip}{0pt plus 5cm}int honeylog (char $\ast$ {\em sdata}, \/  char $\ast$ {\em ddata}, \/  int {\em level}, \/  unsigned {\em id})}\label{log_8h_0fd055c418f71f29cf0f2b53a051d48f}
+
+
+add a log entry in the singly linked list 
+
+honeylog
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em static}]string pointer \item[\mbox{$\leftarrow$} {\em dynamicaly}]allocated string pointer \item[\mbox{$\leftarrow$} {\em log}]level of event \item[\mbox{$\leftarrow$} {\em connection}]id\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]OK when done, NOK on failure \end{Desc}
+
+
+filter events upon their log level 
+
+References LOG\_\-LEVEL, NOK, and OK.\index{log.h@{log.h}!log\_\-header@{log\_\-header}}
+\index{log\_\-header@{log\_\-header}!log.h@{log.h}}
+\subsubsection[{log\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ log\_\-header (const char $\ast$ {\em function\_\-name}, \/  int {\em id})}\label{log_8h_8a84b75ac92d0036fd17d2c2705cfcc4}
+
+
+return a header for debug log messages, including the timestamp and the name of the function 
+
+log\_\-header 
+
+References now().\index{log.h@{log.h}!now@{now}}
+\index{now@{now}!log.h@{log.h}}
+\subsubsection[{now}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ now (void)}\label{log_8h_525a63699478a5fa4357ef2d774a2b24}
+
+
+return the current timestamp as a string 
+
+now 
+
+References now().
+
+Referenced by log\_\-header(), mod\_\-control(), mod\_\-hash(), mod\_\-source(), and now().\index{log.h@{log.h}!open\_\-connection\_\-log@{open\_\-connection\_\-log}}
+\index{open\_\-connection\_\-log@{open\_\-connection\_\-log}!log.h@{log.h}}
+\subsubsection[{open\_\-connection\_\-log}]{\setlength{\rightskip}{0pt plus 5cm}void open\_\-connection\_\-log (void)}\label{log_8h_4a1770ab07387e6e7c9bc7b7d188e336}
+
+
+open the file honeybrid.log 
+
+open log file 
+
+Enable line buffer 
+
+References config, err(), errx(), and warnx().
+
+Referenced by main().\index{log.h@{log.h}!open\_\-debug\_\-log@{open\_\-debug\_\-log}}
+\index{open\_\-debug\_\-log@{open\_\-debug\_\-log}!log.h@{log.h}}
+\subsubsection[{open\_\-debug\_\-log}]{\setlength{\rightskip}{0pt plus 5cm}int open\_\-debug\_\-log (void)}\label{log_8h_7a776449460252a9e0bdc4b407f3709a}
+
+
+
+
+References config, err(), errx(), and warnx().
+
+Referenced by main().\index{log.h@{log.h}!rotate\_\-connection\_\-log@{rotate\_\-connection\_\-log}}
+\index{rotate\_\-connection\_\-log@{rotate\_\-connection\_\-log}!log.h@{log.h}}
+\subsubsection[{rotate\_\-connection\_\-log}]{\setlength{\rightskip}{0pt plus 5cm}void rotate\_\-connection\_\-log (int {\em signal\_\-nb})}\label{log_8h_25996e403c2f80833b1b8d701826480f}
+
+
+rotate the file honeybrid.log every hour 
+
+rotate\_\-connection\_\-log 
+
+logfile\_\-name = g\_\-new0(char, 256); logfile\_\-name = g\_\-hash\_\-table\_\-lookup(config,\char`\"{}log\_\-file\char`\"{}); new\_\-name = malloc(sizeof(logfile\_\-name) + 64); sprintf(new\_\-name,\char`\"{}\%s.\%d\%02d\%02d\_\-\%02d\%02d\char`\"{}, logfile\_\-name, (1900+tm-$>$tm\_\-year), (1+tm-$>$tm\_\-mon), tm-$>$tm\_\-mday, tm-$>$tm\_\-hour, tm-$>$tm\_\-min);
+
+g\_\-free(logfile\_\-name); free(new\_\-name);
+
+The last step is to update last\_\-rotation
+
+References config, L, last\_\-rotation, LOG\_\-ALL, LOG\_\-HIGH, LOG\_\-LOG, and LOG\_\-MED.
+
+Referenced by connection\_\-log(), and init\_\-signal().
+
+\subsection{Variable Documentation}
+\index{log.h@{log.h}!LOG\_\-LEVEL@{LOG\_\-LEVEL}}
+\index{LOG\_\-LEVEL@{LOG\_\-LEVEL}!log.h@{log.h}}
+\subsubsection[{LOG\_\-LEVEL}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf LOG\_\-LEVEL}}\label{log_8h_3ecebc9d2fcb9f207a3373191a0ca251}
+
+
+
+
+Referenced by honeylog().\index{log.h@{log.h}!log\_\-list@{log\_\-list}}
+\index{log\_\-list@{log\_\-list}!log.h@{log.h}}
+\subsubsection[{log\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}GSList$\ast$ {\bf log\_\-list}}\label{log_8h_0a6c7faf56521863f783c5be3c0a8847}
+
+
+
+
+Referenced by init\_\-variables().\index{log.h@{log.h}!log\_\-table@{log\_\-table}}
+\index{log\_\-table@{log\_\-table}!log.h@{log.h}}
+\subsubsection[{log\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}GHashTable$\ast$ {\bf log\_\-table}}\label{log_8h_c21e942e8435897b136b3859dc70b9d3}
+
+
+
+
+Referenced by close\_\-hash(), and init\_\-variables().\index{log.h@{log.h}!loglock@{loglock}}
+\index{loglock@{loglock}!log.h@{log.h}}
+\subsubsection[{loglock}]{\setlength{\rightskip}{0pt plus 5cm}GStaticRWLock {\bf loglock}}\label{log_8h_3b223291fa4004075742bdae0abe3422}
+
+

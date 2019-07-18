@@ -1,0 +1,169 @@
+\section{pcap\_\-tool.c File Reference}
+\label{pcap__tool_8c}\index{pcap\_\-tool.c@{pcap\_\-tool.c}}
+Pcap function to record communications.  
+
+
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include $<$glib.h$>$}\par
+{\tt \#include \char`\"{}pcap\_\-tool.h\char`\"{}}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+{\tt \#include \char`\"{}log.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+GString $\ast$ {\bf create\_\-pcap\_\-filename} (int mode)
+\begin{CompactList}\small\item\em create a filename based on the configuration and a time value \item\end{CompactList}\item 
+int {\bf init\_\-pcap\_\-context} ()
+\begin{CompactList}\small\item\em create the pcap descriptors \item\end{CompactList}\item 
+int {\bf record\_\-pkt} (struct nfq\_\-data $\ast$tb, char $\ast$p, int mode)
+\begin{CompactList}\small\item\em record a \doxyref{packet}{p.}{structpacket} in the current pcap file descriptor \item\end{CompactList}\item 
+int {\bf close\_\-pcap\_\-context} ()
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Pcap function to record communications. 
+
+J. Vehent 
+
+\subsection{Function Documentation}
+\index{pcap\_\-tool.c@{pcap\_\-tool.c}!close\_\-pcap\_\-context@{close\_\-pcap\_\-context}}
+\index{close\_\-pcap\_\-context@{close\_\-pcap\_\-context}!pcap_tool.c@{pcap\_\-tool.c}}
+\subsubsection[{close\_\-pcap\_\-context}]{\setlength{\rightskip}{0pt plus 5cm}int close\_\-pcap\_\-context ()}\label{pcap__tool_8c_8809f8a26967cdc4c996d596fc2262b4}
+
+
+close\_\-pcap\_\-context, close the descriptors \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em $\backslash$return}]0 on success, anything else otherwise \end{description}
+\end{Desc}
+
+
+References pcap\_\-main\_\-desc, pcap\_\-output\_\-current, and pcap\_\-output\_\-redirected.\index{pcap\_\-tool.c@{pcap\_\-tool.c}!create\_\-pcap\_\-filename@{create\_\-pcap\_\-filename}}
+\index{create\_\-pcap\_\-filename@{create\_\-pcap\_\-filename}!pcap_tool.c@{pcap\_\-tool.c}}
+\subsubsection[{create\_\-pcap\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}GString$\ast$ create\_\-pcap\_\-filename (int {\em mode})}\label{pcap__tool_8c_3e046706f93936499d648d390788c324}
+
+
+create a filename based on the configuration and a time value 
+
+create\_\-pcap\_\-filename
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em mode,0}]for non redirected file name, 1 for redirected file name \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]a GString structure \end{Desc}
+
+
+prefix = value from the config file
+
+add the current time
+
+and finally, the '.pcap' extension
+
+return the structure GString created
+
+References config.
+
+Referenced by init\_\-pcap\_\-context(), and record\_\-pkt().\index{pcap\_\-tool.c@{pcap\_\-tool.c}!init\_\-pcap\_\-context@{init\_\-pcap\_\-context}}
+\index{init\_\-pcap\_\-context@{init\_\-pcap\_\-context}!pcap_tool.c@{pcap\_\-tool.c}}
+\subsubsection[{init\_\-pcap\_\-context}]{\setlength{\rightskip}{0pt plus 5cm}int init\_\-pcap\_\-context ()}\label{pcap__tool_8c_c166bb250c9a3accffbe546af29ea7f2}
+
+
+create the pcap descriptors 
+
+init\_\-pcap\_\-context
+
+\begin{Desc}
+\item[Returns:]0 on success, anything else otherwise \end{Desc}
+
+
+pcap\_\-open\_\-dead, open offline context for pcap \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em DLT\_\-RAW,assume}]incoming \doxyref{packet}{p.}{structpacket} doesn't have a layer 2 header (netfilter requierement) \item[\mbox{$\leftarrow$} {\em BUFSIZE,max}]size of a \doxyref{packet}{p.}{structpacket} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]pcap\_\-main\_\-desc, a descriptor to the pcap context\end{Desc}
+L(32,\char`\"{}INIT\_\-PCAP\_\-CONTEXT\char`\"{},NULL,5);
+
+create output filename based on the conf and the time value
+
+pcap\_\-dump\_\-open, create an output file descriptor for this context \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pcap\_\-main\_\-desc,a}]descriptor to the pcap context \item[\mbox{$\leftarrow$} {\em output\_\-file\_\-name $\rightarrow$ str,the}]filename \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]pcap\_\-output\_\-current, a pcap file descriptor\end{Desc}
+L(33,\char`\"{}INIT\_\-PCAP\_\-CONTEXT\char`\"{},NULL, 5);
+
+L(34,\char`\"{}INIT\_\-PCAP\_\-CONTEXT\char`\"{},output\_\-file\_\-name-$>$str, 5);
+
+create output filename for redirected connections
+
+same for output of redirected connections
+
+L(35,\char`\"{}INIT\_\-PCAP\_\-CONTEXT\char`\"{},NULL, 5);
+
+L(34,\char`\"{}INIT\_\-PCAP\_\-CONTEXT\char`\"{},redirected\_\-output\_\-file\_\-name-$>$str, 5); 
+
+References create\_\-pcap\_\-filename(), pcap\_\-main\_\-desc, pcap\_\-output\_\-current, pcap\_\-output\_\-redirected, and PCAPSIZE.
+
+Referenced by record\_\-pkt().\index{pcap\_\-tool.c@{pcap\_\-tool.c}!record\_\-pkt@{record\_\-pkt}}
+\index{record\_\-pkt@{record\_\-pkt}!pcap_tool.c@{pcap\_\-tool.c}}
+\subsubsection[{record\_\-pkt}]{\setlength{\rightskip}{0pt plus 5cm}int record\_\-pkt (struct nfq\_\-data $\ast$ {\em tb}, \/  char $\ast$ {\em p}, \/  int {\em mode})}\label{pcap__tool_8c_5d1b6b8c7266a5d1b7ac6e805fa977b8}
+
+
+record a \doxyref{packet}{p.}{structpacket} in the current pcap file descriptor 
+
+record\_\-pkt
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em nfq\_\-data}]$\ast$tb, raw \doxyref{packet}{p.}{structpacket} ( used with nfqueue) \item[\mbox{$\leftarrow$} {\em $\ast$payload,\doxyref{packet}{p.}{structpacket}}]to record (used outside of nfqueue) \item[\mbox{$\leftarrow$} {\em mode,0}]for non redirected connection, 1 for redirected connections, 2 for redirected outside nfqueue, 3 for non redirected outside nfqueue\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 on success, anything else otherwise \end{Desc}
+
+
+if pcap desc doesn't exist, init pcap context
+
+switch the descriptor regarding to the mode (redirected or not)
+
+if the actual pcap output file is bigger than 10mo, create a new one
+
+close the current descriptor
+
+create output filename based on the conf and the time value
+
+open the new file descriptor
+
+L(33,\char`\"{}RECORD\_\-PKT\char`\"{},file\_\-name-$>$str, 5);
+
+L(34,\char`\"{}RECORD\_\-PKT\char`\"{},file\_\-name-$>$str,5);
+
+store new descriptor in global descriptor
+
+create pcap specific header
+
+mode 2 and 3 are used when we need to record a \doxyref{packet}{p.}{structpacket} received outside of the netfilter queue
+
++1 because the '' is not included
+
+pcap\_\-dump, write pcap header and \doxyref{packet}{p.}{structpacket} data to the output file \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pcap\_\-output\_\-current,descriptor}]to the current output file \item[\mbox{$\leftarrow$} {\em \&phdr,pcap}]header \item[\mbox{$\leftarrow$} {\em payload,\doxyref{packet}{p.}{structpacket}}]data\end{description}
+\end{Desc}
+pcap\_\-dump, write pcap header and \doxyref{packet}{p.}{structpacket} data to the output file \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pcap\_\-output\_\-current,descriptor}]to the current output file \item[\mbox{$\leftarrow$} {\em \&phdr,pcap}]header \item[\mbox{$\leftarrow$} {\em (const}]u\_\-char $\ast$)nf\_\-packet, \doxyref{packet}{p.}{structpacket} data from netfilter queue\end{description}
+\end{Desc}
+L(36,\char`\"{}RECORD\_\-PKT\char`\"{},NULL, 5); 
+
+References create\_\-pcap\_\-filename(), init\_\-pcap\_\-context(), pcap\_\-main\_\-desc, pcap\_\-output\_\-current, and pcap\_\-output\_\-redirected.

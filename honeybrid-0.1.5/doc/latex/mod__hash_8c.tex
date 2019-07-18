@@ -1,0 +1,169 @@
+\section{mod\_\-hash.c File Reference}
+\label{mod__hash_8c}\index{mod\_\-hash.c@{mod\_\-hash.c}}
+SHA 1 Module for honeybrid Decision Engine.  
+
+
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include $<$time.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+{\tt \#include \char`\"{}modules.h\char`\"{}}\par
+{\tt \#include \char`\"{}netcode.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf HASH\_\-COUNTER}~0
+\begin{CompactList}\small\item\em array indexes of variables to store for each hash port number will be used as separator (group) hash will be used as key \item\end{CompactList}\item 
+\#define {\bf HASH\_\-FIRST\_\-SEEN}~1
+\item 
+\#define {\bf HASH\_\-DURATION}~2
+\item 
+\#define {\bf HASH\_\-PACKET}~3
+\item 
+\#define {\bf HASH\_\-BYTE}~4
+\item 
+\#define {\bf HASH\_\-ASCII}~5
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int {\bf init\_\-mod\_\-hash} ()
+\item 
+void {\bf mod\_\-hash} (struct {\bf mod\_\-args} args)
+\begin{CompactList}\small\item\em calculate a SHA1 hash value of a \doxyref{packet}{p.}{structpacket} payload, and look for a possible match in a database of hashes. Parameters required: function = hash; backup = /etc/honeybrid/hash.tb \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+const EVP\_\-MD $\ast$ {\bf md}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+SHA 1 Module for honeybrid Decision Engine. 
+
+This module is called by a boolean decision \doxyref{tree}{p.}{structtree} to process a message digest and try to find it in a search table
+
+\begin{Desc}
+\item[Author:]Julien Vehent, 2007 
+
+Thomas Coquelin, 2008 \end{Desc}
+
+
+\subsection{Define Documentation}
+\index{mod\_\-hash.c@{mod\_\-hash.c}!HASH\_\-ASCII@{HASH\_\-ASCII}}
+\index{HASH\_\-ASCII@{HASH\_\-ASCII}!mod_hash.c@{mod\_\-hash.c}}
+\subsubsection[{HASH\_\-ASCII}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-ASCII~5}\label{mod__hash_8c_293bdfd7f88e7fdadab15d13f157ee67}
+
+
+
+
+Referenced by mod\_\-hash().\index{mod\_\-hash.c@{mod\_\-hash.c}!HASH\_\-BYTE@{HASH\_\-BYTE}}
+\index{HASH\_\-BYTE@{HASH\_\-BYTE}!mod_hash.c@{mod\_\-hash.c}}
+\subsubsection[{HASH\_\-BYTE}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-BYTE~4}\label{mod__hash_8c_3a0512cafb3195fefc2886c5542656b3}
+
+
+
+
+Referenced by mod\_\-hash().\index{mod\_\-hash.c@{mod\_\-hash.c}!HASH\_\-COUNTER@{HASH\_\-COUNTER}}
+\index{HASH\_\-COUNTER@{HASH\_\-COUNTER}!mod_hash.c@{mod\_\-hash.c}}
+\subsubsection[{HASH\_\-COUNTER}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-COUNTER~0}\label{mod__hash_8c_f33c32d5e4dce0e9eedcc69a95d178af}
+
+
+array indexes of variables to store for each hash port number will be used as separator (group) hash will be used as key 
+
+
+
+Referenced by mod\_\-hash().\index{mod\_\-hash.c@{mod\_\-hash.c}!HASH\_\-DURATION@{HASH\_\-DURATION}}
+\index{HASH\_\-DURATION@{HASH\_\-DURATION}!mod_hash.c@{mod\_\-hash.c}}
+\subsubsection[{HASH\_\-DURATION}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-DURATION~2}\label{mod__hash_8c_5fcc5f56b02798191cde082e0e13fb57}
+
+
+
+
+Referenced by mod\_\-hash().\index{mod\_\-hash.c@{mod\_\-hash.c}!HASH\_\-FIRST\_\-SEEN@{HASH\_\-FIRST\_\-SEEN}}
+\index{HASH\_\-FIRST\_\-SEEN@{HASH\_\-FIRST\_\-SEEN}!mod_hash.c@{mod\_\-hash.c}}
+\subsubsection[{HASH\_\-FIRST\_\-SEEN}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-FIRST\_\-SEEN~1}\label{mod__hash_8c_c15601c3b6a45d7734e3c9f36a6007cc}
+
+
+
+
+Referenced by mod\_\-hash().\index{mod\_\-hash.c@{mod\_\-hash.c}!HASH\_\-PACKET@{HASH\_\-PACKET}}
+\index{HASH\_\-PACKET@{HASH\_\-PACKET}!mod_hash.c@{mod\_\-hash.c}}
+\subsubsection[{HASH\_\-PACKET}]{\setlength{\rightskip}{0pt plus 5cm}\#define HASH\_\-PACKET~3}\label{mod__hash_8c_be5b0e937bf73913b13392728e1bbcde}
+
+
+
+
+Referenced by mod\_\-hash().
+
+\subsection{Function Documentation}
+\index{mod\_\-hash.c@{mod\_\-hash.c}!init\_\-mod\_\-hash@{init\_\-mod\_\-hash}}
+\index{init\_\-mod\_\-hash@{init\_\-mod\_\-hash}!mod_hash.c@{mod\_\-hash.c}}
+\subsubsection[{init\_\-mod\_\-hash}]{\setlength{\rightskip}{0pt plus 5cm}int init\_\-mod\_\-hash ()}\label{mod__hash_8c_0fd44992c8a5ca2986e094b98cf3aae8}
+
+
+
+
+init OpenSSL SHA-1 engine 
+
+References H, and md.
+
+Referenced by init\_\-modules().\index{mod\_\-hash.c@{mod\_\-hash.c}!mod\_\-hash@{mod\_\-hash}}
+\index{mod\_\-hash@{mod\_\-hash}!mod_hash.c@{mod\_\-hash.c}}
+\subsubsection[{mod\_\-hash}]{\setlength{\rightskip}{0pt plus 5cm}void mod\_\-hash (struct {\bf mod\_\-args} {\em args})}\label{mod__hash_8c_edf338529f690a340c064411b4508648}
+
+
+calculate a SHA1 hash value of a \doxyref{packet}{p.}{structpacket} payload, and look for a possible match in a database of hashes. Parameters required: function = hash; backup = /etc/honeybrid/hash.tb 
+
+mod\_\-hash \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em args,struct}]that contain the \doxyref{node}{p.}{structnode} and the datas to process \item[\mbox{$\leftarrow$} {\em user\_\-data,not}]used\item[\mbox{$\rightarrow$} {\em set}]result to 0 if datas's fingerprint is found in search table, 1 if not \end{description}
+\end{Desc}
+
+
+First, we make sure that we have data to work on
+
+get the backup file for this module
+
+We can't decide
+
+get the backup file path for this module
+
+We can't decide
+
+get the IP address from the \doxyref{packet}{p.}{structpacket}
+
+get the destination port
+
+get the payload from the \doxyref{packet}{p.}{structpacket}
+
+replace all occurrences of IP addresses by a generic IP
+
+digest the payload
+
+Unknown hash, so we accept the \doxyref{packet}{p.}{structpacket}
+
+We check if we need to expire this entry
+
+Known hash but entry expired, so we accept the \doxyref{packet}{p.}{structpacket}
+
+Known hash, so we reject the \doxyref{packet}{p.}{structpacket}
+
+clean and exit 
+
+References node::arg, pkt\_\-struct::conn, conn\_\-struct::count\_\-data\_\-pkt\_\-from\_\-intruder, pkt\_\-struct::data, H, HASH\_\-ASCII, HASH\_\-BYTE, HASH\_\-COUNTER, HASH\_\-DURATION, HASH\_\-FIRST\_\-SEEN, HASH\_\-PACKET, conn\_\-struct::id, node::info\_\-result, pkt\_\-struct::key\_\-dst, md, mod\_\-args::node, now(), pkt\_\-struct::packet, packet::payload, mod\_\-args::pkt, node::result, and save\_\-backup().
+
+Referenced by get\_\-module(), and run\_\-module().
+
+\subsection{Variable Documentation}
+\index{mod\_\-hash.c@{mod\_\-hash.c}!md@{md}}
+\index{md@{md}!mod_hash.c@{mod\_\-hash.c}}
+\subsubsection[{md}]{\setlength{\rightskip}{0pt plus 5cm}const EVP\_\-MD$\ast$ {\bf md}}\label{mod__hash_8c_bb7f2f40445a754241e3a2c1ebcd52b6}
+
+
+
+
+Referenced by init\_\-mod\_\-hash(), and mod\_\-hash().

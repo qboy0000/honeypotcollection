@@ -1,0 +1,52 @@
+\section{mod\_\-counter.c File Reference}
+\label{mod__counter_8c}\index{mod\_\-counter.c@{mod\_\-counter.c}}
+Packet counter Module for honeybrid Decision Engine.  
+
+
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include \char`\"{}modules.h\char`\"{}}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf mod\_\-counter} (struct {\bf mod\_\-args} args)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Packet counter Module for honeybrid Decision Engine. 
+
+This module returns the position of a \doxyref{packet}{p.}{structpacket} in the connection
+
+\begin{Desc}
+\item[Author:]Julien Vehent, 2007 
+
+Thomas Coquelin, 2008 \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{mod\_\-counter.c@{mod\_\-counter.c}!mod\_\-counter@{mod\_\-counter}}
+\index{mod\_\-counter@{mod\_\-counter}!mod_counter.c@{mod\_\-counter.c}}
+\subsubsection[{mod\_\-counter}]{\setlength{\rightskip}{0pt plus 5cm}void mod\_\-counter (struct {\bf mod\_\-args} {\em args})}\label{mod__counter_8c_795156c8425194442da9bb1a8182e1e0}
+
+
+mod\_\-counter requires the configuration of the following mandatory parameter:\begin{itemize}
+\item \char`\"{}counter\char`\"{}, number of \doxyref{packet}{p.}{structpacket} to receive before accepting\end{itemize}
+
+
+mod\_\-counter \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em args,struct}]that contain the \doxyref{node}{p.}{structnode} and the datas to process \item[\mbox{$\rightarrow$} {\em set}]result to 1 \doxyref{packet}{p.}{structpacket} position match arg, 0 otherwise \end{description}
+\end{Desc}
+
+
+We can't decide
+
+We accept this \doxyref{packet}{p.}{structpacket}
+
+We reject this \doxyref{packet}{p.}{structpacket} 
+
+References node::arg, pkt\_\-struct::conn, conn\_\-struct::count\_\-data\_\-pkt\_\-from\_\-intruder, H, conn\_\-struct::id, mod\_\-args::node, mod\_\-args::pkt, and node::result.
+
+Referenced by get\_\-module(), and run\_\-module().

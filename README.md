@@ -67,3 +67,5 @@ git submodule foreach git pull
 * [SpiderFoot](https://github.com/smicallef/spiderfoot) 一个开源智能（OSINT）自动化工具。其目标是自动收集有关给定目标的情报过程 [官网](http：//www.spiderfoot.net)
 
 hpfriends - real-time social data-sharing - HPFriends 订阅系统的展示
+
+[honeybird](http://honeybrid.sourceforge.net/#download)

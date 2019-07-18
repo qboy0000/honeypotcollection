@@ -1,0 +1,197 @@
+\section{decision\_\-engine.h File Reference}
+\label{decision__engine_8h}\index{decision\_\-engine.h@{decision\_\-engine.h}}
+{\tt \#include $<$glib.h$>$}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct {\bf tree}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf DE\_\-NO\_\-RULE}~-2
+\item 
+\#define {\bf DE\_\-UNKNOWN}~-1
+\item 
+\#define {\bf DE\_\-REJECT}~0
+\item 
+\#define {\bf DE\_\-ACCEPT}~1
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void $\ast$ {\bf DE\_\-create\_\-tree} (const gchar $\ast$equation)
+\begin{CompactList}\small\item\em build a boolean decision \doxyref{tree}{p.}{structtree} for a given equation \item\end{CompactList}\item 
+void {\bf DE\_\-submit\_\-packet} ()
+\begin{CompactList}\small\item\em handle connections being decided and submits packets for decision \item\end{CompactList}\item 
+void {\bf DE\_\-push\_\-pkt} (struct {\bf pkt\_\-struct} $\ast$pkt)
+\begin{CompactList}\small\item\em push \doxyref{packet}{p.}{structpacket} to the DE\_\-submit\_\-pkt queue (equivalent of \doxyref{DE\_\-submit\_\-packet()}{p.}{decision__engine_8c_ed34912c70e4db4b07f42ff72495c5df} but without using a thread) \item\end{CompactList}\item 
+int {\bf DE\_\-process\_\-packet} (struct {\bf pkt\_\-struct} $\ast$pkt)
+\begin{CompactList}\small\item\em submit packets for decision using decision rules and decision modules \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+GHashTable $\ast$ {\bf DE\_\-rules}
+\item 
+struct {\bf tree} {\bf tree}
+\item 
+GStaticRWLock {\bf DE\_\-queue\_\-lock}
+\item 
+GSList $\ast$ {\bf DE\_\-queue}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{decision\_\-engine.h@{decision\_\-engine.h}!DE\_\-ACCEPT@{DE\_\-ACCEPT}}
+\index{DE\_\-ACCEPT@{DE\_\-ACCEPT}!decision_engine.h@{decision\_\-engine.h}}
+\subsubsection[{DE\_\-ACCEPT}]{\setlength{\rightskip}{0pt plus 5cm}\#define DE\_\-ACCEPT~1}\label{decision__engine_8h_38e2650908378822e9bf63b35b44e39e}
+
+
+
+
+Referenced by DE\_\-process\_\-packet().\index{decision\_\-engine.h@{decision\_\-engine.h}!DE\_\-NO\_\-RULE@{DE\_\-NO\_\-RULE}}
+\index{DE\_\-NO\_\-RULE@{DE\_\-NO\_\-RULE}!decision_engine.h@{decision\_\-engine.h}}
+\subsubsection[{DE\_\-NO\_\-RULE}]{\setlength{\rightskip}{0pt plus 5cm}\#define DE\_\-NO\_\-RULE~-2}\label{decision__engine_8h_8b4afd7bd94217a117105bfdafd1d3fe}
+
+
+
+
+Referenced by DE\_\-process\_\-packet().\index{decision\_\-engine.h@{decision\_\-engine.h}!DE\_\-REJECT@{DE\_\-REJECT}}
+\index{DE\_\-REJECT@{DE\_\-REJECT}!decision_engine.h@{decision\_\-engine.h}}
+\subsubsection[{DE\_\-REJECT}]{\setlength{\rightskip}{0pt plus 5cm}\#define DE\_\-REJECT~0}\label{decision__engine_8h_7c87d5d06085dd3b20cde79b0d940e69}
+
+
+
+
+Referenced by DE\_\-process\_\-packet().\index{decision\_\-engine.h@{decision\_\-engine.h}!DE\_\-UNKNOWN@{DE\_\-UNKNOWN}}
+\index{DE\_\-UNKNOWN@{DE\_\-UNKNOWN}!decision_engine.h@{decision\_\-engine.h}}
+\subsubsection[{DE\_\-UNKNOWN}]{\setlength{\rightskip}{0pt plus 5cm}\#define DE\_\-UNKNOWN~-1}\label{decision__engine_8h_470e142dabf88c6045d335a5ff86ae1f}
+
+
+
+
+Referenced by DE\_\-process\_\-packet().
+
+\subsection{Function Documentation}
+\index{decision\_\-engine.h@{decision\_\-engine.h}!DE\_\-create\_\-tree@{DE\_\-create\_\-tree}}
+\index{DE\_\-create\_\-tree@{DE\_\-create\_\-tree}!decision_engine.h@{decision\_\-engine.h}}
+\subsubsection[{DE\_\-create\_\-tree}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ DE\_\-create\_\-tree (const gchar $\ast$ {\em equation})}\label{decision__engine_8h_4235b084499261f6e0e6faf8bc529951}
+
+
+build a boolean decision \doxyref{tree}{p.}{structtree} for a given equation 
+
+DE\_\-create\_\-tree \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em equation}]a boolean equation\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]tree\_\-root a pointer to the root of the boolean decision \doxyref{tree}{p.}{structtree} \end{Desc}
+
+
+create a glib table to store the equation
+
+first subgroup
+
+store address of the root
+
+for all the other subgroups
+
+get the pointer to the beginning of the new subtree
+
+connect new subtree to the previous one subtree (n) is a son of subtree(n-1)
+
+and go to the next one
+
+in subtree (n-1), each FALSE branch is connected to the head of subtree(n)
+
+this subtree is done, so n become n-1 
+
+References DE\_\-build\_\-subtree(), node::false, and node::true.
+
+Referenced by yyparse().\index{decision\_\-engine.h@{decision\_\-engine.h}!DE\_\-process\_\-packet@{DE\_\-process\_\-packet}}
+\index{DE\_\-process\_\-packet@{DE\_\-process\_\-packet}!decision_engine.h@{decision\_\-engine.h}}
+\subsubsection[{DE\_\-process\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}int DE\_\-process\_\-packet (struct {\bf pkt\_\-struct} $\ast$ {\em pkt})}\label{decision__engine_8h_5c13a1120e04937d7e462e468a1ef508}
+
+
+submit packets for decision using decision rules and decision modules 
+
+DE\_\-process\_\-packet 
+
+default is to return \char`\"{}drop\char`\"{} to the QUEUE
+
+we update the state
+
+we release the \doxyref{packet}{p.}{structpacket}
+
+no backend defined, so we simply forward the packets to its destination
+
+backend defined, so we'll use the backend\_\-rule for the next \doxyref{packet}{p.}{structpacket}
+
+we leave the state unmodified (the rule probably needs more material to decide), and we release the \doxyref{packet}{p.}{structpacket} 
+
+References target::back\_\-rule, pkt\_\-struct::conn, CONTROL, target::control\_\-rule, DE\_\-ACCEPT, DE\_\-NO\_\-RULE, DE\_\-REJECT, DE\_\-UNKNOWN, decide(), DECISION, conn\_\-struct::decision\_\-packet\_\-id, DROP, target::front\_\-rule, H, conn\_\-struct::id, INIT, conn\_\-struct::key, OK, PROXY, setup\_\-redirection(), conn\_\-struct::state, switch\_\-state(), conn\_\-struct::target, and conn\_\-struct::total\_\-packet.
+
+Referenced by DE\_\-submit\_\-packet().\index{decision\_\-engine.h@{decision\_\-engine.h}!DE\_\-push\_\-pkt@{DE\_\-push\_\-pkt}}
+\index{DE\_\-push\_\-pkt@{DE\_\-push\_\-pkt}!decision_engine.h@{decision\_\-engine.h}}
+\subsubsection[{DE\_\-push\_\-pkt}]{\setlength{\rightskip}{0pt plus 5cm}void DE\_\-push\_\-pkt (struct {\bf pkt\_\-struct} $\ast$ {\em pkt})}\label{decision__engine_8h_f8865693460ce6b4b4d8e9334597c266}
+
+
+push \doxyref{packet}{p.}{structpacket} to the DE\_\-submit\_\-pkt queue (equivalent of \doxyref{DE\_\-submit\_\-packet()}{p.}{decision__engine_8c_ed34912c70e4db4b07f42ff72495c5df} but without using a thread) 
+
+DE\_\-push\_\-pkt DEPRECATED, \begin{Desc}
+\item[{\bf Todo}]to remove \end{Desc}
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pkt,:}]\doxyref{packet}{p.}{structpacket} to push \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]OK \end{Desc}
+
+
+References pkt\_\-struct::conn, DE\_\-queue, DE\_\-queue\_\-lock, H, and conn\_\-struct::id.\index{decision\_\-engine.h@{decision\_\-engine.h}!DE\_\-submit\_\-packet@{DE\_\-submit\_\-packet}}
+\index{DE\_\-submit\_\-packet@{DE\_\-submit\_\-packet}!decision_engine.h@{decision\_\-engine.h}}
+\subsubsection[{DE\_\-submit\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}void DE\_\-submit\_\-packet ()}\label{decision__engine_8h_ed34912c70e4db4b07f42ff72495c5df}
+
+
+handle connections being decided and submits packets for decision 
+
+DE\_\-submit\_\-packet DEPRECATED, \begin{Desc}
+\item[{\bf Todo}]to remove \end{Desc}
+
+
+Now that this entry was processed, we can remove it from the DE queue 
+
+References DE\_\-process\_\-packet(), DE\_\-queue, DE\_\-queue\_\-lock, OK, and threading.
+
+Referenced by main().
+
+\subsection{Variable Documentation}
+\index{decision\_\-engine.h@{decision\_\-engine.h}!DE\_\-queue@{DE\_\-queue}}
+\index{DE\_\-queue@{DE\_\-queue}!decision_engine.h@{decision\_\-engine.h}}
+\subsubsection[{DE\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}GSList$\ast$ {\bf DE\_\-queue}}\label{decision__engine_8h_03cdfd025c1a9358adae139d7f496c2e}
+
+
+
+
+Referenced by DE\_\-push\_\-pkt(), DE\_\-submit\_\-packet(), and init\_\-variables().\index{decision\_\-engine.h@{decision\_\-engine.h}!DE\_\-queue\_\-lock@{DE\_\-queue\_\-lock}}
+\index{DE\_\-queue\_\-lock@{DE\_\-queue\_\-lock}!decision_engine.h@{decision\_\-engine.h}}
+\subsubsection[{DE\_\-queue\_\-lock}]{\setlength{\rightskip}{0pt plus 5cm}GStaticRWLock {\bf DE\_\-queue\_\-lock}}\label{decision__engine_8h_40b8f08d811beeba2c61459b79080de5}
+
+
+
+
+Referenced by DE\_\-push\_\-pkt(), DE\_\-submit\_\-packet(), and init\_\-variables().\index{decision\_\-engine.h@{decision\_\-engine.h}!DE\_\-rules@{DE\_\-rules}}
+\index{DE\_\-rules@{DE\_\-rules}!decision_engine.h@{decision\_\-engine.h}}
+\subsubsection[{DE\_\-rules}]{\setlength{\rightskip}{0pt plus 5cm}GHashTable$\ast$ {\bf DE\_\-rules}}\label{decision__engine_8h_780ff23c64824364de64b04781c6bdf8}
+
+
+
+
+Referenced by close\_\-hash(), and init\_\-variables().\index{decision\_\-engine.h@{decision\_\-engine.h}!tree@{tree}}
+\index{tree@{tree}!decision_engine.h@{decision\_\-engine.h}}
+\subsubsection[{tree}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf tree} {\bf tree}}\label{decision__engine_8h_81fdbf3a1e37eaa4252eaadbaf1622f6}
+
+

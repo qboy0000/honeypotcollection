@@ -1,0 +1,26 @@
+2013-05-16  Tamas Lengyel   <tamas.k.lengyel@gmail.com>
+ * Bugfixes, refactoring and cleanup.
+ * Switch to upstream GLib. Now requiring GLib 2.32 or higher.
+
+2012-01-28	Tamas Lengyel	<tamas.k.lengyel@gmail.com>
+
+ * src/honeybrid.c
+   src/honeybrid.h
+   src/netcode.c
+   src/netcode.h
+   src/tables.c
+   src/tables.h: Added support for multiple uplinks through the MARK target of the mangle table (now require libnetfilter_conntrack >= 1.0.0 and libnetfilter_queue >= 1.0.0)
+
+2010-02-10  Robin Berthier  <robinb@umd.edu>
+
+ * doc/Makefile.am: Developer documentation can be compiled using Doxygen and the configuration option --enable-doc=yes
+
+2009-12-22  Robin Berthier  <robinb@umd.edu>
+
+ * configure.ac: Autoconf now supported. Honeybrid version changed to 1.0
+
+ * makefile.am: Automake now supported
+ 
+ * src/makefile.am: Automake now supported
+
+ * src/honeybrid.h: Honeybrid version changed to 1.0

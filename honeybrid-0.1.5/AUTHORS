@@ -1,0 +1,17 @@
+Authors of honeybrid.
+See also the files THANKS and ChangeLog.
+
+Robin Berthier:
+  entire files  -> mod_control.c , mod_random.c , mod_source.c , rules.y , syntax.l
+  modifications -> decision_engine.c , decision_engine.h , honeybrid.c , honeybrid.h , modules.c , modules.h , tables.c , tables.h , types.h , mod_counter.c , mod_hash.c , mod_yesno.c
+
+Thomas Coquelin:
+  entire files  -> netcode.c , netcode.h
+  modifications -> decision_engine.c , decision_engine.h , honeybrid.c , honeybrid.h , modules.c , modules.h , tables.c , tables.h , types.h , mod_counter.c , mod_hash.c , mod_yesno.c
+
+Julien Vehent:
+  entire files  -> decision_engine.c , decision_engine.h , honeybrid.c , honeybrid.h , modules.c , modules.h , pcap_tool.c , pcap_tool.h , tables.c , tables.h , types.h , mod_counter.c , mod_hash.c , mod_yesno.c
+
+Tamas K Lengyel:
+  entire files  -> mod_source_time.c, mod_xmpp.c
+  modifications -> honeybrid.c, honeybrid.h, types.h, tables.c, tables.h, netcode.c, netcode.h, log.c

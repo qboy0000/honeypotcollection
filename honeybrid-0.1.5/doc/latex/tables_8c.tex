@@ -1,0 +1,456 @@
+\section{tables.c File Reference}
+\label{tables_8c}\index{tables.c@{tables.c}}
+Information tables file.  
+
+
+{\tt \#include $<$netinet/tcp.h$>$}\par
+{\tt \#include $<$netinet/ip.h$>$}\par
+{\tt \#include $<$netinet/udp.h$>$}\par
+{\tt \#include $<$arpa/inet.h$>$}\par
+{\tt \#include $<$pcap.h$>$}\par
+{\tt \#include $<$time.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$dumbnet.h$>$}\par
+{\tt \#include $<$ctype.h$>$}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+{\tt \#include \char`\"{}log.h\char`\"{}}\par
+{\tt \#include \char`\"{}netcode.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf CONCALLSIZE}~2048
+\begin{CompactList}\small\item\em number of bytes of the buffer in the netfilter callback function \item\end{CompactList}\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf print\_\-hex\_\-ascii\_\-line} (const u\_\-char $\ast$payload, int len, int offset)
+\item 
+void {\bf print\_\-payload} (const u\_\-char $\ast$payload, int len)
+\item 
+char $\ast$ {\bf lookup\_\-proto} (int proto)
+\item 
+char $\ast$ {\bf lookup\_\-origin} (int origin)
+\item 
+char $\ast$ {\bf lookup\_\-state} (int state)
+\item 
+int {\bf switch\_\-state} (struct {\bf conn\_\-struct} $\ast$conn, int new\_\-state)
+\item 
+int {\bf init\_\-pkt} (char $\ast$nf\_\-packet, struct {\bf pkt\_\-struct} $\ast$pkt)
+\begin{CompactList}\small\item\em init the current \doxyref{packet}{p.}{structpacket} structure with meta-information such as the origin and the number of bytes of data \item\end{CompactList}\item 
+int {\bf free\_\-pkt} (struct {\bf pkt\_\-struct} $\ast$pkt)
+\begin{CompactList}\small\item\em free the current \doxyref{packet}{p.}{structpacket} structure \item\end{CompactList}\item 
+int {\bf init\_\-conn} (struct {\bf pkt\_\-struct} $\ast$pkt, struct {\bf conn\_\-struct} $\ast$$\ast$conn)
+\begin{CompactList}\small\item\em init the current context using the tuples \item\end{CompactList}\item 
+int {\bf addr2int} (char $\ast$address)
+\begin{CompactList}\small\item\em Convert an IP address from string to int. \item\end{CompactList}\item 
+int {\bf test\_\-honeypot\_\-addr} (char $\ast$key, int list)
+\begin{CompactList}\small\item\em compare an IP with a list of honeypot addresses \item\end{CompactList}\item 
+char $\ast$ {\bf lookup\_\-honeypot\_\-addr} (gchar $\ast$testkey, int list)
+\begin{CompactList}\small\item\em return the low/high interaction honeypot currently associated with the low/high interaction honeypot in argument \item\end{CompactList}\item 
+int {\bf store\_\-pkt} (struct {\bf conn\_\-struct} $\ast$conn, struct {\bf pkt\_\-struct} $\ast$pkt)
+\begin{CompactList}\small\item\em Store the current \doxyref{packet}{p.}{structpacket} as part of the connection to replay it later. If this is the first \doxyref{packet}{p.}{structpacket} of a communication, init its structure in the main B-Tree. \item\end{CompactList}\item 
+int {\bf expire\_\-conn} (gpointer key, struct {\bf conn\_\-struct} $\ast$conn, gint $\ast$expiration\_\-delay)
+\begin{CompactList}\small\item\em called for each entry in the B-Tree, if a time value is upper to \char`\"{}expiration\_\-delay\char`\"{} (default is 120 sec) and the connection is not marked as redirected, entry is deleted \item\end{CompactList}\item 
+void {\bf free\_\-conn} (gpointer key, gpointer trash)
+\begin{CompactList}\small\item\em called for each entry in the pointer array, each entry is a key that is deleted from the B-Tree \item\end{CompactList}\item 
+void {\bf clean} ()
+\begin{CompactList}\small\item\em watchman for the b\_\-tree, wake up every 5 minutes and check every entries \item\end{CompactList}\item 
+int {\bf setup\_\-redirection} (struct {\bf conn\_\-struct} $\ast$conn)
+\begin{CompactList}\small\item\em called for each connection being redirected to setup and start the redirection process \item\end{CompactList}\item 
+char $\ast$ {\bf config\_\-lookup} (char $\ast$parameter)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Information tables file. 
+
+In this file are defined the functions to manage packets. TBU
+
+\begin{Desc}
+\item[Author:]Julien Vehent, 2007 
+
+Thomas Coquelin, 2008 \end{Desc}
+
+
+\subsection{Define Documentation}
+\index{tables.c@{tables.c}!CONCALLSIZE@{CONCALLSIZE}}
+\index{CONCALLSIZE@{CONCALLSIZE}!tables.c@{tables.c}}
+\subsubsection[{CONCALLSIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define CONCALLSIZE~2048}\label{tables_8c_06fac303d39dbc9cead18f7d7197d449}
+
+
+number of bytes of the buffer in the netfilter callback function 
+
+
+
+\subsection{Function Documentation}
+\index{tables.c@{tables.c}!addr2int@{addr2int}}
+\index{addr2int@{addr2int}!tables.c@{tables.c}}
+\subsubsection[{addr2int}]{\setlength{\rightskip}{0pt plus 5cm}int addr2int (char $\ast$ {\em address})}\label{tables_8c_6bb715acc234b0176c7dc7b47f61ec6c}
+
+
+Convert an IP address from string to int. 
+
+addr2int \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em the}]IP address (string format)\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the IP address (int format) \end{Desc}
+
+
+References H.
+
+Referenced by setup\_\-redirection(), and test\_\-honeypot\_\-addr().\index{tables.c@{tables.c}!clean@{clean}}
+\index{clean@{clean}!tables.c@{tables.c}}
+\subsubsection[{clean}]{\setlength{\rightskip}{0pt plus 5cm}void clean ()}\label{tables_8c_2bbe646c052baf99f04a367ef6031d74}
+
+
+watchman for the b\_\-tree, wake up every 5 minutes and check every entries 
+
+clean 
+
+wake up every second
+
+init the table
+
+call the clean function for each value, delete the value if TRUE is returned
+
+remove each key listed from the btree
+
+free the array 
+
+References config, conn\_\-tree, entrytoclean, expire\_\-conn(), free\_\-conn(), OK, and threading.
+
+Referenced by switch\_\-clean().\index{tables.c@{tables.c}!config\_\-lookup@{config\_\-lookup}}
+\index{config\_\-lookup@{config\_\-lookup}!tables.c@{tables.c}}
+\subsubsection[{config\_\-lookup}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ config\_\-lookup (char $\ast$ {\em parameter})}\label{tables_8c_8219bc2fff93a99b039dd539fbbf5477}
+
+
+config\_\-lookup /brief lookup values from the config hash table. Make sure the required value is present 
+
+References config, and errx().\index{tables.c@{tables.c}!expire\_\-conn@{expire\_\-conn}}
+\index{expire\_\-conn@{expire\_\-conn}!tables.c@{tables.c}}
+\subsubsection[{expire\_\-conn}]{\setlength{\rightskip}{0pt plus 5cm}int expire\_\-conn (gpointer {\em key}, \/  struct {\bf conn\_\-struct} $\ast$ {\em conn}, \/  gint $\ast$ {\em expiration\_\-delay})}\label{tables_8c_0c0c82c325e10d9d446035bfe36e0b12}
+
+
+called for each entry in the B-Tree, if a time value is upper to \char`\"{}expiration\_\-delay\char`\"{} (default is 120 sec) and the connection is not marked as redirected, entry is deleted 
+
+expire\_\-conn \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em key,a}]pointer to the current B-Tree key value \item[\mbox{$\leftarrow$} {\em conn,a}]pointer to the current B-Tree associated value \item[\mbox{$\leftarrow$} {\em expiration\_\-delay}]\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]FALSE, to continue to traverse the \doxyref{tree}{p.}{structtree} (if TRUE is returned, traversal is stopped) \end{Desc}
+
+
+output final statistics about the connection
+
+lock the structure, this will never be unlocked
+
+remove the singly linked lists
+
+g\_\-free(conn-$>$key\_\-hih); free(conn-$>$decision\_\-rule);
+
+list the entry for later removal 
+
+References conn\_\-struct::access\_\-time, conn\_\-struct::BUFFER, connection\_\-log(), conn\_\-struct::decision\_\-rule, entrytoclean, free\_\-pkt(), H, conn\_\-struct::id, INIT, conn\_\-struct::key\_\-ext, conn\_\-struct::key\_\-lih, conn\_\-struct::lock, and conn\_\-struct::state.
+
+Referenced by clean(), and close\_\-conn\_\-tree().\index{tables.c@{tables.c}!free\_\-conn@{free\_\-conn}}
+\index{free\_\-conn@{free\_\-conn}!tables.c@{tables.c}}
+\subsubsection[{free\_\-conn}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-conn (gpointer {\em key}, \/  gpointer {\em trash})}\label{tables_8c_3b99286503ffeeb6930c555c55367455}
+
+
+called for each entry in the pointer array, each entry is a key that is deleted from the B-Tree 
+
+free\_\-conn \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em key,a}]pointer to the current B-Tree key value stored in the pointer table \item[\mbox{$\leftarrow$} {\em trash,user}]data, unused \end{description}
+\end{Desc}
+
+
+References conn\_\-tree, H, and rwlock.
+
+Referenced by clean(), and close\_\-conn\_\-tree().\index{tables.c@{tables.c}!free\_\-pkt@{free\_\-pkt}}
+\index{free\_\-pkt@{free\_\-pkt}!tables.c@{tables.c}}
+\subsubsection[{free\_\-pkt}]{\setlength{\rightskip}{0pt plus 5cm}int free\_\-pkt (struct {\bf pkt\_\-struct} $\ast$ {\em pkt})}\label{tables_8c_4f340e483fb276ceab0a25388e915486}
+
+
+free the current \doxyref{packet}{p.}{structpacket} structure 
+
+free\_\-pkt \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pkt,:}]struct \doxyref{pkt\_\-struct}{p.}{structpkt__struct} to free \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]OK \end{Desc}
+
+
+References packet::FRAME, packet::ip, pkt\_\-struct::key, pkt\_\-struct::key\_\-dst, pkt\_\-struct::key\_\-src, NOK, OK, and pkt\_\-struct::packet.
+
+Referenced by expire\_\-conn(), and replay().\index{tables.c@{tables.c}!init\_\-conn@{init\_\-conn}}
+\index{init\_\-conn@{init\_\-conn}!tables.c@{tables.c}}
+\subsubsection[{init\_\-conn}]{\setlength{\rightskip}{0pt plus 5cm}int init\_\-conn (struct {\bf pkt\_\-struct} $\ast$ {\em pkt}, \/  struct {\bf conn\_\-struct} $\ast$$\ast$ {\em conn})}\label{tables_8c_87e9230cc2f45d9b7cf40863772b5e0d}
+
+
+init the current context using the tuples 
+
+init\_\-conn \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pkt,:}]struct \doxyref{pkt\_\-struct}{p.}{structpkt__struct} to work with \item[\mbox{$\leftarrow$} {\em conn,:}]struct \doxyref{conn\_\-struct}{p.}{structconn__struct} to work with \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 if success, anything else otherwise \end{Desc}
+
+
+Get current time to update or create the structure
+
+if key-$>$str is null, then we have a seg fault! And it can happen if no LIH was found from a HIH-$>$EXT \doxyref{packet}{p.}{structpacket}... if ( pkt-$>$key == NULL ) \{ g\_\-printerr(\char`\"{}\%s key is NULL, no valid connection attached$\backslash$n\char`\"{}, \doxyref{H(4)}{p.}{log_8h_ee722791bac86c287527610799a9d221}); return NOK; \}
+
+The key could not be found, so we need to figure out where this \doxyref{packet}{p.}{structpacket} comes from
+
+Try to match a \doxyref{target}{p.}{structtarget} with this \doxyref{packet}{p.}{structpacket}
+
+If not, then it means the packets is either originated from a honeypot inside (we control) or from a non supported external host (we drop)
+
+check if the src is in the honeynet
+
+if not, then this \doxyref{packet}{p.}{structpacket} is for an unconfigured \doxyref{target}{p.}{structtarget}, we drop it
+
+IPs match, we can proceed
+
+destination address is not the LIH address, so we drop the \doxyref{packet}{p.}{structpacket} (later we might NAT \begin{Desc}
+\item[{\bf Todo}]) \end{Desc}
+
+
+Init new connection structure
+
+fill the structure
+
+statistics
+
+conn\_\-init-$>$decision\_\-rule = malloc(512);
+
+insert entry in B-Tree (set up a lock to protect the writing)
+
+free the lock
+
+store new entry in current struct
+
+The key was found in the B-Tree
+
+We store control statistics in the proxy mode
+
+statistics
+
+We update the current connection access time 
+
+References conn\_\-struct::access\_\-time, conn\_\-struct::BUFFER, c\_\-id, pkt\_\-struct::conn, conn\_\-tree, CONTROL, conn\_\-struct::count\_\-data\_\-pkt\_\-from\_\-intruder, conn\_\-struct::count\_\-data\_\-pkt\_\-from\_\-lih, conn\_\-struct::decision\_\-rule, hih\_\-struct::delta, ETHER\_\-HDR\_\-LEN, EXT, packet::FRAME, H, high\_\-redirection\_\-table, conn\_\-struct::hih, HIH, conn\_\-struct::id, INIT, INVALID, conn\_\-struct::invalid\_\-problem, packet::ip, conn\_\-struct::key, pkt\_\-struct::key, pkt\_\-struct::key\_\-dst, conn\_\-struct::key\_\-ext, conn\_\-struct::key\_\-hih, conn\_\-struct::key\_\-lih, pkt\_\-struct::key\_\-src, LIH, hih\_\-struct::lih\_\-syn\_\-seq, conn\_\-struct::lock, NOK, OK, pkt\_\-struct::origin, pkt\_\-struct::packet, conn\_\-struct::protocol, PROXY, conn\_\-struct::replay\_\-id, conn\_\-struct::replay\_\-problem, rwlock, pkt\_\-struct::size, conn\_\-struct::start\_\-microtime, conn\_\-struct::start\_\-timestamp, conn\_\-struct::stat\_\-byte, conn\_\-struct::stat\_\-packet, conn\_\-struct::stat\_\-time, conn\_\-struct::state, conn\_\-struct::target, targets, packet::tcp, conn\_\-struct::total\_\-byte, and conn\_\-struct::total\_\-packet.\index{tables.c@{tables.c}!init\_\-pkt@{init\_\-pkt}}
+\index{init\_\-pkt@{init\_\-pkt}!tables.c@{tables.c}}
+\subsubsection[{init\_\-pkt}]{\setlength{\rightskip}{0pt plus 5cm}int init\_\-pkt (char $\ast$ {\em nf\_\-packet}, \/  struct {\bf pkt\_\-struct} $\ast$ {\em pkt})}\label{tables_8c_e4c96beae9b95707bbfdce40a54201b0}
+
+
+init the current \doxyref{packet}{p.}{structpacket} structure with meta-information such as the origin and the number of bytes of data 
+
+init\_\-pkt \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em nf\_\-packet,:}]The raw \doxyref{packet}{p.}{structpacket} from the queue \item[\mbox{$\leftarrow$} {\em pkt,:}]The \doxyref{packet}{p.}{structpacket} metadata structure for this \doxyref{packet}{p.}{structpacket} \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the origin of the \doxyref{packet}{p.}{structpacket} \end{Desc}
+
+
+TODO: check if it's correctly freed
+
+Create fake ethernet header (used later by bpf\_\-filter)
+
+The most important part is to give to this ethernet header the type \char`\"{}IP protocol\char`\"{}
+
+Add the \doxyref{packet}{p.}{structpacket} IP header and payload to the \doxyref{packet}{p.}{structpacket} structure
+
+THOMAS:Let's save memory!
+
+Process TCP packets
+
+key\_\-src is the tuple with the source information \{Source IP\}:\{Source Port\}
+
+key\_\-dst is the one with the destination information \{Dest IP\}:\{Dest Port\}
+
+Process UDP \doxyref{packet}{p.}{structpacket}
+
+key\_\-src
+
+key\_\-dst
+
+Every other packets are ignored 
+
+References pkt\_\-struct::data, pkt\_\-struct::DE, ETHER\_\-HDR\_\-LEN, EXT, packet::FRAME, H, packet::ip, pkt\_\-struct::key, pkt\_\-struct::key\_\-dst, pkt\_\-struct::key\_\-src, NOK, OK, pkt\_\-struct::origin, pkt\_\-struct::packet, packet::payload, pkt\_\-struct::position, pkt\_\-struct::size, packet::tcp, and packet::udp.\index{tables.c@{tables.c}!lookup\_\-honeypot\_\-addr@{lookup\_\-honeypot\_\-addr}}
+\index{lookup\_\-honeypot\_\-addr@{lookup\_\-honeypot\_\-addr}!tables.c@{tables.c}}
+\subsubsection[{lookup\_\-honeypot\_\-addr}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ lookup\_\-honeypot\_\-addr (gchar $\ast$ {\em testkey}, \/  int {\em list})}\label{tables_8c_9caa0904c4bad93cec860d3583503e60}
+
+
+return the low/high interaction honeypot currently associated with the low/high interaction honeypot in argument 
+
+lookup\_\-honeypot\_\-addr
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em the}]key of the honeypot, or honeypot+external host, we want to lookup in the redirection table \item[\mbox{$\leftarrow$} {\em the}]list we want to look into, either Low or High\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The honeypot IP found, NULL if nothing is found \end{Desc}
+
+
+We test which list we want to search
+
+ROBIN 2009-02-25: small hack to include full network definition
+
+get the corresponding hih destination from the low interaction hash table
+
+get the corresponding lih destination from the high interaction hash table
+
+Check first if the high\_\-redirection\_\-table is not null 
+
+References H, high\_\-redirection\_\-table, LIH, and low\_\-redirection\_\-table.\index{tables.c@{tables.c}!lookup\_\-origin@{lookup\_\-origin}}
+\index{lookup\_\-origin@{lookup\_\-origin}!tables.c@{tables.c}}
+\subsubsection[{lookup\_\-origin}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ lookup\_\-origin (int {\em origin})}\label{tables_8c_1271052cd45b833fffe18a5a71c40fa5}
+
+
+
+
+References EXT, HIH, and LIH.\index{tables.c@{tables.c}!lookup\_\-proto@{lookup\_\-proto}}
+\index{lookup\_\-proto@{lookup\_\-proto}!tables.c@{tables.c}}
+\subsubsection[{lookup\_\-proto}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ lookup\_\-proto (int {\em proto})}\label{tables_8c_fd88f5f9b2e1a96f07e2389659a868f8}
+
+
+\index{tables.c@{tables.c}!lookup\_\-state@{lookup\_\-state}}
+\index{lookup\_\-state@{lookup\_\-state}!tables.c@{tables.c}}
+\subsubsection[{lookup\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ lookup\_\-state (int {\em state})}\label{tables_8c_5a8ba18af40b5d3be70aa2f237a44305}
+
+
+
+
+References CONTROL, DECISION, DROP, FORWARD, INIT, INVALID, PROXY, and REPLAY.
+
+Referenced by switch\_\-state().\index{tables.c@{tables.c}!print\_\-hex\_\-ascii\_\-line@{print\_\-hex\_\-ascii\_\-line}}
+\index{print\_\-hex\_\-ascii\_\-line@{print\_\-hex\_\-ascii\_\-line}!tables.c@{tables.c}}
+\subsubsection[{print\_\-hex\_\-ascii\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-hex\_\-ascii\_\-line (const u\_\-char $\ast$ {\em payload}, \/  int {\em len}, \/  int {\em offset})}\label{tables_8c_1c7647ec15cd2519ed93c9de272870d8}
+
+
+
+
+Referenced by print\_\-payload().\index{tables.c@{tables.c}!print\_\-payload@{print\_\-payload}}
+\index{print\_\-payload@{print\_\-payload}!tables.c@{tables.c}}
+\subsubsection[{print\_\-payload}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-payload (const u\_\-char $\ast$ {\em payload}, \/  int {\em len})}\label{tables_8c_b48bc0458b0c2e1efb27f09c5ec679bb}
+
+
+print\_\-payload 
+
+References print\_\-hex\_\-ascii\_\-line().\index{tables.c@{tables.c}!setup\_\-redirection@{setup\_\-redirection}}
+\index{setup\_\-redirection@{setup\_\-redirection}!tables.c@{tables.c}}
+\subsubsection[{setup\_\-redirection}]{\setlength{\rightskip}{0pt plus 5cm}int setup\_\-redirection (struct {\bf conn\_\-struct} $\ast$ {\em conn})}\label{tables_8c_dcc1ca3626f4f77403029d5955299f79}
+
+
+called for each connection being redirected to setup and start the redirection process 
+
+setup\_\-redirection \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em conn,:}]redirected connection metadata \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]OK when done, NOK in case of failure \end{Desc}
+
+
+we check for concurrent connections using the same EXT\_\-IP:PORT $<$-$>$ HIH\_\-IP:PORT
+
+conn-$>$key\_\-hih = hihaddr;
+
+We then update the status of the connection structure
+
+We reset the LIH
+
+We replay the first packets 
+
+References hih\_\-struct::addr, addr2int(), target::back\_\-handler, conn\_\-struct::BUFFER, DECISION, define\_\-expected\_\-data(), EXT, FORWARD, forward(), H, high\_\-redirection\_\-table, conn\_\-struct::hih, conn\_\-struct::id, conn\_\-struct::key, conn\_\-struct::key\_\-ext, conn\_\-struct::key\_\-lih, hih\_\-struct::lih\_\-addr, NOK, OK, pkt\_\-struct::origin, hih\_\-struct::port, REPLAY, conn\_\-struct::replay\_\-id, reset\_\-lih(), conn\_\-struct::stat\_\-time, switch\_\-state(), and conn\_\-struct::target.
+
+Referenced by DE\_\-process\_\-packet().\index{tables.c@{tables.c}!store\_\-pkt@{store\_\-pkt}}
+\index{store\_\-pkt@{store\_\-pkt}!tables.c@{tables.c}}
+\subsubsection[{store\_\-pkt}]{\setlength{\rightskip}{0pt plus 5cm}int store\_\-pkt (struct {\bf conn\_\-struct} $\ast$ {\em conn}, \/  struct {\bf pkt\_\-struct} $\ast$ {\em pkt})}\label{tables_8c_276fea9304d0e44959fe383a8a015826}
+
+
+Store the current \doxyref{packet}{p.}{structpacket} as part of the connection to replay it later. If this is the first \doxyref{packet}{p.}{structpacket} of a communication, init its structure in the main B-Tree. 
+
+store\_\-pkt function \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pkt,:}]struct \doxyref{pkt\_\-struct}{p.}{structpkt__struct} to work with \item[\mbox{$\leftarrow$} {\em conn,:}]struct \doxyref{conn\_\-struct}{p.}{structconn__struct} to work with\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the position of the \doxyref{packet}{p.}{structpacket} in the list in case of success, a negative value if storage has failed \end{Desc}
+
+
+Lock the structure
+
+g\_\-static\_\-rw\_\-lock\_\-writer\_\-lock (\&conn-$>$lock);
+
+Append pkt to the singly-linked list of conn
+
+Get the \doxyref{packet}{p.}{structpacket} position
+
+Unlock the structure
+
+g\_\-static\_\-rw\_\-lock\_\-writer\_\-unlock (\&conn-$>$lock); 
+
+References conn\_\-struct::BUFFER, H, conn\_\-struct::id, conn\_\-struct::key, OK, and pkt\_\-struct::position.\index{tables.c@{tables.c}!switch\_\-state@{switch\_\-state}}
+\index{switch\_\-state@{switch\_\-state}!tables.c@{tables.c}}
+\subsubsection[{switch\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}int switch\_\-state (struct {\bf conn\_\-struct} $\ast$ {\em conn}, \/  int {\em new\_\-state})}\label{tables_8c_c710506076f7d599c11b9ee253507dbf}
+
+
+
+
+References H, conn\_\-struct::id, lookup\_\-state(), OK, and conn\_\-struct::state.
+
+Referenced by DE\_\-process\_\-packet(), replay(), and setup\_\-redirection().\index{tables.c@{tables.c}!test\_\-honeypot\_\-addr@{test\_\-honeypot\_\-addr}}
+\index{test\_\-honeypot\_\-addr@{test\_\-honeypot\_\-addr}!tables.c@{tables.c}}
+\subsubsection[{test\_\-honeypot\_\-addr}]{\setlength{\rightskip}{0pt plus 5cm}int test\_\-honeypot\_\-addr (char $\ast$ {\em key}, \/  int {\em list})}\label{tables_8c_23896331f26ea6a2d495f5eb08753976}
+
+
+compare an IP with a list of honeypot addresses 
+
+test\_\-honeypot\_\-addr
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em the}]key ip:port of the host we want to test in the list \item[\mbox{$\leftarrow$} {\em the}]list we want to look into, either Low or High\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 if the key is found in the list, anything else if not \end{Desc}
+
+
+We extract the IP from the key
+
+small hack to be able to define matching pattern for multiple IP at once
+
+We convert the IP from char to int
+
+We test which list we want to search
+
+if the IP is detected in the list of low honeypot addresses
+
+We then test by increasing the size of the network progressively:
+
+if the IP is detected in the list of high honeypot addresses 
+
+References addr2int(), high\_\-honeypot\_\-addr, HIH, LIH, low\_\-honeypot\_\-addr, NOK, and OK.

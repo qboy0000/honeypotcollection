@@ -1,0 +1,118 @@
+\section{pkt\_\-struct Struct Reference}
+\label{structpkt__struct}\index{pkt\_\-struct@{pkt\_\-struct}}
+The meta information of a \doxyref{packet}{p.}{structpacket} stored in the \doxyref{conn\_\-struct}{p.}{structconn__struct} connection structure.  
+
+
+{\tt \#include $<$types.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+struct {\bf packet} {\bf packet}
+\item 
+int {\bf origin}
+\item 
+int {\bf data}
+\item 
+int {\bf size}
+\item 
+int {\bf DE}
+\item 
+struct {\bf conn\_\-struct} $\ast$ {\bf conn}
+\item 
+char $\ast$ {\bf key\_\-src}
+\item 
+char $\ast$ {\bf key\_\-dst}
+\item 
+char $\ast$ {\bf key}
+\item 
+int {\bf position}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The meta information of a \doxyref{packet}{p.}{structpacket} stored in the \doxyref{conn\_\-struct}{p.}{structconn__struct} connection structure. 
+
+\doxyref{pkt\_\-struct}{p.}{structpkt__struct} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em \doxyref{packet}{p.}{structpacket},pointer}]to the \doxyref{packet}{p.}{structpacket} \item[{\em origin,to}]define from where the \doxyref{packet}{p.}{structpacket} is coming (EXT, LIH or HIH) \item[{\em data,to}]provide the number of bytes in the \doxyref{packet}{p.}{structpacket} \item[{\em DE,(0)}]if the \doxyref{packet}{p.}{structpacket} was received before the decision to redirect, (1) otherwise \end{description}
+\end{Desc}
+
+
+\subsection{Field Documentation}
+\index{pkt\_\-struct@{pkt\_\-struct}!conn@{conn}}
+\index{conn@{conn}!pkt_struct@{pkt\_\-struct}}
+\subsubsection[{conn}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf conn\_\-struct}$\ast$ {\bf pkt\_\-struct::conn}\hspace{0.3cm}{\tt  [read]}}\label{structpkt__struct_3ec3770cb7eb5a59740114fab60824a3}
+
+
+
+
+Referenced by DE\_\-process\_\-packet(), DE\_\-push\_\-pkt(), decide(), define\_\-expected\_\-data(), forward(), init\_\-conn(), mod\_\-control(), mod\_\-counter(), mod\_\-hash(), mod\_\-random(), mod\_\-source(), mod\_\-yesno(), and run\_\-module().\index{pkt\_\-struct@{pkt\_\-struct}!data@{data}}
+\index{data@{data}!pkt_struct@{pkt\_\-struct}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf pkt\_\-struct::data}}\label{structpkt__struct_db28f7f613f31edbe5941240eed9691d}
+
+
+
+
+Referenced by init\_\-pkt(), mod\_\-hash(), and test\_\-expected().\index{pkt\_\-struct@{pkt\_\-struct}!DE@{DE}}
+\index{DE@{DE}!pkt_struct@{pkt\_\-struct}}
+\subsubsection[{DE}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf pkt\_\-struct::DE}}\label{structpkt__struct_f46efb0d380881fd318132ec291ea151}
+
+
+
+
+Referenced by init\_\-pkt(), and replay().\index{pkt\_\-struct@{pkt\_\-struct}!key@{key}}
+\index{key@{key}!pkt_struct@{pkt\_\-struct}}
+\subsubsection[{key}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf pkt\_\-struct::key}}\label{structpkt__struct_a54fb36f7fd1f9ebfb6f011d6c58cc88}
+
+
+
+
+Referenced by free\_\-pkt(), init\_\-conn(), and init\_\-pkt().\index{pkt\_\-struct@{pkt\_\-struct}!key\_\-dst@{key\_\-dst}}
+\index{key\_\-dst@{key\_\-dst}!pkt_struct@{pkt\_\-struct}}
+\subsubsection[{key\_\-dst}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf pkt\_\-struct::key\_\-dst}}\label{structpkt__struct_1fd1edcccc260e00329c0b2508c9cb8f}
+
+
+
+
+Referenced by free\_\-pkt(), init\_\-conn(), init\_\-pkt(), and mod\_\-hash().\index{pkt\_\-struct@{pkt\_\-struct}!key\_\-src@{key\_\-src}}
+\index{key\_\-src@{key\_\-src}!pkt_struct@{pkt\_\-struct}}
+\subsubsection[{key\_\-src}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf pkt\_\-struct::key\_\-src}}\label{structpkt__struct_35e03e45c99b68ff970ecfb5ef3bcb48}
+
+
+
+
+Referenced by free\_\-pkt(), init\_\-conn(), init\_\-pkt(), mod\_\-control(), and mod\_\-source().\index{pkt\_\-struct@{pkt\_\-struct}!origin@{origin}}
+\index{origin@{origin}!pkt_struct@{pkt\_\-struct}}
+\subsubsection[{origin}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf pkt\_\-struct::origin}}\label{structpkt__struct_242660284ec453d426978d1011d614ee}
+
+
+
+
+Referenced by forward(), init\_\-conn(), init\_\-pkt(), replay(), reset\_\-lih(), and setup\_\-redirection().\index{pkt\_\-struct@{pkt\_\-struct}!packet@{packet}}
+\index{packet@{packet}!pkt_struct@{pkt\_\-struct}}
+\subsubsection[{packet}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf packet} {\bf pkt\_\-struct::packet}\hspace{0.3cm}{\tt  [read]}}\label{structpkt__struct_7b19d8ade860794abfb9b5507a9c8800}
+
+
+
+
+Referenced by define\_\-expected\_\-data(), forward(), free\_\-pkt(), init\_\-conn(), init\_\-pkt(), mod\_\-hash(), reset\_\-lih(), and test\_\-expected().\index{pkt\_\-struct@{pkt\_\-struct}!position@{position}}
+\index{position@{position}!pkt_struct@{pkt\_\-struct}}
+\subsubsection[{position}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf pkt\_\-struct::position}}\label{structpkt__struct_81a92b78a244c6bcb71643c64081a1c4}
+
+
+
+
+Referenced by init\_\-pkt(), and store\_\-pkt().\index{pkt\_\-struct@{pkt\_\-struct}!size@{size}}
+\index{size@{size}!pkt_struct@{pkt\_\-struct}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf pkt\_\-struct::size}}\label{structpkt__struct_87ff9f3cda91871890bfb42387525f09}
+
+
+
+
+Referenced by init\_\-conn(), and init\_\-pkt().
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf types.h}\end{CompactItemize}

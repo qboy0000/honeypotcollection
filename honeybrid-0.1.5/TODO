@@ -1,0 +1,31 @@
+TODO
+====
+
+This is the TODO list for honeybrid.
+Tasks are organized into two sections: critical and other.
+Tasks prefixed by "x" are done and should be moved to Changelog.
+Tasks prefixed by "~" are started but not yet completed.
+Tasks prefixed by "-" are not yet started.
+
+
+CRITICAL
+
+ x Fix bug with NF_QUEUE that restarts frequently because recv returns -1
+ ~ Fix seg fault when exitinq the program
+ ~ Check memory leaks with valgrind
+ - Drop privileges after launch
+
+
+FUNCTIONALITIES
+
+ - Implement module LOAD
+ - Implement module SAMPLE
+ x Implement module CONTROL
+ - Implement module SNORT (correlate snort alerts in real time... through an API?)
+ x Add support for wildcard or range for port numbers in the rule file
+ x Add a better notation for networks in the rule file
+ - Restore pcap saving
+ - Keep the source IP as the one of the attacker when communicating with high-interaction honeypot
+ x Add support for honeypots that we simply want to proxy
+ x Move source and sha1 modules to a port-base database, instead of a database-id-based table
+ - Output periodic HTML reports of overall honeypot traffic collected

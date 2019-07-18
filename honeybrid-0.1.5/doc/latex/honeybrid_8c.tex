@@ -1,0 +1,432 @@
+\section{honeybrid.c File Reference}
+\label{honeybrid_8c}\index{honeybrid.c@{honeybrid.c}}
+Main File.  
+
+
+{\tt \#include $<$sys/param.h$>$}\par
+{\tt \#include $<$sys/stat.h$>$}\par
+{\tt \#include $<$sys/types.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$err.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$syslog.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$signal.h$>$}\par
+{\tt \#include $<$malloc.h$>$}\par
+{\tt \#include $<$netinet/in.h$>$}\par
+{\tt \#include $<$linux/netfilter.h$>$}\par
+{\tt \#include $<$libnetfilter\_\-queue/libnetfilter\_\-queue.h$>$}\par
+{\tt \#include $<$arpa/inet.h$>$}\par
+{\tt \#include $<$glib.h$>$}\par
+{\tt \#include $<$execinfo.h$>$}\par
+{\tt \#include $<$ev.h$>$}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+{\tt \#include \char`\"{}honeybrid.h\char`\"{}}\par
+{\tt \#include \char`\"{}netcode.h\char`\"{}}\par
+{\tt \#include \char`\"{}log.h\char`\"{}}\par
+{\tt \#include \char`\"{}decision\_\-engine.h\char`\"{}}\par
+{\tt \#include \char`\"{}modules.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf usage} (char $\ast$$\ast$argv)
+\begin{CompactList}\small\item\em include \char`\"{}pcap\_\-tool.h\char`\"{} \item\end{CompactList}\item 
+void {\bf print\_\-trace} (void)
+\begin{CompactList}\small\item\em Obtain a backtrace and print it to stdout. \item\end{CompactList}\item 
+int {\bf close\_\-thread} ()
+\begin{CompactList}\small\item\em Function that waits for thread to close themselves. \item\end{CompactList}\item 
+int {\bf free\_\-table} (gchar $\ast$key, gchar $\ast$value, gpointer data)
+\begin{CompactList}\small\item\em Function to free memory in the different table created. \item\end{CompactList}\item 
+int {\bf free\_\-hash} (gchar $\ast$key, GHashTable $\ast$value, gpointer data)
+\begin{CompactList}\small\item\em Function to free memory in the different subhash created. \item\end{CompactList}\item 
+int {\bf close\_\-hash} ()
+\begin{CompactList}\small\item\em Destroy the different hashes used by honeybrid. \item\end{CompactList}\item 
+int {\bf close\_\-conn\_\-tree} ()
+\begin{CompactList}\small\item\em Function to free memory taken by conn\_\-tree. \item\end{CompactList}\item 
+void {\bf free\_\-target} (struct {\bf target} $\ast$t, gpointer user\_\-data)
+\item 
+int {\bf close\_\-target} (void)
+\begin{CompactList}\small\item\em destroy global structure \char`\"{}targets\char`\"{} when the program has to quit \item\end{CompactList}\item 
+void {\bf close\_\-all} (void)
+\begin{CompactList}\small\item\em destroy structures and free memory when the program has to quit \item\end{CompactList}\item 
+int {\bf term\_\-signal\_\-handler} (int signal\_\-nb, siginfo\_\-t $\ast$siginfo, void $\ast$context)
+\begin{CompactList}\small\item\em called when the program receive a signal that should close the program, free memory and delete lock file \item\end{CompactList}\item 
+void {\bf switch\_\-clean} ()
+\begin{CompactList}\small\item\em call the \doxyref{packet}{p.}{structpacket} cleaner \item\end{CompactList}\item 
+void {\bf init\_\-parser} (char $\ast$filename)
+\begin{CompactList}\small\item\em Configuration parsing function, read the configuration from a specific file and parse it into a hash table or other \doxyref{tree}{p.}{structtree} data structures using Bison/Flex. \item\end{CompactList}\item 
+void {\bf init\_\-variables} ()
+\item 
+short int {\bf netlink\_\-loop} (unsigned short int queuenum)
+\begin{CompactList}\small\item\em Function to create and maintain the NF\_\-QUEUE loop. \item\end{CompactList}\item 
+void {\bf init\_\-signal} ()
+\begin{CompactList}\small\item\em installs signal handlers \item\end{CompactList}\item 
+int {\bf main} (int argc, char $\ast$argv[$\,$])
+\begin{CompactList}\small\item\em process arguments, daemonize, init variables, create QUEUE handler and process each \doxyref{packet}{p.}{structpacket} \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Main File. 
+
+This is the main program file for Honeybrid. It creates a hook using LibNetfilter Queue and, for each connection, maintain a stateful table. It forward a \doxyref{packet}{p.}{structpacket} to a determined destination and submit this \doxyref{packet}{p.}{structpacket} to the decision engine. When the decision engine decide to redirect a connection, this redirection engine replay the recorded connection to its new destination and maintain it until its end.
+
+Packets needs to be redirected to the QUEUE destination using netfilter, this can be done using: \# iptables -A INPUT -j QUEUE \&\& iptables -A FORWARD -j QUEUE \&\& iptables -A OUTPUT -j QUEUE
+
+filters can also be set up using the regulars iptables capabilities, it is also recommended to limit the redirections to TCP and UDP packets (just add the option -p to the iptables commands)
+
+Dependencies:\begin{itemize}
+\item linux kernel $>$= 2.6.18 \& $<$=2.6.23\item libnetfilter-queue-dev \& libnetfilter-queue1\item libnfnetlink $>$= 0.0.25\item libglib2.0-dev \& libglib2.0-0\end{itemize}
+
+
+Known problem: If the buffer size under linux is too low, the IPQ subsystem will exit with the error \char`\"{}Failed to received netlink message: No buffer space available\char`\"{} To avoid that, increase the buffer value in /proc/sys/net/core/rmem\_\-default (and rmem\_\-max)
+
+J. Vehent, 2007  Thomas Coquelin, 2008  Robin Berthier, 2007-2009 
+
+\subsection{Function Documentation}
+\index{honeybrid.c@{honeybrid.c}!close\_\-all@{close\_\-all}}
+\index{close\_\-all@{close\_\-all}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{close\_\-all}]{\setlength{\rightskip}{0pt plus 5cm}void close\_\-all (void)}\label{honeybrid_8c_4f52071c6670c301def21ad8af10f67b}
+
+
+destroy structures and free memory when the program has to quit 
+
+close\_\-all 
+
+delete lock file (only if the process ran as a daemon)
+
+wait for thread to close
+
+delete hashes
+
+delete conn\_\-tree 
+
+References close\_\-conn\_\-tree(), close\_\-hash(), close\_\-target(), close\_\-thread(), ICONFIG, and PIDFILE.
+
+Referenced by main().\index{honeybrid.c@{honeybrid.c}!close\_\-conn\_\-tree@{close\_\-conn\_\-tree}}
+\index{close\_\-conn\_\-tree@{close\_\-conn\_\-tree}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{close\_\-conn\_\-tree}]{\setlength{\rightskip}{0pt plus 5cm}int close\_\-conn\_\-tree ()}\label{honeybrid_8c_421d05d955ead3625ced86dccf934e3c}
+
+
+Function to free memory taken by conn\_\-tree. 
+
+close\_\-conn\_\-tree function 
+
+clean the memory traverse the B-Tree to remove the singly linked lists and then destroy the B-Tree
+
+call the clean function for each value, delete the value if TRUE is returned
+
+remove each key listed from the btree
+
+free the array
+
+close log file 
+
+References close\_\-connection\_\-log(), conn\_\-tree, entrytoclean, expire\_\-conn(), and free\_\-conn().
+
+Referenced by close\_\-all().\index{honeybrid.c@{honeybrid.c}!close\_\-hash@{close\_\-hash}}
+\index{close\_\-hash@{close\_\-hash}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{close\_\-hash}]{\setlength{\rightskip}{0pt plus 5cm}int close\_\-hash ()}\label{honeybrid_8c_cbd9767e6d740fdf8fe76241355e7eb3}
+
+
+Destroy the different hashes used by honeybrid. 
+
+close\_\-hash function 
+
+Destroy hash tables
+
+this table generates invalid free error in valgrind
+
+and also a seg fault... g\_\-print(\char`\"{}close\_\-hash():$\backslash$tDestroying table DE\_\-rules$\backslash$n\char`\"{}); g\_\-hash\_\-table\_\-foreach\_\-remove(DE\_\-rules, (GHRFunc) free\_\-table, NULL); g\_\-hash\_\-table\_\-destroy(DE\_\-rules);
+
+References config, DE\_\-rules, free\_\-table(), high\_\-redirection\_\-table, and log\_\-table.
+
+Referenced by close\_\-all().\index{honeybrid.c@{honeybrid.c}!close\_\-target@{close\_\-target}}
+\index{close\_\-target@{close\_\-target}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{close\_\-target}]{\setlength{\rightskip}{0pt plus 5cm}int close\_\-target (void)}\label{honeybrid_8c_65cd754c1e3cf01394c301f2d2519c62}
+
+
+destroy global structure \char`\"{}targets\char`\"{} when the program has to quit 
+
+close\_\-target 
+
+References free\_\-target(), OK, and targets.
+
+Referenced by close\_\-all().\index{honeybrid.c@{honeybrid.c}!close\_\-thread@{close\_\-thread}}
+\index{close\_\-thread@{close\_\-thread}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{close\_\-thread}]{\setlength{\rightskip}{0pt plus 5cm}int close\_\-thread ()}\label{honeybrid_8c_f41f27390952cbd5bd9dd97466eb7270}
+
+
+Function that waits for thread to close themselves. 
+
+close\_\-thread 
+
+References NOK, thread\_\-clean, thread\_\-de, and threading.
+
+Referenced by close\_\-all().\index{honeybrid.c@{honeybrid.c}!free\_\-hash@{free\_\-hash}}
+\index{free\_\-hash@{free\_\-hash}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{free\_\-hash}]{\setlength{\rightskip}{0pt plus 5cm}int free\_\-hash (gchar $\ast$ {\em key}, \/  GHashTable $\ast$ {\em value}, \/  gpointer {\em data})}\label{honeybrid_8c_5bbd513c2230553887d39c4bdc62ef4f}
+
+
+Function to free memory in the different subhash created. 
+
+free\_\-hash 
+
+References free\_\-table().\index{honeybrid.c@{honeybrid.c}!free\_\-table@{free\_\-table}}
+\index{free\_\-table@{free\_\-table}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{free\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}int free\_\-table (gchar $\ast$ {\em key}, \/  gchar $\ast$ {\em value}, \/  gpointer {\em data})}\label{honeybrid_8c_1b7c25c4ad0411c1b4dcb5601ab2ec8e}
+
+
+Function to free memory in the different table created. 
+
+free\_\-table 
+
+Referenced by close\_\-hash(), and free\_\-hash().\index{honeybrid.c@{honeybrid.c}!free\_\-target@{free\_\-target}}
+\index{free\_\-target@{free\_\-target}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{free\_\-target}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-target (struct {\bf target} $\ast$ {\em t}, \/  gpointer {\em user\_\-data})}\label{honeybrid_8c_41c4414e2f762a2fbc14703dba8933a0}
+
+
+
+
+References target::back\_\-handler, target::back\_\-rule, target::control\_\-rule, target::filter, target::front\_\-handler, and target::front\_\-rule.
+
+Referenced by close\_\-target().\index{honeybrid.c@{honeybrid.c}!init\_\-parser@{init\_\-parser}}
+\index{init\_\-parser@{init\_\-parser}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{init\_\-parser}]{\setlength{\rightskip}{0pt plus 5cm}void init\_\-parser (char $\ast$ {\em filename})}\label{honeybrid_8c_e5bb595c918711b87a2016067c4a60ea}
+
+
+Configuration parsing function, read the configuration from a specific file and parse it into a hash table or other \doxyref{tree}{p.}{structtree} data structures using Bison/Flex. 
+
+parse\_\-config 
+
+References err(), yyin, and yyparse().
+
+Referenced by main().\index{honeybrid.c@{honeybrid.c}!init\_\-signal@{init\_\-signal}}
+\index{init\_\-signal@{init\_\-signal}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{init\_\-signal}]{\setlength{\rightskip}{0pt plus 5cm}void init\_\-signal ()}\label{honeybrid_8c_6b180e7b938dc511f682253f924fd35a}
+
+
+installs signal handlers 
+
+init\_\-signal \begin{Desc}
+\item[Returns:]0 if exit with success, anything else if not \end{Desc}
+
+
+Install terminating signal handler:
+
+SIGHUP
+
+SIGINT
+
+SIGQUIT
+
+SIGILL
+
+SIGSEGV
+
+SIGTERM
+
+SIGBUS
+
+ignore signals:
+
+SIGABRT
+
+SIGALRM
+
+SIGUSR2
+
+SIGPOLL
+
+rotate logs:
+
+SIGUSR1 
+
+References errx(), rotate\_\-connection\_\-log(), and term\_\-signal\_\-handler().
+
+Referenced by main().\index{honeybrid.c@{honeybrid.c}!init\_\-variables@{init\_\-variables}}
+\index{init\_\-variables@{init\_\-variables}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{init\_\-variables}]{\setlength{\rightskip}{0pt plus 5cm}void init\_\-variables ()}\label{honeybrid_8c_9249da0285497dd291f2ea6a9ad37a64}
+
+
+
+
+create the hash table to store the config
+
+create the array of pointer to store the \doxyref{target}{p.}{structtarget} information
+
+create the hash table to store module information
+
+create the hash table for the log engine
+
+create the hash table for the redirection table \begin{Desc}
+\item[{\bf Todo}]DEPRECATED if (NULL == (low\_\-redirection\_\-table = g\_\-hash\_\-table\_\-new(g\_\-str\_\-hash, g\_\-str\_\-equal))) errx(1,\char`\"{}\%s: Fatal error while creating redirection\_\-table hash table.$\backslash$n\char`\"{}, \_\-\_\-func\_\-\_\-); \end{Desc}
+
+
+create the hash table for the LIH list \begin{Desc}
+\item[{\bf Todo}]DEPRECATED if (NULL == (low\_\-honeypot\_\-addr = g\_\-hash\_\-table\_\-new(g\_\-int\_\-hash, g\_\-int\_\-equal))) errx(1,\char`\"{}\%s: Fatal error while creating low\_\-honeypot\_\-addr hash table.$\backslash$n\char`\"{}, \_\-\_\-func\_\-\_\-); \end{Desc}
+
+
+create the hash table for the HIH list \begin{Desc}
+\item[{\bf Todo}]DEPRECATED if (NULL == (high\_\-honeypot\_\-addr = g\_\-hash\_\-table\_\-new(g\_\-int\_\-hash, g\_\-int\_\-equal))) errx(1, \char`\"{}\%s: Error while creating high\_\-honeypot\_\-addr hash table.$\backslash$n\char`\"{}, \_\-\_\-func\_\-\_\-); \end{Desc}
+
+
+create the hash table to store the pointers to the boolean execution trees
+
+init the log singly linked list
+
+init the connection id counter
+
+Enable data processing
+
+init the security locks
+
+g\_\-tree\_\-new\_\-full - create the main B-Tree to store meta informations of active connections
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em GCompareDataFunc,:}]function to compare 2 entries, we use strcmp \item[\mbox{$\leftarrow$} {\em GDestroyNotify,:}]function called to destroy a key \item[\mbox{$\leftarrow$} {\em GDestroyNotify,:}]function called to destroy a value \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]a new GTree.\end{Desc}
+
+
+References c\_\-id, config, conn\_\-tree, DE\_\-queue, DE\_\-queue\_\-lock, DE\_\-rules, errx(), log\_\-list, log\_\-table, module, OK, running, rwlock, and targets.
+
+Referenced by main().\index{honeybrid.c@{honeybrid.c}!main@{main}}
+\index{main@{main}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, \/  char $\ast$ {\em argv}[$\,$])}\label{honeybrid_8c_0ddf1224851353fc92bfbff6f499fa97}
+
+
+process arguments, daemonize, init variables, create QUEUE handler and process each \doxyref{packet}{p.}{structpacket} 
+
+main \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em argc,number}]of arguments \item[\mbox{$\leftarrow$} {\em argv,table}]with arguments\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]0 if exit with success, anything else if not \end{Desc}
+
+
+parsing arguments
+
+define configuration filename
+
+send a shutdown request to honeybrid
+
+convert argument to int
+
+check that processus exists
+
+send signal USR1 to PID
+
+\begin{Desc}
+\item[{\bf Todo}]add a signal handler to output statistics (figure out the correct file description for output...) Statistics should include:\begin{itemize}
+\item version\item start time and duration\item \doxyref{packet}{p.}{structpacket} processed: total TCP UDP Other\item connection processed: total INIT DECISION REPLAY FORWARD INVALID PROXY\item decision engine, for each module: rules loaded signature loaded connection redirected (MATCH) connection left alone (DOES NOT MATCH)\item errors NF\_\-QUEUE restarts expected data\item top ports?\item top IP addresses? \end{itemize}
+\end{Desc}
+
+
+init glib thread system
+
+\begin{Desc}
+\item[{\bf Todo}]check if threads are correctly freed \end{Desc}
+
+
+initialize signal handlers
+
+initialize syslog
+
+initialize data structures
+
+parse the configuration files and store values in memory
+
+Create PID file, we might not be able to remove it
+
+reopening file descriptor now that we're a daemon
+
+initiate outgoing connection control =$>$ no longer needed init\_\-control();
+
+initiate decision engine modules =$>$ done automatically in rules.y, except for init\_\-mod\_\-hash:
+
+create the two raw sockets for UDP/IP and TCP/IP
+
+create a thread for the management, cleaning stuffs and so on
+
+Starting the nfqueue loop to start processing packets
+
+sometimes netlink\_\-loop exits by itself... so we have to restart it int i = 0; while (running == OK) \{ netlink\_\-loop(queuenum); g\_\-printerr(\char`\"{}\%s Netlink loop exited (\%d times so far)$\backslash$n\char`\"{}, \doxyref{H(0)}{p.}{log_8h_ee722791bac86c287527610799a9d221}, i); g\_\-usleep(1000000); i++; if (i$>$100) \{ g\_\-printerr(\char`\"{}\%s Reached maximum of 100 restarts... giving up$\backslash$n\char`\"{}, \doxyref{H(0)}{p.}{log_8h_ee722791bac86c287527610799a9d221}); running = NOK; \} \}
+
+References close\_\-all(), daemon(), DE\_\-submit\_\-packet(), err(), errx(), H, ICONFIG, init\_\-modules(), init\_\-parser(), init\_\-raw\_\-sockets(), init\_\-signal(), init\_\-variables(), mainpid, netlink\_\-loop(), OK, open\_\-connection\_\-log(), open\_\-debug\_\-log(), PIDFILE, switch\_\-clean(), tcp\_\-rsd, thread\_\-clean, thread\_\-de, threading, udp\_\-rsd, usage(), and VERSION.\index{honeybrid.c@{honeybrid.c}!netlink\_\-loop@{netlink\_\-loop}}
+\index{netlink\_\-loop@{netlink\_\-loop}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{netlink\_\-loop}]{\setlength{\rightskip}{0pt plus 5cm}short int netlink\_\-loop (unsigned short int {\em queuenum})}\label{honeybrid_8c_419a3099804011a842988e7be24d60dd}
+
+
+Function to create and maintain the NF\_\-QUEUE loop. 
+
+netlink loop \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em queuenum}]the queue identifier \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]status \end{Desc}
+
+
+References BUFSIZE, errx(), H, NOK, OK, PAYLOADSIZE, and running.
+
+Referenced by main().\index{honeybrid.c@{honeybrid.c}!print\_\-trace@{print\_\-trace}}
+\index{print\_\-trace@{print\_\-trace}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{print\_\-trace}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-trace (void)}\label{honeybrid_8c_c8f0a211851c2ba508ca6f725085d72e}
+
+
+Obtain a backtrace and print it to stdout. 
+
+print\_\-trace 
+
+Referenced by term\_\-signal\_\-handler().\index{honeybrid.c@{honeybrid.c}!switch\_\-clean@{switch\_\-clean}}
+\index{switch\_\-clean@{switch\_\-clean}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{switch\_\-clean}]{\setlength{\rightskip}{0pt plus 5cm}void switch\_\-clean ()}\label{honeybrid_8c_43e4391ca50d9d5fb13dcd6d375528f2}
+
+
+call the \doxyref{packet}{p.}{structpacket} cleaner 
+
+switch\_\-clean 
+
+References clean().
+
+Referenced by main().\index{honeybrid.c@{honeybrid.c}!term\_\-signal\_\-handler@{term\_\-signal\_\-handler}}
+\index{term\_\-signal\_\-handler@{term\_\-signal\_\-handler}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{term\_\-signal\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}int term\_\-signal\_\-handler (int {\em signal\_\-nb}, \/  siginfo\_\-t $\ast$ {\em siginfo}, \/  void $\ast$ {\em context})}\label{honeybrid_8c_a5720f5313aaa546632b6be9708a2983}
+
+
+called when the program receive a signal that should close the program, free memory and delete lock file 
+
+term\_\-signal\_\-handler
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em signal\_\-nb,:}]number of the signal \item[\mbox{$\leftarrow$} {\em siginfo,:}]informations regarding to the signal \item[\mbox{$\leftarrow$} {\em context,:}]NULL \end{description}
+\end{Desc}
+
+
+this will cause the queue loop to stop 
+
+References NOK, print\_\-trace(), and running.
+
+Referenced by init\_\-signal().\index{honeybrid.c@{honeybrid.c}!usage@{usage}}
+\index{usage@{usage}!honeybrid.c@{honeybrid.c}}
+\subsubsection[{usage}]{\setlength{\rightskip}{0pt plus 5cm}void usage (char $\ast$$\ast$ {\em argv})}\label{honeybrid_8c_d179db7b04bfd86a67a6a62a36bffdac}
+
+
+include \char`\"{}pcap\_\-tool.h\char`\"{} 
+
+usage function print command line informations 
+
+References VERSION.
+
+Referenced by main().

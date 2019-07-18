@@ -1,0 +1,6 @@
+Dionaea XMPP-listener
+Modified from Gloox example code to log all valid XML message to a local FIFO queue
+Requires Gloox 1.0 (or later) and LibXML++ 2.6
+
+Tamas K Lengyel 2012
+

@@ -1,0 +1,294 @@
+\section{netcode.h File Reference}
+\label{netcode_8h}\index{netcode.h@{netcode.h}}
+{\tt \#include $<$netinet/tcp.h$>$}\par
+{\tt \#include $<$netinet/udp.h$>$}\par
+{\tt \#include $<$netinet/ip.h$>$}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+{\tt \#include \char`\"{}types.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct {\bf pseudotcphdr}
+\item 
+struct {\bf tcp\_\-chk\_\-packet}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf BUFSIZE}~2048
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+int {\bf send\_\-raw} (struct iphdr $\ast$p)
+\begin{CompactList}\small\item\em send a \doxyref{packet}{p.}{structpacket} over a raw socket \item\end{CompactList}\item 
+int {\bf forward} (struct {\bf pkt\_\-struct} $\ast$pkt)
+\begin{CompactList}\small\item\em forward the \doxyref{packet}{p.}{structpacket} to the attacker or to the HIH according to its origin \item\end{CompactList}\item 
+int {\bf reply\_\-reset} (struct {\bf packet} p)
+\begin{CompactList}\small\item\em creat a RST \doxyref{packet}{p.}{structpacket} from a unexepcted \doxyref{packet}{p.}{structpacket} and sends it with send\_\-raw \item\end{CompactList}\item 
+int {\bf reset\_\-lih} (struct {\bf conn\_\-struct} $\ast$connection\_\-data)
+\begin{CompactList}\small\item\em reset the LIH when redirected to HIH \item\end{CompactList}\item 
+int {\bf replay} (struct {\bf conn\_\-struct} $\ast$connection\_\-data, struct {\bf pkt\_\-struct} $\ast$pkt)
+\begin{CompactList}\small\item\em reset the LIH when redirected to HIH \item\end{CompactList}\item 
+int {\bf hb\_\-ip\_\-checksum} (struct iphdr $\ast$hdr)
+\begin{CompactList}\small\item\em update the checksum in the IP header \item\end{CompactList}\item 
+int {\bf tcp\_\-checksum} (struct {\bf tcp\_\-packet} $\ast$pkt)
+\item 
+int {\bf udp\_\-checksum} (struct {\bf udp\_\-packet} $\ast$hdr)
+\begin{CompactList}\small\item\em update the checksum in the UDP header \item\end{CompactList}\item 
+int {\bf define\_\-expected\_\-data} (struct {\bf pkt\_\-struct} $\ast$pkt)
+\begin{CompactList}\small\item\em define expected \doxyref{packet}{p.}{structpacket} from HIH according to the \doxyref{packet}{p.}{structpacket} from LIH \item\end{CompactList}\item 
+int {\bf test\_\-expected} (struct {\bf conn\_\-struct} $\ast$connection\_\-data, struct {\bf pkt\_\-struct} $\ast$pkt)
+\begin{CompactList}\small\item\em get the \doxyref{packet}{p.}{structpacket} from HIH, compare it to expected data, drop it and return the comparison result \item\end{CompactList}\item 
+int {\bf init\_\-raw\_\-sockets} ()
+\begin{CompactList}\small\item\em create the two raw sockets for UDP/IP and TCP/IP \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+int {\bf udp\_\-rsd}
+\item 
+int {\bf tcp\_\-rsd}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{netcode.h@{netcode.h}!BUFSIZE@{BUFSIZE}}
+\index{BUFSIZE@{BUFSIZE}!netcode.h@{netcode.h}}
+\subsubsection[{BUFSIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define BUFSIZE~2048}\label{netcode_8h_eca034f67218340ecb2261a22c2f3dcd}
+
+
+number of bytes in the payload we want to copy to userspace a regular ethernet connection limit payload size to 1500 bytes 
+
+\subsection{Function Documentation}
+\index{netcode.h@{netcode.h}!define\_\-expected\_\-data@{define\_\-expected\_\-data}}
+\index{define\_\-expected\_\-data@{define\_\-expected\_\-data}!netcode.h@{netcode.h}}
+\subsubsection[{define\_\-expected\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}int define\_\-expected\_\-data (struct {\bf pkt\_\-struct} $\ast$ {\em pkt})}\label{netcode_8h_1c5840a3c34e17e78c5dff573966d75d}
+
+
+define expected \doxyref{packet}{p.}{structpacket} from HIH according to the \doxyref{packet}{p.}{structpacket} from LIH 
+
+define\_\-expected\_\-data
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pkt,:}]\doxyref{packet}{p.}{structpacket} metadata used \end{description}
+\end{Desc}
+
+
+References pkt\_\-struct::conn, hih\_\-struct::delta, conn\_\-struct::expected\_\-data, conn\_\-struct::hih, packet::ip, expected\_\-data\_\-struct::ip\_\-proto, conn\_\-struct::lock, OK, pkt\_\-struct::packet, packet::payload, expected\_\-data\_\-struct::payload, packet::tcp, expected\_\-data\_\-struct::tcp\_\-ack\_\-seq, and expected\_\-data\_\-struct::tcp\_\-seq.
+
+Referenced by replay(), and setup\_\-redirection().\index{netcode.h@{netcode.h}!forward@{forward}}
+\index{forward@{forward}!netcode.h@{netcode.h}}
+\subsubsection[{forward}]{\setlength{\rightskip}{0pt plus 5cm}int forward (struct {\bf pkt\_\-struct} $\ast$ {\em pkt})}\label{netcode_8h_f6f22be6ccd514e154f5e811188d051b}
+
+
+forward the \doxyref{packet}{p.}{structpacket} to the attacker or to the HIH according to its origin 
+
+forward
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pkt,the}]\doxyref{packet}{p.}{structpacket} metadata structure to forward\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]OK if the \doxyref{packet}{p.}{structpacket} has been succesfully sent \end{Desc}
+
+
+If \doxyref{packet}{p.}{structpacket} from HIH, we forward if to EXT with LIH source
+
+We set LIH source IP
+
+If TCP, we update the source port, the sequence number, and the checksum
+
+If UDP, we update the source port and the checksum
+
+If \doxyref{packet}{p.}{structpacket} from EXT, we forward if to HIH
+
+If \doxyref{packet}{p.}{structpacket} from HIH, we forward if to EXT with LIH source
+
+If TCP, we update the destination port, the acknowledgement number if any, and the checksum
+
+If UDP, we update the destination port and the checksum
+
+we update the IP checksum and send the packect 
+
+References hih\_\-struct::addr, pkt\_\-struct::conn, hih\_\-struct::delta, EXT, H, hb\_\-ip\_\-checksum(), conn\_\-struct::hih, HIH, conn\_\-struct::id, packet::ip, hih\_\-struct::lih\_\-addr, NOK, OK, pkt\_\-struct::origin, pkt\_\-struct::packet, hih\_\-struct::port, send\_\-raw(), tcp\_\-packet::tcp, packet::tcp, tcp\_\-checksum(), and udp\_\-checksum().
+
+Referenced by replay(), and setup\_\-redirection().\index{netcode.h@{netcode.h}!hb\_\-ip\_\-checksum@{hb\_\-ip\_\-checksum}}
+\index{hb\_\-ip\_\-checksum@{hb\_\-ip\_\-checksum}!netcode.h@{netcode.h}}
+\subsubsection[{hb\_\-ip\_\-checksum}]{\setlength{\rightskip}{0pt plus 5cm}int hb\_\-ip\_\-checksum (struct iphdr $\ast$ {\em hdr})}\label{netcode_8h_d578a8a62778555fafc3e1c85b67cc87}
+
+
+update the checksum in the IP header 
+
+hb\_\-ip\_\-checksum 
+
+References in\_\-cksum(), and OK.
+
+Referenced by forward(), and reply\_\-reset().\index{netcode.h@{netcode.h}!init\_\-raw\_\-sockets@{init\_\-raw\_\-sockets}}
+\index{init\_\-raw\_\-sockets@{init\_\-raw\_\-sockets}!netcode.h@{netcode.h}}
+\subsubsection[{init\_\-raw\_\-sockets}]{\setlength{\rightskip}{0pt plus 5cm}int init\_\-raw\_\-sockets ()}\label{netcode_8h_66fca3b08b64c478b6d91e83f2326628}
+
+
+create the two raw sockets for UDP/IP and TCP/IP 
+
+init\_\-raw\_\-sockets \begin{Desc}
+\item[Returns:]OK \end{Desc}
+
+
+create the two raw sockets for UDP/IP and TCP/IP
+
+References OK, tcp\_\-rsd, and udp\_\-rsd.
+
+Referenced by main().\index{netcode.h@{netcode.h}!replay@{replay}}
+\index{replay@{replay}!netcode.h@{netcode.h}}
+\subsubsection[{replay}]{\setlength{\rightskip}{0pt plus 5cm}int replay (struct {\bf conn\_\-struct} $\ast$ {\em conn}, \/  struct {\bf pkt\_\-struct} $\ast$ {\em pkt})}\label{netcode_8h_8035030afa1e2ef8c04d0967d8a1ca51}
+
+
+reset the LIH when redirected to HIH 
+
+replay
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em conn,:}]the connnection being replayed \item[\mbox{$\leftarrow$} {\em pkt,:}]the \doxyref{packet}{p.}{structpacket} from HIH to test \end{description}
+\end{Desc}
+
+
+If \doxyref{packet}{p.}{structpacket} is from HIH and matches expected data then we replay the following packets from EXT to HIH until we find a \doxyref{packet}{p.}{structpacket} from LIH
+
+Then we define expected data according to that \doxyref{packet}{p.}{structpacket} 
+
+References conn\_\-struct::BUFFER, pkt\_\-struct::DE, define\_\-expected\_\-data(), EXT, FORWARD, forward(), free\_\-pkt(), H, HIH, conn\_\-struct::id, NOK, OK, pkt\_\-struct::origin, conn\_\-struct::replay\_\-id, switch\_\-state(), and test\_\-expected().\index{netcode.h@{netcode.h}!reply\_\-reset@{reply\_\-reset}}
+\index{reply\_\-reset@{reply\_\-reset}!netcode.h@{netcode.h}}
+\subsubsection[{reply\_\-reset}]{\setlength{\rightskip}{0pt plus 5cm}int reply\_\-reset (struct {\bf packet} {\em p})}\label{netcode_8h_0a17e9db29ce866d9dbb3f8e000d4d88}
+
+
+creat a RST \doxyref{packet}{p.}{structpacket} from a unexepcted \doxyref{packet}{p.}{structpacket} and sends it with send\_\-raw 
+
+reply\_\-reset
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p,the}]\doxyref{packet}{p.}{structpacket} to which we reply the reset \doxyref{packet}{p.}{structpacket} \end{description}
+\end{Desc}
+
+
+reset only tcp connections
+
+fill up the IP header
+
+fill up the TCP header 
+
+References H, hb\_\-ip\_\-checksum(), tcp\_\-packet::ip, packet::ip, NOK, send\_\-raw(), packet::tcp, and tcp\_\-checksum().\index{netcode.h@{netcode.h}!reset\_\-lih@{reset\_\-lih}}
+\index{reset\_\-lih@{reset\_\-lih}!netcode.h@{netcode.h}}
+\subsubsection[{reset\_\-lih}]{\setlength{\rightskip}{0pt plus 5cm}int reset\_\-lih (struct {\bf conn\_\-struct} $\ast$ {\em conn})}\label{netcode_8h_f069fcb9bc933b9dab86937fe65ca0f5}
+
+
+reset the LIH when redirected to HIH 
+
+reset\_\-lih
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em conn,:}]the connnection that the LIH reset \end{description}
+\end{Desc}
+
+
+find last \doxyref{packet}{p.}{structpacket} from LIH
+
+call \doxyref{reply\_\-reset()}{p.}{netcode_8c_0a17e9db29ce866d9dbb3f8e000d4d88} with this \doxyref{packet}{p.}{structpacket} 
+
+References conn\_\-struct::BUFFER, H, conn\_\-struct::id, packet::ip, LIH, NOK, pkt\_\-struct::origin, and pkt\_\-struct::packet.
+
+Referenced by setup\_\-redirection().\index{netcode.h@{netcode.h}!send\_\-raw@{send\_\-raw}}
+\index{send\_\-raw@{send\_\-raw}!netcode.h@{netcode.h}}
+\subsubsection[{send\_\-raw}]{\setlength{\rightskip}{0pt plus 5cm}int send\_\-raw (struct iphdr $\ast$ {\em p})}\label{netcode_8h_5b7827c561225b58a81718e27501307f}
+
+
+send a \doxyref{packet}{p.}{structpacket} over a raw socket 
+
+send\_\-raw \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em p,the}]\doxyref{packet}{p.}{structpacket} structure that contains the \doxyref{packet}{p.}{structpacket} to be sent \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]OK if the \doxyref{packet}{p.}{structpacket} has been succesfully sent \end{Desc}
+
+
+This line seg fault... sprintf(logbuf, \char`\"{}send\_\-raw():$\backslash$tSending raw packet from \%s to \%s$\backslash$n\char`\"{}, inet\_\-ntoa($\ast$(struct in\_\-addr$\ast$)p-$>$saddr), inet\_\-ntoa($\ast$(struct in\_\-addr$\ast$)p-$>$daddr));
+
+If TCP, use the TCP raw socket
+
+dst.sin\_\-port = ((struct tcp\_\-packet$\ast$)p)-$>$tcp.dest;
+
+If UDP, use the UDP raw socket 
+
+References H, NOK, OK, tcp\_\-rsd, and udp\_\-rsd.
+
+Referenced by forward(), and reply\_\-reset().\index{netcode.h@{netcode.h}!tcp\_\-checksum@{tcp\_\-checksum}}
+\index{tcp\_\-checksum@{tcp\_\-checksum}!netcode.h@{netcode.h}}
+\subsubsection[{tcp\_\-checksum}]{\setlength{\rightskip}{0pt plus 5cm}int tcp\_\-checksum (struct {\bf tcp\_\-packet} $\ast$ {\em pkt})}\label{netcode_8h_76a1641651a94e4de2c397985c74ccd3}
+
+
+test for a new tcp checksum function \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em pkt,:}]\doxyref{packet}{p.}{structpacket} to compute the checksum \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]OK \end{Desc}
+
+
+References pseudotcphdr::daddr, in\_\-cksum(), tcp\_\-packet::ip, OK, tcp\_\-packet::payload, tcp\_\-chk\_\-packet::payload, pseudotcphdr::proto, tcp\_\-chk\_\-packet::pseudohdr, pseudotcphdr::res1, pseudotcphdr::saddr, tcp\_\-chk\_\-packet::tcp, tcp\_\-packet::tcp, and pseudotcphdr::tcp\_\-len.
+
+Referenced by forward(), and reply\_\-reset().\index{netcode.h@{netcode.h}!test\_\-expected@{test\_\-expected}}
+\index{test\_\-expected@{test\_\-expected}!netcode.h@{netcode.h}}
+\subsubsection[{test\_\-expected}]{\setlength{\rightskip}{0pt plus 5cm}int test\_\-expected (struct {\bf conn\_\-struct} $\ast$ {\em conn}, \/  struct {\bf pkt\_\-struct} $\ast$ {\em pkt})}\label{netcode_8h_51d4e253ea023290921f37ed78526d67}
+
+
+get the \doxyref{packet}{p.}{structpacket} from HIH, compare it to expected data, drop it and return the comparison result 
+
+test\_\-expected 
+
+lock the structure g\_\-static\_\-rw\_\-lock\_\-writer\_\-lock( \&conn-$>$lock );
+
+free the lock g\_\-static\_\-rw\_\-lock\_\-writer\_\-unlock( \&conn-$>$lock );
+
+References pkt\_\-struct::data, conn\_\-struct::expected\_\-data, H, conn\_\-struct::id, packet::ip, expected\_\-data\_\-struct::ip\_\-proto, NOK, OK, pkt\_\-struct::packet, expected\_\-data\_\-struct::payload, packet::payload, conn\_\-struct::replay\_\-problem, packet::tcp, expected\_\-data\_\-struct::tcp\_\-ack\_\-seq, and expected\_\-data\_\-struct::tcp\_\-seq.
+
+Referenced by replay().\index{netcode.h@{netcode.h}!udp\_\-checksum@{udp\_\-checksum}}
+\index{udp\_\-checksum@{udp\_\-checksum}!netcode.h@{netcode.h}}
+\subsubsection[{udp\_\-checksum}]{\setlength{\rightskip}{0pt plus 5cm}int udp\_\-checksum (struct {\bf udp\_\-packet} $\ast$ {\em hdr})}\label{netcode_8h_097d65899a9a179c22b9a47c188a6618}
+
+
+update the checksum in the UDP header 
+
+udp\_\-checksum 
+
+References in\_\-cksum(), OK, and udp\_\-packet::udp.
+
+Referenced by forward().
+
+\subsection{Variable Documentation}
+\index{netcode.h@{netcode.h}!tcp\_\-rsd@{tcp\_\-rsd}}
+\index{tcp\_\-rsd@{tcp\_\-rsd}!netcode.h@{netcode.h}}
+\subsubsection[{tcp\_\-rsd}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf tcp\_\-rsd}}\label{netcode_8h_cc494fc39cad003e3dab07fd09ffc2b2}
+
+
+
+
+Referenced by init\_\-raw\_\-sockets(), main(), and send\_\-raw().\index{netcode.h@{netcode.h}!udp\_\-rsd@{udp\_\-rsd}}
+\index{udp\_\-rsd@{udp\_\-rsd}!netcode.h@{netcode.h}}
+\subsubsection[{udp\_\-rsd}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf udp\_\-rsd}}\label{netcode_8h_a2f45e08bb2bae9d3c173db57d51de47}
+
+
+
+
+Referenced by init\_\-raw\_\-sockets(), main(), and send\_\-raw().

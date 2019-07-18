@@ -1,0 +1,1040 @@
+\section{syntax.c File Reference}
+\label{syntax_8c}\index{syntax.c@{syntax.c}}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$pcap.h$>$}\par
+{\tt \#include $<$dumbnet.h$>$}\par
+{\tt \#include $<$glib.h$>$}\par
+{\tt \#include \char`\"{}rules.h\char`\"{}}\par
+{\tt \#include $<$unistd.h$>$}\par
+\subsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct {\bf yy\_\-buffer\_\-state}
+\item 
+struct {\bf yy\_\-trans\_\-info}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf YY\_\-INT\_\-ALIGNED}~short int
+\item 
+\#define {\bf FLEX\_\-SCANNER}
+\item 
+\#define {\bf YY\_\-FLEX\_\-MAJOR\_\-VERSION}~2
+\item 
+\#define {\bf YY\_\-FLEX\_\-MINOR\_\-VERSION}~5
+\item 
+\#define {\bf YY\_\-FLEX\_\-SUBMINOR\_\-VERSION}~35
+\item 
+\#define {\bf FLEX\_\-BETA}
+\item 
+\#define {\bf INT8\_\-MIN}~(-128)
+\item 
+\#define {\bf INT16\_\-MIN}~(-32767-1)
+\item 
+\#define {\bf INT32\_\-MIN}~(-2147483647-1)
+\item 
+\#define {\bf INT8\_\-MAX}~(127)
+\item 
+\#define {\bf INT16\_\-MAX}~(32767)
+\item 
+\#define {\bf INT32\_\-MAX}~(2147483647)
+\item 
+\#define {\bf UINT8\_\-MAX}~(255U)
+\item 
+\#define {\bf UINT16\_\-MAX}~(65535U)
+\item 
+\#define {\bf UINT32\_\-MAX}~(4294967295U)
+\item 
+\#define {\bf yyconst}
+\item 
+\#define {\bf YY\_\-NULL}~0
+\item 
+\#define {\bf YY\_\-SC\_\-TO\_\-UI}(c)~((unsigned int) (unsigned char) c)
+\item 
+\#define {\bf BEGIN}~(yy\_\-start) = 1 + 2 $\ast$
+\item 
+\#define {\bf YY\_\-START}~(((yy\_\-start) - 1) / 2)
+\item 
+\#define {\bf YYSTATE}~YY\_\-START
+\item 
+\#define {\bf YY\_\-STATE\_\-EOF}(state)~(YY\_\-END\_\-OF\_\-BUFFER + state + 1)
+\item 
+\#define {\bf YY\_\-NEW\_\-FILE}~yyrestart({\bf yyin}  )
+\item 
+\#define {\bf YY\_\-END\_\-OF\_\-BUFFER\_\-CHAR}~0
+\item 
+\#define {\bf YY\_\-BUF\_\-SIZE}~16384
+\item 
+\#define {\bf YY\_\-STATE\_\-BUF\_\-SIZE}~((YY\_\-BUF\_\-SIZE + 2) $\ast$ sizeof({\bf yy\_\-state\_\-type}))
+\item 
+\#define {\bf EOB\_\-ACT\_\-CONTINUE\_\-SCAN}~0
+\item 
+\#define {\bf EOB\_\-ACT\_\-END\_\-OF\_\-FILE}~1
+\item 
+\#define {\bf EOB\_\-ACT\_\-LAST\_\-MATCH}~2
+\item 
+\#define {\bf YY\_\-LESS\_\-LINENO}(n)
+\item 
+\#define {\bf yyless}(n)
+\item 
+\#define {\bf unput}(c)~yyunput( c, (yytext\_\-ptr)  )
+\item 
+\#define {\bf YY\_\-BUFFER\_\-NEW}~0
+\item 
+\#define {\bf YY\_\-BUFFER\_\-NORMAL}~1
+\item 
+\#define {\bf YY\_\-BUFFER\_\-EOF\_\-PENDING}~2
+\item 
+\#define {\bf YY\_\-CURRENT\_\-BUFFER}
+\item 
+\#define {\bf YY\_\-CURRENT\_\-BUFFER\_\-LVALUE}~(yy\_\-buffer\_\-stack)[(yy\_\-buffer\_\-stack\_\-top)]
+\item 
+\#define {\bf YY\_\-FLUSH\_\-BUFFER}~yy\_\-flush\_\-buffer(YY\_\-CURRENT\_\-BUFFER )
+\item 
+\#define {\bf yy\_\-new\_\-buffer}~yy\_\-create\_\-buffer
+\item 
+\#define {\bf yy\_\-set\_\-interactive}(is\_\-interactive)
+\item 
+\#define {\bf yy\_\-set\_\-bol}(at\_\-bol)
+\item 
+\#define {\bf YY\_\-AT\_\-BOL}()~(YY\_\-CURRENT\_\-BUFFER\_\-LVALUE $\rightarrow$ yy\_\-at\_\-bol)
+\item 
+\#define {\bf yytext\_\-ptr}~{\bf yytext}
+\item 
+\#define {\bf YY\_\-DO\_\-BEFORE\_\-ACTION}
+\item 
+\#define {\bf YY\_\-NUM\_\-RULES}~20
+\item 
+\#define {\bf YY\_\-END\_\-OF\_\-BUFFER}~21
+\item 
+\#define {\bf REJECT}~reject\_\-used\_\-but\_\-not\_\-detected
+\item 
+\#define {\bf yymore}()~yymore\_\-used\_\-but\_\-not\_\-detected
+\item 
+\#define {\bf YY\_\-MORE\_\-ADJ}~0
+\item 
+\#define {\bf YY\_\-RESTORE\_\-YY\_\-MORE\_\-OFFSET}
+\item 
+\#define {\bf YY\_\-NO\_\-INPUT}
+\item 
+\#define {\bf INITIAL}~0
+\item 
+\#define {\bf YY\_\-EXTRA\_\-TYPE}~void $\ast$
+\item 
+\#define {\bf YY\_\-READ\_\-BUF\_\-SIZE}~8192
+\item 
+\#define {\bf ECHO}~do \{ if (fwrite( {\bf yytext}, {\bf yyleng}, 1, {\bf yyout} )) \{\} \} while (0)
+\item 
+\#define {\bf YY\_\-INPUT}(buf, result, max\_\-size)
+\item 
+\#define {\bf yyterminate}()~return YY\_\-NULL
+\item 
+\#define {\bf YY\_\-START\_\-STACK\_\-INCR}~25
+\item 
+\#define {\bf YY\_\-FATAL\_\-ERROR}(msg)~yy\_\-fatal\_\-error( msg )
+\item 
+\#define {\bf YY\_\-DECL\_\-IS\_\-OURS}~1
+\item 
+\#define {\bf YY\_\-DECL}~int yylex (void)
+\item 
+\#define {\bf YY\_\-BREAK}~break;
+\item 
+\#define {\bf YY\_\-RULE\_\-SETUP}~YY\_\-USER\_\-ACTION
+\item 
+\#define {\bf YY\_\-EXIT\_\-FAILURE}~2
+\item 
+\#define {\bf yyless}(n)
+\item 
+\#define {\bf YYTABLES\_\-NAME}~\char`\"{}yytables\char`\"{}
+\end{CompactItemize}
+\subsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef signed char {\bf flex\_\-int8\_\-t}
+\item 
+typedef short int {\bf flex\_\-int16\_\-t}
+\item 
+typedef int {\bf flex\_\-int32\_\-t}
+\item 
+typedef unsigned char {\bf flex\_\-uint8\_\-t}
+\item 
+typedef unsigned short int {\bf flex\_\-uint16\_\-t}
+\item 
+typedef unsigned int {\bf flex\_\-uint32\_\-t}
+\item 
+typedef struct {\bf yy\_\-buffer\_\-state} $\ast$ {\bf YY\_\-BUFFER\_\-STATE}
+\item 
+typedef size\_\-t {\bf yy\_\-size\_\-t}
+\item 
+typedef unsigned char {\bf YY\_\-CHAR}
+\item 
+typedef int {\bf yy\_\-state\_\-type}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+void {\bf yyrestart} (FILE $\ast$input\_\-file)
+\item 
+void {\bf yy\_\-switch\_\-to\_\-buffer} ({\bf YY\_\-BUFFER\_\-STATE} new\_\-buffer)
+\item 
+{\bf YY\_\-BUFFER\_\-STATE} {\bf yy\_\-create\_\-buffer} (FILE $\ast$file, int size)
+\item 
+void {\bf yy\_\-delete\_\-buffer} ({\bf YY\_\-BUFFER\_\-STATE} b)
+\item 
+void {\bf yy\_\-flush\_\-buffer} ({\bf YY\_\-BUFFER\_\-STATE} b)
+\begin{CompactList}\small\item\em Discard all buffered characters. \item\end{CompactList}\item 
+void {\bf yypush\_\-buffer\_\-state} ({\bf YY\_\-BUFFER\_\-STATE} new\_\-buffer)
+\begin{CompactList}\small\item\em Pushes the new state onto the stack. \item\end{CompactList}\item 
+void {\bf yypop\_\-buffer\_\-state} (void)
+\begin{CompactList}\small\item\em Removes and deletes the top of the stack, if present. \item\end{CompactList}\item 
+{\bf YY\_\-BUFFER\_\-STATE} {\bf yy\_\-scan\_\-buffer} (char $\ast$base, {\bf yy\_\-size\_\-t} size)
+\begin{CompactList}\small\item\em Setup the input buffer state to scan directly from a user-specified character buffer. \item\end{CompactList}\item 
+{\bf YY\_\-BUFFER\_\-STATE} {\bf yy\_\-scan\_\-string} (yyconst char $\ast$yystr)
+\begin{CompactList}\small\item\em Setup the input buffer state to scan a string. \item\end{CompactList}\item 
+{\bf YY\_\-BUFFER\_\-STATE} {\bf yy\_\-scan\_\-bytes} (yyconst char $\ast$yybytes, int \_\-yybytes\_\-len)
+\begin{CompactList}\small\item\em Setup the input buffer state to scan the given bytes. \item\end{CompactList}\item 
+void $\ast$ {\bf yyalloc} ({\bf yy\_\-size\_\-t})
+\item 
+void $\ast$ {\bf yyrealloc} (void $\ast$, {\bf yy\_\-size\_\-t})
+\item 
+void {\bf yyfree} (void $\ast$)
+\item 
+int {\bf yylex\_\-destroy} (void)
+\item 
+int {\bf yyget\_\-debug} (void)
+\item 
+void {\bf yyset\_\-debug} (int debug\_\-flag)
+\item 
+YY\_\-EXTRA\_\-TYPE {\bf yyget\_\-extra} (void)
+\item 
+void {\bf yyset\_\-extra} (YY\_\-EXTRA\_\-TYPE user\_\-defined)
+\item 
+FILE $\ast$ {\bf yyget\_\-in} (void)
+\begin{CompactList}\small\item\em Get the input stream. \item\end{CompactList}\item 
+void {\bf yyset\_\-in} (FILE $\ast$in\_\-str)
+\begin{CompactList}\small\item\em Set the input stream. \item\end{CompactList}\item 
+FILE $\ast$ {\bf yyget\_\-out} (void)
+\begin{CompactList}\small\item\em Get the output stream. \item\end{CompactList}\item 
+void {\bf yyset\_\-out} (FILE $\ast$out\_\-str)
+\item 
+int {\bf yyget\_\-leng} (void)
+\begin{CompactList}\small\item\em Get the length of the current token. \item\end{CompactList}\item 
+char $\ast$ {\bf yyget\_\-text} (void)
+\begin{CompactList}\small\item\em Get the current token. \item\end{CompactList}\item 
+int {\bf yyget\_\-lineno} (void)
+\begin{CompactList}\small\item\em Get the current line number. \item\end{CompactList}\item 
+void {\bf yyset\_\-lineno} (int line\_\-number)
+\begin{CompactList}\small\item\em Set the current line number. \item\end{CompactList}\item 
+int {\bf yywrap} (void)
+\item 
+int {\bf yylex} (void)
+\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+int {\bf yyleng}
+\item 
+FILE $\ast$ {\bf yyin} = (FILE $\ast$) 0
+\item 
+FILE $\ast$ {\bf yyout} = (FILE $\ast$) 0
+\item 
+int {\bf yylineno} = 1
+\item 
+char $\ast$ {\bf yytext}
+\item 
+int {\bf yy\_\-flex\_\-debug} = 0
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{syntax.c@{syntax.c}!BEGIN@{BEGIN}}
+\index{BEGIN@{BEGIN}!syntax.c@{syntax.c}}
+\subsubsection[{BEGIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define BEGIN~(yy\_\-start) = 1 + 2 $\ast$}\label{syntax_8c_b766bbbee08d04b67e3fe599d6900873}
+
+
+\index{syntax.c@{syntax.c}!ECHO@{ECHO}}
+\index{ECHO@{ECHO}!syntax.c@{syntax.c}}
+\subsubsection[{ECHO}]{\setlength{\rightskip}{0pt plus 5cm}\#define ECHO~do \{ if (fwrite( {\bf yytext}, {\bf yyleng}, 1, {\bf yyout} )) \{\} \} while (0)}\label{syntax_8c_ad1dc60a04a1d8cfc8b3ded13601e361}
+
+
+\index{syntax.c@{syntax.c}!EOB\_\-ACT\_\-CONTINUE\_\-SCAN@{EOB\_\-ACT\_\-CONTINUE\_\-SCAN}}
+\index{EOB\_\-ACT\_\-CONTINUE\_\-SCAN@{EOB\_\-ACT\_\-CONTINUE\_\-SCAN}!syntax.c@{syntax.c}}
+\subsubsection[{EOB\_\-ACT\_\-CONTINUE\_\-SCAN}]{\setlength{\rightskip}{0pt plus 5cm}\#define EOB\_\-ACT\_\-CONTINUE\_\-SCAN~0}\label{syntax_8c_df4b0db227e07782e28ade353a7ba7a1}
+
+
+\index{syntax.c@{syntax.c}!EOB\_\-ACT\_\-END\_\-OF\_\-FILE@{EOB\_\-ACT\_\-END\_\-OF\_\-FILE}}
+\index{EOB\_\-ACT\_\-END\_\-OF\_\-FILE@{EOB\_\-ACT\_\-END\_\-OF\_\-FILE}!syntax.c@{syntax.c}}
+\subsubsection[{EOB\_\-ACT\_\-END\_\-OF\_\-FILE}]{\setlength{\rightskip}{0pt plus 5cm}\#define EOB\_\-ACT\_\-END\_\-OF\_\-FILE~1}\label{syntax_8c_7f71d7fa2c403eb4b2f38cb9536f3c63}
+
+
+\index{syntax.c@{syntax.c}!EOB\_\-ACT\_\-LAST\_\-MATCH@{EOB\_\-ACT\_\-LAST\_\-MATCH}}
+\index{EOB\_\-ACT\_\-LAST\_\-MATCH@{EOB\_\-ACT\_\-LAST\_\-MATCH}!syntax.c@{syntax.c}}
+\subsubsection[{EOB\_\-ACT\_\-LAST\_\-MATCH}]{\setlength{\rightskip}{0pt plus 5cm}\#define EOB\_\-ACT\_\-LAST\_\-MATCH~2}\label{syntax_8c_d1a0b5ebcabffe388e9e9ebb2619c1fb}
+
+
+\index{syntax.c@{syntax.c}!FLEX\_\-BETA@{FLEX\_\-BETA}}
+\index{FLEX\_\-BETA@{FLEX\_\-BETA}!syntax.c@{syntax.c}}
+\subsubsection[{FLEX\_\-BETA}]{\setlength{\rightskip}{0pt plus 5cm}\#define FLEX\_\-BETA}\label{syntax_8c_9465c9986fdda27730c9dff8d16a0887}
+
+
+\index{syntax.c@{syntax.c}!FLEX\_\-SCANNER@{FLEX\_\-SCANNER}}
+\index{FLEX\_\-SCANNER@{FLEX\_\-SCANNER}!syntax.c@{syntax.c}}
+\subsubsection[{FLEX\_\-SCANNER}]{\setlength{\rightskip}{0pt plus 5cm}\#define FLEX\_\-SCANNER}\label{syntax_8c_3c3d1ef92e93b0bc81d7760a73d5c3b6}
+
+
+\index{syntax.c@{syntax.c}!INITIAL@{INITIAL}}
+\index{INITIAL@{INITIAL}!syntax.c@{syntax.c}}
+\subsubsection[{INITIAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define INITIAL~0}\label{syntax_8c_a3d063564f6ab16f6d408b8369d0e9ff}
+
+
+\index{syntax.c@{syntax.c}!INT16\_\-MAX@{INT16\_\-MAX}}
+\index{INT16\_\-MAX@{INT16\_\-MAX}!syntax.c@{syntax.c}}
+\subsubsection[{INT16\_\-MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define INT16\_\-MAX~(32767)}\label{syntax_8c_c58f2c111cc9989c86db2a7dc4fd84ca}
+
+
+\index{syntax.c@{syntax.c}!INT16\_\-MIN@{INT16\_\-MIN}}
+\index{INT16\_\-MIN@{INT16\_\-MIN}!syntax.c@{syntax.c}}
+\subsubsection[{INT16\_\-MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define INT16\_\-MIN~(-32767-1)}\label{syntax_8c_d4e9955955b27624963643eac448118a}
+
+
+\index{syntax.c@{syntax.c}!INT32\_\-MAX@{INT32\_\-MAX}}
+\index{INT32\_\-MAX@{INT32\_\-MAX}!syntax.c@{syntax.c}}
+\subsubsection[{INT32\_\-MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define INT32\_\-MAX~(2147483647)}\label{syntax_8c_181807730d4a375f848ba139813ce04f}
+
+
+\index{syntax.c@{syntax.c}!INT32\_\-MIN@{INT32\_\-MIN}}
+\index{INT32\_\-MIN@{INT32\_\-MIN}!syntax.c@{syntax.c}}
+\subsubsection[{INT32\_\-MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define INT32\_\-MIN~(-2147483647-1)}\label{syntax_8c_688eb21a22db27c2b2bd5836943cdcbe}
+
+
+\index{syntax.c@{syntax.c}!INT8\_\-MAX@{INT8\_\-MAX}}
+\index{INT8\_\-MAX@{INT8\_\-MAX}!syntax.c@{syntax.c}}
+\subsubsection[{INT8\_\-MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define INT8\_\-MAX~(127)}\label{syntax_8c_af7f29f45f1a513b4748a4e5014ddf6a}
+
+
+\index{syntax.c@{syntax.c}!INT8\_\-MIN@{INT8\_\-MIN}}
+\index{INT8\_\-MIN@{INT8\_\-MIN}!syntax.c@{syntax.c}}
+\subsubsection[{INT8\_\-MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define INT8\_\-MIN~(-128)}\label{syntax_8c_adcf2a81af243df333b31efa6461ab8e}
+
+
+\index{syntax.c@{syntax.c}!REJECT@{REJECT}}
+\index{REJECT@{REJECT}!syntax.c@{syntax.c}}
+\subsubsection[{REJECT}]{\setlength{\rightskip}{0pt plus 5cm}\#define REJECT~reject\_\-used\_\-but\_\-not\_\-detected}\label{syntax_8c_835f10dd1ab4bf9a80c4cd80ee6e3058}
+
+
+\index{syntax.c@{syntax.c}!UINT16\_\-MAX@{UINT16\_\-MAX}}
+\index{UINT16\_\-MAX@{UINT16\_\-MAX}!syntax.c@{syntax.c}}
+\subsubsection[{UINT16\_\-MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define UINT16\_\-MAX~(65535U)}\label{syntax_8c_3ea490c9b3617d4479bd80ef93cd5602}
+
+
+\index{syntax.c@{syntax.c}!UINT32\_\-MAX@{UINT32\_\-MAX}}
+\index{UINT32\_\-MAX@{UINT32\_\-MAX}!syntax.c@{syntax.c}}
+\subsubsection[{UINT32\_\-MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define UINT32\_\-MAX~(4294967295U)}\label{syntax_8c_b5eb23180f7cc12b7d6c04a8ec067fdd}
+
+
+\index{syntax.c@{syntax.c}!UINT8\_\-MAX@{UINT8\_\-MAX}}
+\index{UINT8\_\-MAX@{UINT8\_\-MAX}!syntax.c@{syntax.c}}
+\subsubsection[{UINT8\_\-MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define UINT8\_\-MAX~(255U)}\label{syntax_8c_eb4e270a084ee26fe73e799861bd0252}
+
+
+\index{syntax.c@{syntax.c}!unput@{unput}}
+\index{unput@{unput}!syntax.c@{syntax.c}}
+\subsubsection[{unput}]{\setlength{\rightskip}{0pt plus 5cm}\#define unput(c)~yyunput( c, (yytext\_\-ptr)  )}\label{syntax_8c_448a4e9041a09588332733c6846c770c}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-AT\_\-BOL@{YY\_\-AT\_\-BOL}}
+\index{YY\_\-AT\_\-BOL@{YY\_\-AT\_\-BOL}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-AT\_\-BOL}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-AT\_\-BOL()~(YY\_\-CURRENT\_\-BUFFER\_\-LVALUE $\rightarrow$ yy\_\-at\_\-bol)}\label{syntax_8c_71ca89b3656acd0552f14949a571560b}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-BREAK@{YY\_\-BREAK}}
+\index{YY\_\-BREAK@{YY\_\-BREAK}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-BREAK}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-BREAK~break;}\label{syntax_8c_3cc40a460ad7df816678bcc05241e84c}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-BUF\_\-SIZE@{YY\_\-BUF\_\-SIZE}}
+\index{YY\_\-BUF\_\-SIZE@{YY\_\-BUF\_\-SIZE}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-BUF\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-BUF\_\-SIZE~16384}\label{syntax_8c_e7e51116e747d3390e7a6cfc6532834c}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-BUFFER\_\-EOF\_\-PENDING@{YY\_\-BUFFER\_\-EOF\_\-PENDING}}
+\index{YY\_\-BUFFER\_\-EOF\_\-PENDING@{YY\_\-BUFFER\_\-EOF\_\-PENDING}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-BUFFER\_\-EOF\_\-PENDING}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-BUFFER\_\-EOF\_\-PENDING~2}\label{syntax_8c_d689d97c15e807a6116ace7a420cea57}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-BUFFER\_\-NEW@{YY\_\-BUFFER\_\-NEW}}
+\index{YY\_\-BUFFER\_\-NEW@{YY\_\-BUFFER\_\-NEW}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-BUFFER\_\-NEW}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-BUFFER\_\-NEW~0}\label{syntax_8c_53579db42834b88199458993912c646d}
+
+
+
+
+Referenced by yy\_\-flush\_\-buffer(), and yy\_\-scan\_\-buffer().\index{syntax.c@{syntax.c}!YY\_\-BUFFER\_\-NORMAL@{YY\_\-BUFFER\_\-NORMAL}}
+\index{YY\_\-BUFFER\_\-NORMAL@{YY\_\-BUFFER\_\-NORMAL}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-BUFFER\_\-NORMAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-BUFFER\_\-NORMAL~1}\label{syntax_8c_609d19f40900ecc2a5f812d9388c21fb}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-CURRENT\_\-BUFFER@{YY\_\-CURRENT\_\-BUFFER}}
+\index{YY\_\-CURRENT\_\-BUFFER@{YY\_\-CURRENT\_\-BUFFER}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-CURRENT\_\-BUFFER}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-CURRENT\_\-BUFFER}\label{syntax_8c_a093d500a6330d06d8e4760c494fac33}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}( (yy_buffer_stack) \
+                          ? (yy_buffer_stack)[(yy_buffer_stack_top)] \
+                          : NULL)
+\end{verbatim}
+\end{Code}
+
+
+Referenced by yy\_\-flush\_\-buffer(), yylex\_\-destroy(), yypop\_\-buffer\_\-state(), and yypush\_\-buffer\_\-state().\index{syntax.c@{syntax.c}!YY\_\-CURRENT\_\-BUFFER\_\-LVALUE@{YY\_\-CURRENT\_\-BUFFER\_\-LVALUE}}
+\index{YY\_\-CURRENT\_\-BUFFER\_\-LVALUE@{YY\_\-CURRENT\_\-BUFFER\_\-LVALUE}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-CURRENT\_\-BUFFER\_\-LVALUE}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-CURRENT\_\-BUFFER\_\-LVALUE~(yy\_\-buffer\_\-stack)[(yy\_\-buffer\_\-stack\_\-top)]}\label{syntax_8c_817a6a24af62508b5a35f4bed5f56a2e}
+
+
+
+
+Referenced by yylex\_\-destroy(), yypop\_\-buffer\_\-state(), and yypush\_\-buffer\_\-state().\index{syntax.c@{syntax.c}!YY\_\-DECL@{YY\_\-DECL}}
+\index{YY\_\-DECL@{YY\_\-DECL}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-DECL}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-DECL~int yylex (void)}\label{syntax_8c_e5b01ac2fa5a6ad5fb97559638abe686}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-DECL\_\-IS\_\-OURS@{YY\_\-DECL\_\-IS\_\-OURS}}
+\index{YY\_\-DECL\_\-IS\_\-OURS@{YY\_\-DECL\_\-IS\_\-OURS}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-DECL\_\-IS\_\-OURS}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-DECL\_\-IS\_\-OURS~1}\label{syntax_8c_7682c8d9cec0859408d2421fbe4a5570}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-DO\_\-BEFORE\_\-ACTION@{YY\_\-DO\_\-BEFORE\_\-ACTION}}
+\index{YY\_\-DO\_\-BEFORE\_\-ACTION@{YY\_\-DO\_\-BEFORE\_\-ACTION}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-DO\_\-BEFORE\_\-ACTION}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-DO\_\-BEFORE\_\-ACTION}\label{syntax_8c_cc3486d769af4e4b2820346a0093cc79}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}(yytext_ptr) = yy_bp; \
+        yyleng = (size_t) (yy_cp - yy_bp); \
+        (yy_hold_char) = *yy_cp; \
+        *yy_cp = '\0'; \
+        (yy_c_buf_p) = yy_cp;
+\end{verbatim}
+\end{Code}
+\index{syntax.c@{syntax.c}!YY\_\-END\_\-OF\_\-BUFFER@{YY\_\-END\_\-OF\_\-BUFFER}}
+\index{YY\_\-END\_\-OF\_\-BUFFER@{YY\_\-END\_\-OF\_\-BUFFER}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-END\_\-OF\_\-BUFFER}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-END\_\-OF\_\-BUFFER~21}\label{syntax_8c_b2708fd42cff29ce6a0a52b91bea40d1}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-END\_\-OF\_\-BUFFER\_\-CHAR@{YY\_\-END\_\-OF\_\-BUFFER\_\-CHAR}}
+\index{YY\_\-END\_\-OF\_\-BUFFER\_\-CHAR@{YY\_\-END\_\-OF\_\-BUFFER\_\-CHAR}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-END\_\-OF\_\-BUFFER\_\-CHAR}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-END\_\-OF\_\-BUFFER\_\-CHAR~0}\label{syntax_8c_b866a64da164ed2d4d444df1ef1fc9b3}
+
+
+
+
+Referenced by yy\_\-flush\_\-buffer(), yy\_\-scan\_\-buffer(), and yy\_\-scan\_\-bytes().\index{syntax.c@{syntax.c}!YY\_\-EXIT\_\-FAILURE@{YY\_\-EXIT\_\-FAILURE}}
+\index{YY\_\-EXIT\_\-FAILURE@{YY\_\-EXIT\_\-FAILURE}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-EXIT\_\-FAILURE}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-EXIT\_\-FAILURE~2}\label{syntax_8c_e93e67b85c44f6bd31ead14a552a35c8}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-EXTRA\_\-TYPE@{YY\_\-EXTRA\_\-TYPE}}
+\index{YY\_\-EXTRA\_\-TYPE@{YY\_\-EXTRA\_\-TYPE}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-EXTRA\_\-TYPE}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-EXTRA\_\-TYPE~void $\ast$}\label{syntax_8c_26938d921de835f6183c02e54cf08828}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-FATAL\_\-ERROR@{YY\_\-FATAL\_\-ERROR}}
+\index{YY\_\-FATAL\_\-ERROR@{YY\_\-FATAL\_\-ERROR}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-FATAL\_\-ERROR}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-FATAL\_\-ERROR(msg)~yy\_\-fatal\_\-error( msg )}\label{syntax_8c_c0586b8b0b092d02f4ba7d45abe328f2}
+
+
+
+
+Referenced by yy\_\-scan\_\-buffer(), and yy\_\-scan\_\-bytes().\index{syntax.c@{syntax.c}!YY\_\-FLEX\_\-MAJOR\_\-VERSION@{YY\_\-FLEX\_\-MAJOR\_\-VERSION}}
+\index{YY\_\-FLEX\_\-MAJOR\_\-VERSION@{YY\_\-FLEX\_\-MAJOR\_\-VERSION}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-FLEX\_\-MAJOR\_\-VERSION}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-FLEX\_\-MAJOR\_\-VERSION~2}\label{syntax_8c_243ca1d30872935faf05ea5118ed6fdc}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-FLEX\_\-MINOR\_\-VERSION@{YY\_\-FLEX\_\-MINOR\_\-VERSION}}
+\index{YY\_\-FLEX\_\-MINOR\_\-VERSION@{YY\_\-FLEX\_\-MINOR\_\-VERSION}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-FLEX\_\-MINOR\_\-VERSION}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-FLEX\_\-MINOR\_\-VERSION~5}\label{syntax_8c_90f9d458829400869e47efb68a865677}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-FLEX\_\-SUBMINOR\_\-VERSION@{YY\_\-FLEX\_\-SUBMINOR\_\-VERSION}}
+\index{YY\_\-FLEX\_\-SUBMINOR\_\-VERSION@{YY\_\-FLEX\_\-SUBMINOR\_\-VERSION}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-FLEX\_\-SUBMINOR\_\-VERSION}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-FLEX\_\-SUBMINOR\_\-VERSION~35}\label{syntax_8c_c676bd06869180ea493e9b6d7c078dbb}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-FLUSH\_\-BUFFER@{YY\_\-FLUSH\_\-BUFFER}}
+\index{YY\_\-FLUSH\_\-BUFFER@{YY\_\-FLUSH\_\-BUFFER}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-FLUSH\_\-BUFFER}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-FLUSH\_\-BUFFER~yy\_\-flush\_\-buffer(YY\_\-CURRENT\_\-BUFFER )}\label{syntax_8c_c5d478d90ea9a2ecd43d579067a2e89d}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-INPUT@{YY\_\-INPUT}}
+\index{YY\_\-INPUT@{YY\_\-INPUT}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-INPUT}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-INPUT(buf, \/  result, \/  max\_\-size)}\label{syntax_8c_acfdca45fa4beb8b06172525a53c424a}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}if ( YY_CURRENT_BUFFER_LVALUE->yy_is_interactive ) \
+                { \
+                int c = '*'; \
+                size_t n; \
+                for ( n = 0; n < max_size && \
+                             (c = getc( yyin )) != EOF && c != '\n'; ++n ) \
+                        buf[n] = (char) c; \
+                if ( c == '\n' ) \
+                        buf[n++] = (char) c; \
+                if ( c == EOF && ferror( yyin ) ) \
+                        YY_FATAL_ERROR( "input in flex scanner failed" ); \
+                result = n; \
+                } \
+        else \
+                { \
+                errno=0; \
+                while ( (result = fread(buf, 1, max_size, yyin))==0 && ferror(yyin)) \
+                        { \
+                        if( errno != EINTR) \
+                                { \
+                                YY_FATAL_ERROR( "input in flex scanner failed" ); \
+                                break; \
+                                } \
+                        errno=0; \
+                        clearerr(yyin); \
+                        } \
+                }\
+\
+\end{verbatim}
+\end{Code}
+\index{syntax.c@{syntax.c}!YY\_\-INT\_\-ALIGNED@{YY\_\-INT\_\-ALIGNED}}
+\index{YY\_\-INT\_\-ALIGNED@{YY\_\-INT\_\-ALIGNED}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-INT\_\-ALIGNED}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-INT\_\-ALIGNED~short int}\label{syntax_8c_1ae16e642a197fa4948998525813c6f5}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-LESS\_\-LINENO@{YY\_\-LESS\_\-LINENO}}
+\index{YY\_\-LESS\_\-LINENO@{YY\_\-LESS\_\-LINENO}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-LESS\_\-LINENO}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-LESS\_\-LINENO(n)}\label{syntax_8c_12e5f3a76911433480bca7f4edba6119}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-MORE\_\-ADJ@{YY\_\-MORE\_\-ADJ}}
+\index{YY\_\-MORE\_\-ADJ@{YY\_\-MORE\_\-ADJ}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-MORE\_\-ADJ}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-MORE\_\-ADJ~0}\label{syntax_8c_68792d73820bc46a71d3d4e613f0b977}
+
+
+\index{syntax.c@{syntax.c}!yy\_\-new\_\-buffer@{yy\_\-new\_\-buffer}}
+\index{yy\_\-new\_\-buffer@{yy\_\-new\_\-buffer}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-new\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}\#define yy\_\-new\_\-buffer~yy\_\-create\_\-buffer}\label{syntax_8c_b7eb911e18655f2f78e63afe5a8a4a12}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-NEW\_\-FILE@{YY\_\-NEW\_\-FILE}}
+\index{YY\_\-NEW\_\-FILE@{YY\_\-NEW\_\-FILE}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-NEW\_\-FILE}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-NEW\_\-FILE~yyrestart({\bf yyin}  )}\label{syntax_8c_0406739e64fb5750cf995d2ae68ce69d}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-NO\_\-INPUT@{YY\_\-NO\_\-INPUT}}
+\index{YY\_\-NO\_\-INPUT@{YY\_\-NO\_\-INPUT}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-NO\_\-INPUT}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-NO\_\-INPUT}\label{syntax_8c_85523a0c7d95c059d251b4e9829947aa}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-NULL@{YY\_\-NULL}}
+\index{YY\_\-NULL@{YY\_\-NULL}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-NULL}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-NULL~0}\label{syntax_8c_8e0bcf8f8a5b613ea583347f8bc31cbf}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-NUM\_\-RULES@{YY\_\-NUM\_\-RULES}}
+\index{YY\_\-NUM\_\-RULES@{YY\_\-NUM\_\-RULES}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-NUM\_\-RULES}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-NUM\_\-RULES~20}\label{syntax_8c_e558785bb896e090901c2b905f6790c6}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-READ\_\-BUF\_\-SIZE@{YY\_\-READ\_\-BUF\_\-SIZE}}
+\index{YY\_\-READ\_\-BUF\_\-SIZE@{YY\_\-READ\_\-BUF\_\-SIZE}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-READ\_\-BUF\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-READ\_\-BUF\_\-SIZE~8192}\label{syntax_8c_ab1491ceccb1c95c14320b2903773a1c}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-RESTORE\_\-YY\_\-MORE\_\-OFFSET@{YY\_\-RESTORE\_\-YY\_\-MORE\_\-OFFSET}}
+\index{YY\_\-RESTORE\_\-YY\_\-MORE\_\-OFFSET@{YY\_\-RESTORE\_\-YY\_\-MORE\_\-OFFSET}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-RESTORE\_\-YY\_\-MORE\_\-OFFSET}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-RESTORE\_\-YY\_\-MORE\_\-OFFSET}\label{syntax_8c_56858d18c7eda4f53664496ef566f651}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-RULE\_\-SETUP@{YY\_\-RULE\_\-SETUP}}
+\index{YY\_\-RULE\_\-SETUP@{YY\_\-RULE\_\-SETUP}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-RULE\_\-SETUP}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-RULE\_\-SETUP~YY\_\-USER\_\-ACTION}\label{syntax_8c_690504b662e4281515bf12722df178ba}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-SC\_\-TO\_\-UI@{YY\_\-SC\_\-TO\_\-UI}}
+\index{YY\_\-SC\_\-TO\_\-UI@{YY\_\-SC\_\-TO\_\-UI}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-SC\_\-TO\_\-UI}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-SC\_\-TO\_\-UI(c)~((unsigned int) (unsigned char) c)}\label{syntax_8c_f1185350b7a92cf8aa5324c68850c8a6}
+
+
+\index{syntax.c@{syntax.c}!yy\_\-set\_\-bol@{yy\_\-set\_\-bol}}
+\index{yy\_\-set\_\-bol@{yy\_\-set\_\-bol}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-set\_\-bol}]{\setlength{\rightskip}{0pt plus 5cm}\#define yy\_\-set\_\-bol(at\_\-bol)}\label{syntax_8c_12e30d13a76a94e78010db9996d39c50}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}{ \
+        if ( ! YY_CURRENT_BUFFER ){\
+        yyensure_buffer_stack (); \
+                YY_CURRENT_BUFFER_LVALUE =    \
+            yy_create_buffer(yyin,YY_BUF_SIZE ); \
+        } \
+        YY_CURRENT_BUFFER_LVALUE->yy_at_bol = at_bol; \
+        }
+\end{verbatim}
+\end{Code}
+\index{syntax.c@{syntax.c}!yy\_\-set\_\-interactive@{yy\_\-set\_\-interactive}}
+\index{yy\_\-set\_\-interactive@{yy\_\-set\_\-interactive}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-set\_\-interactive}]{\setlength{\rightskip}{0pt plus 5cm}\#define yy\_\-set\_\-interactive(is\_\-interactive)}\label{syntax_8c_c56eb96366c08862bf0efe5d83d1fc4c}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}{ \
+        if ( ! YY_CURRENT_BUFFER ){ \
+        yyensure_buffer_stack (); \
+                YY_CURRENT_BUFFER_LVALUE =    \
+            yy_create_buffer(yyin,YY_BUF_SIZE ); \
+        } \
+        YY_CURRENT_BUFFER_LVALUE->yy_is_interactive = is_interactive; \
+        }
+\end{verbatim}
+\end{Code}
+\index{syntax.c@{syntax.c}!YY\_\-START@{YY\_\-START}}
+\index{YY\_\-START@{YY\_\-START}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-START}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-START~(((yy\_\-start) - 1) / 2)}\label{syntax_8c_8e14785f9eab7a997d659b25af9584c5}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-START\_\-STACK\_\-INCR@{YY\_\-START\_\-STACK\_\-INCR}}
+\index{YY\_\-START\_\-STACK\_\-INCR@{YY\_\-START\_\-STACK\_\-INCR}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-START\_\-STACK\_\-INCR}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-START\_\-STACK\_\-INCR~25}\label{syntax_8c_227e75c43b9e0cd41529974230be7e75}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-STATE\_\-BUF\_\-SIZE@{YY\_\-STATE\_\-BUF\_\-SIZE}}
+\index{YY\_\-STATE\_\-BUF\_\-SIZE@{YY\_\-STATE\_\-BUF\_\-SIZE}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-STATE\_\-BUF\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-STATE\_\-BUF\_\-SIZE~((YY\_\-BUF\_\-SIZE + 2) $\ast$ sizeof({\bf yy\_\-state\_\-type}))}\label{syntax_8c_c2f8b6fccdc516d96b02ac09a4dc01bd}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-STATE\_\-EOF@{YY\_\-STATE\_\-EOF}}
+\index{YY\_\-STATE\_\-EOF@{YY\_\-STATE\_\-EOF}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-STATE\_\-EOF}]{\setlength{\rightskip}{0pt plus 5cm}\#define YY\_\-STATE\_\-EOF(state)~(YY\_\-END\_\-OF\_\-BUFFER + state + 1)}\label{syntax_8c_b3077e60914fc54dcc55ecae1ce9700b}
+
+
+\index{syntax.c@{syntax.c}!yyconst@{yyconst}}
+\index{yyconst@{yyconst}!syntax.c@{syntax.c}}
+\subsubsection[{yyconst}]{\setlength{\rightskip}{0pt plus 5cm}\#define yyconst}\label{syntax_8c_a2f1a918be586b44bf08126bde2d7cc9}
+
+
+\index{syntax.c@{syntax.c}!yyless@{yyless}}
+\index{yyless@{yyless}!syntax.c@{syntax.c}}
+\subsubsection[{yyless}]{\setlength{\rightskip}{0pt plus 5cm}\#define yyless(n)}\label{syntax_8c_e65cb72d09db0abdc4b8e8c4d533ab14}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}do \
+                { \
+                /* Undo effects of setting up yytext. */ \
+        int yyless_macro_arg = (n); \
+        YY_LESS_LINENO(yyless_macro_arg);\
+                yytext[yyleng] = (yy_hold_char); \
+                (yy_c_buf_p) = yytext + yyless_macro_arg; \
+                (yy_hold_char) = *(yy_c_buf_p); \
+                *(yy_c_buf_p) = '\0'; \
+                yyleng = yyless_macro_arg; \
+                } \
+        while ( 0 )
+\end{verbatim}
+\end{Code}
+\index{syntax.c@{syntax.c}!yyless@{yyless}}
+\index{yyless@{yyless}!syntax.c@{syntax.c}}
+\subsubsection[{yyless}]{\setlength{\rightskip}{0pt plus 5cm}\#define yyless(n)}\label{syntax_8c_e65cb72d09db0abdc4b8e8c4d533ab14}
+
+
+\textbf{Value:}
+
+\begin{Code}\begin{verbatim}do \
+                { \
+                /* Undo effects of setting up yytext. */ \
+        int yyless_macro_arg = (n); \
+        YY_LESS_LINENO(yyless_macro_arg);\
+                *yy_cp = (yy_hold_char); \
+                YY_RESTORE_YY_MORE_OFFSET \
+                (yy_c_buf_p) = yy_cp = yy_bp + yyless_macro_arg - YY_MORE_ADJ; \
+                YY_DO_BEFORE_ACTION; /* set up yytext again */ \
+                } \
+        while ( 0 )
+\end{verbatim}
+\end{Code}
+\index{syntax.c@{syntax.c}!yymore@{yymore}}
+\index{yymore@{yymore}!syntax.c@{syntax.c}}
+\subsubsection[{yymore}]{\setlength{\rightskip}{0pt plus 5cm}\#define yymore()~yymore\_\-used\_\-but\_\-not\_\-detected}\label{syntax_8c_745d37b5e002b2e5f93ad42ea7b554be}
+
+
+\index{syntax.c@{syntax.c}!YYSTATE@{YYSTATE}}
+\index{YYSTATE@{YYSTATE}!syntax.c@{syntax.c}}
+\subsubsection[{YYSTATE}]{\setlength{\rightskip}{0pt plus 5cm}\#define YYSTATE~YY\_\-START}\label{syntax_8c_32b5b960944f946b192d54f672569cd9}
+
+
+\index{syntax.c@{syntax.c}!YYTABLES\_\-NAME@{YYTABLES\_\-NAME}}
+\index{YYTABLES\_\-NAME@{YYTABLES\_\-NAME}!syntax.c@{syntax.c}}
+\subsubsection[{YYTABLES\_\-NAME}]{\setlength{\rightskip}{0pt plus 5cm}\#define YYTABLES\_\-NAME~\char`\"{}yytables\char`\"{}}\label{syntax_8c_828cc83270f8f5bb1688e14dd4e28128}
+
+
+\index{syntax.c@{syntax.c}!yyterminate@{yyterminate}}
+\index{yyterminate@{yyterminate}!syntax.c@{syntax.c}}
+\subsubsection[{yyterminate}]{\setlength{\rightskip}{0pt plus 5cm}\#define yyterminate()~return YY\_\-NULL}\label{syntax_8c_c3286b18a2e91b4571b97df96a118e84}
+
+
+\index{syntax.c@{syntax.c}!yytext\_\-ptr@{yytext\_\-ptr}}
+\index{yytext\_\-ptr@{yytext\_\-ptr}!syntax.c@{syntax.c}}
+\subsubsection[{yytext\_\-ptr}]{\setlength{\rightskip}{0pt plus 5cm}\#define yytext\_\-ptr~{\bf yytext}}\label{syntax_8c_790a191a93ef4d3b8c0bb43fd7480052}
+
+
+
+
+\subsection{Typedef Documentation}
+\index{syntax.c@{syntax.c}!flex\_\-int16\_\-t@{flex\_\-int16\_\-t}}
+\index{flex\_\-int16\_\-t@{flex\_\-int16\_\-t}!syntax.c@{syntax.c}}
+\subsubsection[{flex\_\-int16\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef short int {\bf flex\_\-int16\_\-t}}\label{syntax_8c_2e73b2c75126814585525fb2e9d51159}
+
+
+\index{syntax.c@{syntax.c}!flex\_\-int32\_\-t@{flex\_\-int32\_\-t}}
+\index{flex\_\-int32\_\-t@{flex\_\-int32\_\-t}!syntax.c@{syntax.c}}
+\subsubsection[{flex\_\-int32\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef int {\bf flex\_\-int32\_\-t}}\label{syntax_8c_838ce943cf44ef7769480714fc6c3ba9}
+
+
+\index{syntax.c@{syntax.c}!flex\_\-int8\_\-t@{flex\_\-int8\_\-t}}
+\index{flex\_\-int8\_\-t@{flex\_\-int8\_\-t}!syntax.c@{syntax.c}}
+\subsubsection[{flex\_\-int8\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef signed char {\bf flex\_\-int8\_\-t}}\label{syntax_8c_7b0840dff4a2ef1702118aa12264b2a7}
+
+
+\index{syntax.c@{syntax.c}!flex\_\-uint16\_\-t@{flex\_\-uint16\_\-t}}
+\index{flex\_\-uint16\_\-t@{flex\_\-uint16\_\-t}!syntax.c@{syntax.c}}
+\subsubsection[{flex\_\-uint16\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned short int {\bf flex\_\-uint16\_\-t}}\label{syntax_8c_c50cdb9eefbef83a1cec89e3a7f6e1d2}
+
+
+\index{syntax.c@{syntax.c}!flex\_\-uint32\_\-t@{flex\_\-uint32\_\-t}}
+\index{flex\_\-uint32\_\-t@{flex\_\-uint32\_\-t}!syntax.c@{syntax.c}}
+\subsubsection[{flex\_\-uint32\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned int {\bf flex\_\-uint32\_\-t}}\label{syntax_8c_36869712de12820c73aae736762e8e88}
+
+
+\index{syntax.c@{syntax.c}!flex\_\-uint8\_\-t@{flex\_\-uint8\_\-t}}
+\index{flex\_\-uint8\_\-t@{flex\_\-uint8\_\-t}!syntax.c@{syntax.c}}
+\subsubsection[{flex\_\-uint8\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned char {\bf flex\_\-uint8\_\-t}}\label{syntax_8c_0fac5ea484f64e75dbe6eba4aa61750c}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-BUFFER\_\-STATE@{YY\_\-BUFFER\_\-STATE}}
+\index{YY\_\-BUFFER\_\-STATE@{YY\_\-BUFFER\_\-STATE}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-BUFFER\_\-STATE}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf yy\_\-buffer\_\-state}$\ast$ {\bf YY\_\-BUFFER\_\-STATE}}\label{syntax_8c_4e5bd2d129903df83f3d13effaf8f3e4}
+
+
+\index{syntax.c@{syntax.c}!YY\_\-CHAR@{YY\_\-CHAR}}
+\index{YY\_\-CHAR@{YY\_\-CHAR}!syntax.c@{syntax.c}}
+\subsubsection[{YY\_\-CHAR}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned char {\bf YY\_\-CHAR}}\label{syntax_8c_1f324b3cb0839eeb90145f0274e6946e}
+
+
+\index{syntax.c@{syntax.c}!yy\_\-size\_\-t@{yy\_\-size\_\-t}}
+\index{yy\_\-size\_\-t@{yy\_\-size\_\-t}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-size\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef size\_\-t {\bf yy\_\-size\_\-t}}\label{syntax_8c_d557845057f187eec4be07e2717d2afa}
+
+
+\index{syntax.c@{syntax.c}!yy\_\-state\_\-type@{yy\_\-state\_\-type}}
+\index{yy\_\-state\_\-type@{yy\_\-state\_\-type}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-state\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}typedef int {\bf yy\_\-state\_\-type}}\label{syntax_8c_9ba7c416f135b0f0c1f4addded4616b5}
+
+
+
+
+\subsection{Function Documentation}
+\index{syntax.c@{syntax.c}!yy\_\-create\_\-buffer@{yy\_\-create\_\-buffer}}
+\index{yy\_\-create\_\-buffer@{yy\_\-create\_\-buffer}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-create\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf YY\_\-BUFFER\_\-STATE} yy\_\-create\_\-buffer (FILE $\ast$ {\em file}, \/  int {\em size})}\label{syntax_8c_5bc6f1a5f7812508f425b08283f13ae8}
+
+
+\index{syntax.c@{syntax.c}!yy\_\-delete\_\-buffer@{yy\_\-delete\_\-buffer}}
+\index{yy\_\-delete\_\-buffer@{yy\_\-delete\_\-buffer}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-delete\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void yy\_\-delete\_\-buffer ({\bf YY\_\-BUFFER\_\-STATE} {\em b})}\label{syntax_8c_e6ac796aa6c45d433a4b89bf45e6e9dc}
+
+
+
+
+Referenced by yylex\_\-destroy(), and yypop\_\-buffer\_\-state().\index{syntax.c@{syntax.c}!yy\_\-flush\_\-buffer@{yy\_\-flush\_\-buffer}}
+\index{yy\_\-flush\_\-buffer@{yy\_\-flush\_\-buffer}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-flush\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void yy\_\-flush\_\-buffer ({\bf YY\_\-BUFFER\_\-STATE} {\em b})}\label{syntax_8c_2f59cc88e85e5455c62e4ef7ce095ea8}
+
+
+Discard all buffered characters. 
+
+On the next scan, YY\_\-INPUT will be called. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em b}]the buffer state to be flushed, usually {\tt YY\_\-CURRENT\_\-BUFFER}. \end{description}
+\end{Desc}
+
+
+References yy\_\-buffer\_\-state::yy\_\-at\_\-bol, yy\_\-buffer\_\-state::yy\_\-buf\_\-pos, YY\_\-BUFFER\_\-NEW, yy\_\-buffer\_\-state::yy\_\-buffer\_\-status, yy\_\-buffer\_\-state::yy\_\-ch\_\-buf, YY\_\-CURRENT\_\-BUFFER, YY\_\-END\_\-OF\_\-BUFFER\_\-CHAR, and yy\_\-buffer\_\-state::yy\_\-n\_\-chars.\index{syntax.c@{syntax.c}!yy\_\-scan\_\-buffer@{yy\_\-scan\_\-buffer}}
+\index{yy\_\-scan\_\-buffer@{yy\_\-scan\_\-buffer}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-scan\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf YY\_\-BUFFER\_\-STATE} yy\_\-scan\_\-buffer (char $\ast$ {\em base}, \/  {\bf yy\_\-size\_\-t} {\em size})}\label{syntax_8c_f81595b30c0da73f9034ffb511db6388}
+
+
+Setup the input buffer state to scan directly from a user-specified character buffer. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em base}]the character buffer \item[{\em size}]the size in bytes of the character buffer\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the newly allocated buffer state object. \end{Desc}
+
+
+References yy\_\-buffer\_\-state::yy\_\-at\_\-bol, yy\_\-buffer\_\-state::yy\_\-buf\_\-pos, yy\_\-buffer\_\-state::yy\_\-buf\_\-size, YY\_\-BUFFER\_\-NEW, yy\_\-buffer\_\-state::yy\_\-buffer\_\-status, yy\_\-buffer\_\-state::yy\_\-ch\_\-buf, YY\_\-END\_\-OF\_\-BUFFER\_\-CHAR, YY\_\-FATAL\_\-ERROR, yy\_\-buffer\_\-state::yy\_\-fill\_\-buffer, yy\_\-buffer\_\-state::yy\_\-input\_\-file, yy\_\-buffer\_\-state::yy\_\-is\_\-interactive, yy\_\-buffer\_\-state::yy\_\-is\_\-our\_\-buffer, yy\_\-buffer\_\-state::yy\_\-n\_\-chars, yy\_\-switch\_\-to\_\-buffer(), and yyalloc().
+
+Referenced by yy\_\-scan\_\-bytes().\index{syntax.c@{syntax.c}!yy\_\-scan\_\-bytes@{yy\_\-scan\_\-bytes}}
+\index{yy\_\-scan\_\-bytes@{yy\_\-scan\_\-bytes}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-scan\_\-bytes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf YY\_\-BUFFER\_\-STATE} yy\_\-scan\_\-bytes (yyconst char $\ast$ {\em yybytes}, \/  int {\em \_\-yybytes\_\-len})}\label{syntax_8c_e281ca25dcdcf5e0a4b9f17eeda22db6}
+
+
+Setup the input buffer state to scan the given bytes. 
+
+The next call to \doxyref{yylex()}{p.}{rules_8c_9a7bd1b3d14701eb97c03f3ef34deff1} will scan from a {\em copy\/} of {\em bytes\/}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em yybytes}]the byte buffer to scan \item[{\em \_\-yybytes\_\-len}]the number of bytes in the buffer pointed to by {\em bytes\/}.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the newly allocated buffer state object. \end{Desc}
+
+
+References YY\_\-END\_\-OF\_\-BUFFER\_\-CHAR, YY\_\-FATAL\_\-ERROR, yy\_\-buffer\_\-state::yy\_\-is\_\-our\_\-buffer, yy\_\-scan\_\-buffer(), and yyalloc().
+
+Referenced by yy\_\-scan\_\-string().\index{syntax.c@{syntax.c}!yy\_\-scan\_\-string@{yy\_\-scan\_\-string}}
+\index{yy\_\-scan\_\-string@{yy\_\-scan\_\-string}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-scan\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}{\bf YY\_\-BUFFER\_\-STATE} yy\_\-scan\_\-string (yyconst char $\ast$ {\em yystr})}\label{syntax_8c_1569a0938133ac9334728cb86777ab9f}
+
+
+Setup the input buffer state to scan a string. 
+
+The next call to \doxyref{yylex()}{p.}{rules_8c_9a7bd1b3d14701eb97c03f3ef34deff1} will scan from a {\em copy\/} of {\em str\/}. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em yystr}]a NUL-terminated string to scan\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the newly allocated buffer state object. \end{Desc}
+\begin{Desc}
+\item[Note:]If you want to scan bytes that may contain NUL values, then use \doxyref{yy\_\-scan\_\-bytes()}{p.}{syntax_8c_e281ca25dcdcf5e0a4b9f17eeda22db6} instead. \end{Desc}
+
+
+References yy\_\-scan\_\-bytes().\index{syntax.c@{syntax.c}!yy\_\-switch\_\-to\_\-buffer@{yy\_\-switch\_\-to\_\-buffer}}
+\index{yy\_\-switch\_\-to\_\-buffer@{yy\_\-switch\_\-to\_\-buffer}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-switch\_\-to\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}void yy\_\-switch\_\-to\_\-buffer ({\bf YY\_\-BUFFER\_\-STATE} {\em new\_\-buffer})}\label{syntax_8c_3098c48a74ef8fd852f7dd4b3331cbce}
+
+
+
+
+Referenced by yy\_\-scan\_\-buffer().\index{syntax.c@{syntax.c}!yyalloc@{yyalloc}}
+\index{yyalloc@{yyalloc}!syntax.c@{syntax.c}}
+\subsubsection[{yyalloc}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ {\bf yyalloc} ({\bf yy\_\-size\_\-t} {\em size})}\label{syntax_8c_7da304d8ef6c688c0835d35296fe61c2}
+
+
+
+
+Referenced by yy\_\-scan\_\-buffer(), and yy\_\-scan\_\-bytes().\index{syntax.c@{syntax.c}!yyfree@{yyfree}}
+\index{yyfree@{yyfree}!syntax.c@{syntax.c}}
+\subsubsection[{yyfree}]{\setlength{\rightskip}{0pt plus 5cm}void yyfree (void $\ast$ {\em ptr})}\label{syntax_8c_70f82d43d4797bb2a50f7678ddbfbda5}
+
+
+
+
+Referenced by yylex\_\-destroy().\index{syntax.c@{syntax.c}!yyget\_\-debug@{yyget\_\-debug}}
+\index{yyget\_\-debug@{yyget\_\-debug}!syntax.c@{syntax.c}}
+\subsubsection[{yyget\_\-debug}]{\setlength{\rightskip}{0pt plus 5cm}int yyget\_\-debug (void)}\label{syntax_8c_4d4e3dd7e6f1d795e01b61794b31ac34}
+
+
+\index{syntax.c@{syntax.c}!yyget\_\-extra@{yyget\_\-extra}}
+\index{yyget\_\-extra@{yyget\_\-extra}!syntax.c@{syntax.c}}
+\subsubsection[{yyget\_\-extra}]{\setlength{\rightskip}{0pt plus 5cm}YY\_\-EXTRA\_\-TYPE yyget\_\-extra (void)}\label{syntax_8c_da55bcd8fc1379fb4c103886195dd0e8}
+
+
+\index{syntax.c@{syntax.c}!yyget\_\-in@{yyget\_\-in}}
+\index{yyget\_\-in@{yyget\_\-in}!syntax.c@{syntax.c}}
+\subsubsection[{yyget\_\-in}]{\setlength{\rightskip}{0pt plus 5cm}FILE $\ast$ yyget\_\-in (void)}\label{syntax_8c_07cc38fe7bf6439f85eace2335cb889f}
+
+
+Get the input stream. 
+
+
+
+References yyin.\index{syntax.c@{syntax.c}!yyget\_\-leng@{yyget\_\-leng}}
+\index{yyget\_\-leng@{yyget\_\-leng}!syntax.c@{syntax.c}}
+\subsubsection[{yyget\_\-leng}]{\setlength{\rightskip}{0pt plus 5cm}int yyget\_\-leng (void)}\label{syntax_8c_81867b0419accbe7b3c2d59ffb203da9}
+
+
+Get the length of the current token. 
+
+
+
+References yyleng.\index{syntax.c@{syntax.c}!yyget\_\-lineno@{yyget\_\-lineno}}
+\index{yyget\_\-lineno@{yyget\_\-lineno}!syntax.c@{syntax.c}}
+\subsubsection[{yyget\_\-lineno}]{\setlength{\rightskip}{0pt plus 5cm}int yyget\_\-lineno (void)}\label{syntax_8c_3ac85cdab63967ff82c7534d35a42fe6}
+
+
+Get the current line number. 
+
+\index{syntax.c@{syntax.c}!yyget\_\-out@{yyget\_\-out}}
+\index{yyget\_\-out@{yyget\_\-out}!syntax.c@{syntax.c}}
+\subsubsection[{yyget\_\-out}]{\setlength{\rightskip}{0pt plus 5cm}FILE $\ast$ yyget\_\-out (void)}\label{syntax_8c_551358cae0f2c14b700b72cb3846d2c4}
+
+
+Get the output stream. 
+
+
+
+References yyout.\index{syntax.c@{syntax.c}!yyget\_\-text@{yyget\_\-text}}
+\index{yyget\_\-text@{yyget\_\-text}!syntax.c@{syntax.c}}
+\subsubsection[{yyget\_\-text}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ yyget\_\-text (void)}\label{syntax_8c_d1489f69c327c150a13bcbeeb9799266}
+
+
+Get the current token. 
+
+\index{syntax.c@{syntax.c}!yylex@{yylex}}
+\index{yylex@{yylex}!syntax.c@{syntax.c}}
+\subsubsection[{yylex}]{\setlength{\rightskip}{0pt plus 5cm}int yylex (void)}\label{syntax_8c_9a7bd1b3d14701eb97c03f3ef34deff1}
+
+
+\index{syntax.c@{syntax.c}!yylex\_\-destroy@{yylex\_\-destroy}}
+\index{yylex\_\-destroy@{yylex\_\-destroy}!syntax.c@{syntax.c}}
+\subsubsection[{yylex\_\-destroy}]{\setlength{\rightskip}{0pt plus 5cm}int yylex\_\-destroy (void)}\label{syntax_8c_b596ae57cdabfb4b298edf3dde7cdf04}
+
+
+
+
+References YY\_\-CURRENT\_\-BUFFER, YY\_\-CURRENT\_\-BUFFER\_\-LVALUE, yy\_\-delete\_\-buffer(), yyfree(), and yypop\_\-buffer\_\-state().\index{syntax.c@{syntax.c}!yypop\_\-buffer\_\-state@{yypop\_\-buffer\_\-state}}
+\index{yypop\_\-buffer\_\-state@{yypop\_\-buffer\_\-state}!syntax.c@{syntax.c}}
+\subsubsection[{yypop\_\-buffer\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}void yypop\_\-buffer\_\-state (void)}\label{syntax_8c_6201ab6be4687a1ebc3120602d05e35a}
+
+
+Removes and deletes the top of the stack, if present. 
+
+The next element becomes the new top. 
+
+References YY\_\-CURRENT\_\-BUFFER, YY\_\-CURRENT\_\-BUFFER\_\-LVALUE, and yy\_\-delete\_\-buffer().
+
+Referenced by yylex\_\-destroy().\index{syntax.c@{syntax.c}!yypush\_\-buffer\_\-state@{yypush\_\-buffer\_\-state}}
+\index{yypush\_\-buffer\_\-state@{yypush\_\-buffer\_\-state}!syntax.c@{syntax.c}}
+\subsubsection[{yypush\_\-buffer\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}void yypush\_\-buffer\_\-state ({\bf YY\_\-BUFFER\_\-STATE} {\em new\_\-buffer})}\label{syntax_8c_4bf8969e5234aef8b46cce9a67a62724}
+
+
+Pushes the new state onto the stack. 
+
+The new state becomes the current state. This function will allocate the stack if necessary. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em new\_\-buffer}]The new state. \end{description}
+\end{Desc}
+
+
+References YY\_\-CURRENT\_\-BUFFER, and YY\_\-CURRENT\_\-BUFFER\_\-LVALUE.\index{syntax.c@{syntax.c}!yyrealloc@{yyrealloc}}
+\index{yyrealloc@{yyrealloc}!syntax.c@{syntax.c}}
+\subsubsection[{yyrealloc}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ yyrealloc (void $\ast$ {\em ptr}, \/  {\bf yy\_\-size\_\-t} {\em size})}\label{syntax_8c_bcb4148bc13fe254059384c2fdf472b7}
+
+
+\index{syntax.c@{syntax.c}!yyrestart@{yyrestart}}
+\index{yyrestart@{yyrestart}!syntax.c@{syntax.c}}
+\subsubsection[{yyrestart}]{\setlength{\rightskip}{0pt plus 5cm}void yyrestart (FILE $\ast$ {\em input\_\-file})}\label{syntax_8c_b657ddef65d43cc3ab8dfc2cad0ac5b8}
+
+
+\index{syntax.c@{syntax.c}!yyset\_\-debug@{yyset\_\-debug}}
+\index{yyset\_\-debug@{yyset\_\-debug}!syntax.c@{syntax.c}}
+\subsubsection[{yyset\_\-debug}]{\setlength{\rightskip}{0pt plus 5cm}void yyset\_\-debug (int {\em debug\_\-flag})}\label{syntax_8c_c571eade4cca933e8ccdf6759c527fe7}
+
+
+\index{syntax.c@{syntax.c}!yyset\_\-extra@{yyset\_\-extra}}
+\index{yyset\_\-extra@{yyset\_\-extra}!syntax.c@{syntax.c}}
+\subsubsection[{yyset\_\-extra}]{\setlength{\rightskip}{0pt plus 5cm}void yyset\_\-extra (YY\_\-EXTRA\_\-TYPE {\em user\_\-defined})}\label{syntax_8c_2df391b304dadab17608192b116af2a1}
+
+
+\index{syntax.c@{syntax.c}!yyset\_\-in@{yyset\_\-in}}
+\index{yyset\_\-in@{yyset\_\-in}!syntax.c@{syntax.c}}
+\subsubsection[{yyset\_\-in}]{\setlength{\rightskip}{0pt plus 5cm}void yyset\_\-in (FILE $\ast$ {\em in\_\-str})}\label{syntax_8c_c698f6825e37dd98360acae6539ac464}
+
+
+Set the input stream. 
+
+This does not discard the current input buffer. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em in\_\-str}]A readable stream.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[See also:]\doxyref{yy\_\-switch\_\-to\_\-buffer}{p.}{syntax_8c_3098c48a74ef8fd852f7dd4b3331cbce} \end{Desc}
+
+
+References yyin.\index{syntax.c@{syntax.c}!yyset\_\-lineno@{yyset\_\-lineno}}
+\index{yyset\_\-lineno@{yyset\_\-lineno}!syntax.c@{syntax.c}}
+\subsubsection[{yyset\_\-lineno}]{\setlength{\rightskip}{0pt plus 5cm}void yyset\_\-lineno (int {\em line\_\-number})}\label{syntax_8c_1c7624d0fc3e3afd1b59fc43650845d0}
+
+
+Set the current line number. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em line\_\-number}]\end{description}
+\end{Desc}
+\index{syntax.c@{syntax.c}!yyset\_\-out@{yyset\_\-out}}
+\index{yyset\_\-out@{yyset\_\-out}!syntax.c@{syntax.c}}
+\subsubsection[{yyset\_\-out}]{\setlength{\rightskip}{0pt plus 5cm}void yyset\_\-out (FILE $\ast$ {\em out\_\-str})}\label{syntax_8c_8530eddd2ebe60de741148bad39517a5}
+
+
+
+
+References yyout.\index{syntax.c@{syntax.c}!yywrap@{yywrap}}
+\index{yywrap@{yywrap}!syntax.c@{syntax.c}}
+\subsubsection[{yywrap}]{\setlength{\rightskip}{0pt plus 5cm}int yywrap (void)}\label{syntax_8c_9ae7dd87893ed6cebc02d0d5f84c2ede}
+
+
+
+
+should return 0 if additional input has to be parsed, 1 if the end has been reached 
+
+\subsection{Variable Documentation}
+\index{syntax.c@{syntax.c}!yy\_\-flex\_\-debug@{yy\_\-flex\_\-debug}}
+\index{yy\_\-flex\_\-debug@{yy\_\-flex\_\-debug}!syntax.c@{syntax.c}}
+\subsubsection[{yy\_\-flex\_\-debug}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf yy\_\-flex\_\-debug} = 0}\label{syntax_8c_7411c3bab9eca1afee90113c2d22da37}
+
+
+\index{syntax.c@{syntax.c}!yyin@{yyin}}
+\index{yyin@{yyin}!syntax.c@{syntax.c}}
+\subsubsection[{yyin}]{\setlength{\rightskip}{0pt plus 5cm}FILE$\ast$ {\bf yyin} = (FILE $\ast$) 0}\label{syntax_8c_46af646807e0797e72b6e8945e7ea88b}
+
+
+\index{syntax.c@{syntax.c}!yyleng@{yyleng}}
+\index{yyleng@{yyleng}!syntax.c@{syntax.c}}
+\subsubsection[{yyleng}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf yyleng}}\label{syntax_8c_1b5865350b5ca5c1d69f429c2a652953}
+
+
+
+
+Referenced by yyget\_\-leng().\index{syntax.c@{syntax.c}!yylineno@{yylineno}}
+\index{yylineno@{yylineno}!syntax.c@{syntax.c}}
+\subsubsection[{yylineno}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf yylineno} = 1}\label{syntax_8c_5e36364965360da7b7cdfc2188e0af84}
+
+
+\index{syntax.c@{syntax.c}!yyout@{yyout}}
+\index{yyout@{yyout}!syntax.c@{syntax.c}}
+\subsubsection[{yyout}]{\setlength{\rightskip}{0pt plus 5cm}FILE $\ast$ {\bf yyout} = (FILE $\ast$) 0}\label{syntax_8c_296847b42b0baa62e2af36cb79f3c0eb}
+
+
+
+
+Referenced by yyget\_\-out(), and yyset\_\-out().\index{syntax.c@{syntax.c}!yytext@{yytext}}
+\index{yytext@{yytext}!syntax.c@{syntax.c}}
+\subsubsection[{yytext}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf yytext}}\label{syntax_8c_d9264b77d56b6971f29739e2bda77f51}
+
+

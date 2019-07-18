@@ -1,0 +1,273 @@
+\section{conn\_\-struct Struct Reference}
+\label{structconn__struct}\index{conn\_\-struct@{conn\_\-struct}}
+The meta informations of a connection stored in the main Binary Tree.  
+
+
+{\tt \#include $<$types.h$>$}
+
+\subsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+char $\ast$ {\bf key}
+\item 
+char $\ast$ {\bf key\_\-ext}
+\item 
+char $\ast$ {\bf key\_\-lih}
+\item 
+char $\ast$ {\bf key\_\-hih}
+\item 
+int {\bf protocol}
+\item 
+GString $\ast$ {\bf start\_\-timestamp}
+\item 
+gdouble {\bf start\_\-microtime}
+\item 
+gint {\bf access\_\-time}
+\item 
+int {\bf state}
+\item 
+unsigned {\bf id}
+\item 
+int {\bf replay\_\-id}
+\item 
+int {\bf count\_\-data\_\-pkt\_\-from\_\-lih}
+\item 
+int {\bf count\_\-data\_\-pkt\_\-from\_\-intruder}
+\item 
+GSList $\ast$ {\bf BUFFER}
+\item 
+struct {\bf expected\_\-data\_\-struct} {\bf expected\_\-data}
+\item 
+GStaticRWLock {\bf lock}
+\item 
+struct {\bf hih\_\-struct} {\bf hih}
+\item 
+struct {\bf target} $\ast$ {\bf target}
+\item 
+gdouble {\bf stat\_\-time} [8]
+\item 
+int {\bf stat\_\-packet} [8]
+\item 
+int {\bf stat\_\-byte} [8]
+\item 
+int {\bf total\_\-packet}
+\item 
+int {\bf total\_\-byte}
+\item 
+int {\bf decision\_\-packet\_\-id}
+\item 
+GString $\ast$ {\bf decision\_\-rule}
+\begin{CompactList}\small\item\em char$\ast$ decision\_\-rule; \item\end{CompactList}\item 
+int {\bf replay\_\-problem}
+\item 
+int {\bf invalid\_\-problem}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+The meta informations of a connection stored in the main Binary Tree. 
+
+\doxyref{conn\_\-struct}{p.}{structconn__struct} \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em key,the}]tuple (also the b-tree key) \item[{\em key\_\-ext,the}]IP and Port of the external attacker \item[{\em key\_\-lih,the}]IP and Port of the Low Interaction Honeypot \item[{\em key\_\-hih,the}]IP and Port of the High Interaction Honeypot \item[{\em protocol,the}]l4 protocol number (6 for TCP, 17 for UDP, ...) \item[{\em access\_\-time,the}]last access time \item[{\em status,the}]status of the connection: (1) for INIT, (2) for DECISION, (3) for REPLAY and (4) for FORWARD. (0) can mean INVALID \item[{\em count\_\-data\_\-pkt\_\-from\_\-lih,nb}]of \doxyref{packet}{p.}{structpacket} replied from the lih to the intruder \item[{\em count\_\-data\_\-pkt\_\-from\_\-intruder,nb}]of \doxyref{packet}{p.}{structpacket} sent from the intruder to the LIH \item[{\em BUFFER,pointer}]to the beginning of the list of the recorded packets (stored through \doxyref{pkt\_\-struct}{p.}{structpkt__struct}) \item[{\em lock,set}]to 1 when a \doxyref{packet}{p.}{structpacket} is currently processed for this connection \item[{\em hih,hih}]info \end{description}
+\end{Desc}
+
+
+\subsection{Field Documentation}
+\index{conn\_\-struct@{conn\_\-struct}!access\_\-time@{access\_\-time}}
+\index{access\_\-time@{access\_\-time}!conn_struct@{conn\_\-struct}}
+\subsubsection[{access\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}gint {\bf conn\_\-struct::access\_\-time}}\label{structconn__struct_fb8febabee6bbefb239f6357575841f1}
+
+
+
+
+Referenced by expire\_\-conn(), and init\_\-conn().\index{conn\_\-struct@{conn\_\-struct}!BUFFER@{BUFFER}}
+\index{BUFFER@{BUFFER}!conn_struct@{conn\_\-struct}}
+\subsubsection[{BUFFER}]{\setlength{\rightskip}{0pt plus 5cm}GSList$\ast$ {\bf conn\_\-struct::BUFFER}}\label{structconn__struct_ad2f9e86544f332f9f8e8ecf0f9c2b83}
+
+
+
+
+Referenced by expire\_\-conn(), init\_\-conn(), replay(), reset\_\-lih(), setup\_\-redirection(), and store\_\-pkt().\index{conn\_\-struct@{conn\_\-struct}!count\_\-data\_\-pkt\_\-from\_\-intruder@{count\_\-data\_\-pkt\_\-from\_\-intruder}}
+\index{count\_\-data\_\-pkt\_\-from\_\-intruder@{count\_\-data\_\-pkt\_\-from\_\-intruder}!conn_struct@{conn\_\-struct}}
+\subsubsection[{count\_\-data\_\-pkt\_\-from\_\-intruder}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf conn\_\-struct::count\_\-data\_\-pkt\_\-from\_\-intruder}}\label{structconn__struct_6ece623f2cea37b9654968a6da64684c}
+
+
+
+
+Referenced by init\_\-conn(), mod\_\-counter(), and mod\_\-hash().\index{conn\_\-struct@{conn\_\-struct}!count\_\-data\_\-pkt\_\-from\_\-lih@{count\_\-data\_\-pkt\_\-from\_\-lih}}
+\index{count\_\-data\_\-pkt\_\-from\_\-lih@{count\_\-data\_\-pkt\_\-from\_\-lih}!conn_struct@{conn\_\-struct}}
+\subsubsection[{count\_\-data\_\-pkt\_\-from\_\-lih}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf conn\_\-struct::count\_\-data\_\-pkt\_\-from\_\-lih}}\label{structconn__struct_9661baddafdcd6ad7bfe0afc1f48bfc4}
+
+
+
+
+Referenced by init\_\-conn().\index{conn\_\-struct@{conn\_\-struct}!decision\_\-packet\_\-id@{decision\_\-packet\_\-id}}
+\index{decision\_\-packet\_\-id@{decision\_\-packet\_\-id}!conn_struct@{conn\_\-struct}}
+\subsubsection[{decision\_\-packet\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf conn\_\-struct::decision\_\-packet\_\-id}}\label{structconn__struct_62a023b80431d029e12c202573c022b9}
+
+
+
+
+Referenced by DE\_\-process\_\-packet().\index{conn\_\-struct@{conn\_\-struct}!decision\_\-rule@{decision\_\-rule}}
+\index{decision\_\-rule@{decision\_\-rule}!conn_struct@{conn\_\-struct}}
+\subsubsection[{decision\_\-rule}]{\setlength{\rightskip}{0pt plus 5cm}GString$\ast$ {\bf conn\_\-struct::decision\_\-rule}}\label{structconn__struct_b5ec4d1b85e2d79cf88062777b744c39}
+
+
+char$\ast$ decision\_\-rule; 
+
+
+
+Referenced by connection\_\-log(), decide(), expire\_\-conn(), and init\_\-conn().\index{conn\_\-struct@{conn\_\-struct}!expected\_\-data@{expected\_\-data}}
+\index{expected\_\-data@{expected\_\-data}!conn_struct@{conn\_\-struct}}
+\subsubsection[{expected\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf expected\_\-data\_\-struct} {\bf conn\_\-struct::expected\_\-data}\hspace{0.3cm}{\tt  [read]}}\label{structconn__struct_03d8a8f4a7899b687034e88f33728ed5}
+
+
+
+
+Referenced by define\_\-expected\_\-data(), and test\_\-expected().\index{conn\_\-struct@{conn\_\-struct}!hih@{hih}}
+\index{hih@{hih}!conn_struct@{conn\_\-struct}}
+\subsubsection[{hih}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf hih\_\-struct} {\bf conn\_\-struct::hih}\hspace{0.3cm}{\tt  [read]}}\label{structconn__struct_232cea36a68b07526039eb841bc0f8ba}
+
+
+
+
+Referenced by define\_\-expected\_\-data(), forward(), init\_\-conn(), and setup\_\-redirection().\index{conn\_\-struct@{conn\_\-struct}!id@{id}}
+\index{id@{id}!conn_struct@{conn\_\-struct}}
+\subsubsection[{id}]{\setlength{\rightskip}{0pt plus 5cm}unsigned {\bf conn\_\-struct::id}}\label{structconn__struct_0bc4aea24bdabb25c2a513b2c5eb8196}
+
+
+
+
+Referenced by connection\_\-log(), DE\_\-process\_\-packet(), DE\_\-push\_\-pkt(), decide(), expire\_\-conn(), forward(), init\_\-conn(), mod\_\-control(), mod\_\-counter(), mod\_\-hash(), mod\_\-random(), mod\_\-source(), mod\_\-yesno(), replay(), reset\_\-lih(), run\_\-module(), setup\_\-redirection(), store\_\-pkt(), switch\_\-state(), and test\_\-expected().\index{conn\_\-struct@{conn\_\-struct}!invalid\_\-problem@{invalid\_\-problem}}
+\index{invalid\_\-problem@{invalid\_\-problem}!conn_struct@{conn\_\-struct}}
+\subsubsection[{invalid\_\-problem}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf conn\_\-struct::invalid\_\-problem}}\label{structconn__struct_f98faa20c6c157f8a7b395583817ae55}
+
+
+
+
+Referenced by init\_\-conn().\index{conn\_\-struct@{conn\_\-struct}!key@{key}}
+\index{key@{key}!conn_struct@{conn\_\-struct}}
+\subsubsection[{key}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf conn\_\-struct::key}}\label{structconn__struct_834cfb13d41be0147b2b57b4a3902616}
+
+
+
+
+Referenced by connection\_\-log(), DE\_\-process\_\-packet(), init\_\-conn(), setup\_\-redirection(), and store\_\-pkt().\index{conn\_\-struct@{conn\_\-struct}!key\_\-ext@{key\_\-ext}}
+\index{key\_\-ext@{key\_\-ext}!conn_struct@{conn\_\-struct}}
+\subsubsection[{key\_\-ext}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf conn\_\-struct::key\_\-ext}}\label{structconn__struct_acda4f72a8e63ec9185cb5187cfeb883}
+
+
+
+
+Referenced by expire\_\-conn(), init\_\-conn(), and setup\_\-redirection().\index{conn\_\-struct@{conn\_\-struct}!key\_\-hih@{key\_\-hih}}
+\index{key\_\-hih@{key\_\-hih}!conn_struct@{conn\_\-struct}}
+\subsubsection[{key\_\-hih}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf conn\_\-struct::key\_\-hih}}\label{structconn__struct_599d43afef0eb1d468e2bbc330369228}
+
+
+
+
+Referenced by init\_\-conn().\index{conn\_\-struct@{conn\_\-struct}!key\_\-lih@{key\_\-lih}}
+\index{key\_\-lih@{key\_\-lih}!conn_struct@{conn\_\-struct}}
+\subsubsection[{key\_\-lih}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf conn\_\-struct::key\_\-lih}}\label{structconn__struct_49070804763fa74efda9ec5d53124a00}
+
+
+
+
+Referenced by expire\_\-conn(), init\_\-conn(), and setup\_\-redirection().\index{conn\_\-struct@{conn\_\-struct}!lock@{lock}}
+\index{lock@{lock}!conn_struct@{conn\_\-struct}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}GStaticRWLock {\bf conn\_\-struct::lock}}\label{structconn__struct_f2c87196c432409feb284c8bfd59ceda}
+
+
+
+
+Referenced by define\_\-expected\_\-data(), expire\_\-conn(), and init\_\-conn().\index{conn\_\-struct@{conn\_\-struct}!protocol@{protocol}}
+\index{protocol@{protocol}!conn_struct@{conn\_\-struct}}
+\subsubsection[{protocol}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf conn\_\-struct::protocol}}\label{structconn__struct_0abe0442b0cb4e31586f1b5edcd27774}
+
+
+
+
+Referenced by connection\_\-log(), and init\_\-conn().\index{conn\_\-struct@{conn\_\-struct}!replay\_\-id@{replay\_\-id}}
+\index{replay\_\-id@{replay\_\-id}!conn_struct@{conn\_\-struct}}
+\subsubsection[{replay\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf conn\_\-struct::replay\_\-id}}\label{structconn__struct_cf09130f5d972c57ab90ff1364902570}
+
+
+
+
+Referenced by init\_\-conn(), replay(), and setup\_\-redirection().\index{conn\_\-struct@{conn\_\-struct}!replay\_\-problem@{replay\_\-problem}}
+\index{replay\_\-problem@{replay\_\-problem}!conn_struct@{conn\_\-struct}}
+\subsubsection[{replay\_\-problem}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf conn\_\-struct::replay\_\-problem}}\label{structconn__struct_6be65e7b1100fc2d9ce155c5717eb600}
+
+
+
+
+Referenced by connection\_\-log(), init\_\-conn(), and test\_\-expected().\index{conn\_\-struct@{conn\_\-struct}!start\_\-microtime@{start\_\-microtime}}
+\index{start\_\-microtime@{start\_\-microtime}!conn_struct@{conn\_\-struct}}
+\subsubsection[{start\_\-microtime}]{\setlength{\rightskip}{0pt plus 5cm}gdouble {\bf conn\_\-struct::start\_\-microtime}}\label{structconn__struct_b2f1ef0609454b9e28da020ea08eef82}
+
+
+
+
+Referenced by connection\_\-log(), and init\_\-conn().\index{conn\_\-struct@{conn\_\-struct}!start\_\-timestamp@{start\_\-timestamp}}
+\index{start\_\-timestamp@{start\_\-timestamp}!conn_struct@{conn\_\-struct}}
+\subsubsection[{start\_\-timestamp}]{\setlength{\rightskip}{0pt plus 5cm}GString$\ast$ {\bf conn\_\-struct::start\_\-timestamp}}\label{structconn__struct_8a561a6015fa4836591b12cdb2fb6a55}
+
+
+
+
+Referenced by connection\_\-log(), and init\_\-conn().\index{conn\_\-struct@{conn\_\-struct}!stat\_\-byte@{stat\_\-byte}}
+\index{stat\_\-byte@{stat\_\-byte}!conn_struct@{conn\_\-struct}}
+\subsubsection[{stat\_\-byte}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf conn\_\-struct::stat\_\-byte}[8]}\label{structconn__struct_aa184f58642b10b0ae3aae1decb816d4}
+
+
+
+
+Referenced by connection\_\-log(), and init\_\-conn().\index{conn\_\-struct@{conn\_\-struct}!stat\_\-packet@{stat\_\-packet}}
+\index{stat\_\-packet@{stat\_\-packet}!conn_struct@{conn\_\-struct}}
+\subsubsection[{stat\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf conn\_\-struct::stat\_\-packet}[8]}\label{structconn__struct_7d855939c2d293a4205550d5e5e5ae96}
+
+
+
+
+Referenced by connection\_\-log(), and init\_\-conn().\index{conn\_\-struct@{conn\_\-struct}!stat\_\-time@{stat\_\-time}}
+\index{stat\_\-time@{stat\_\-time}!conn_struct@{conn\_\-struct}}
+\subsubsection[{stat\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}gdouble {\bf conn\_\-struct::stat\_\-time}[8]}\label{structconn__struct_c23bd098074b63b21b59fd2a48e0070b}
+
+
+
+
+Referenced by connection\_\-log(), init\_\-conn(), and setup\_\-redirection().\index{conn\_\-struct@{conn\_\-struct}!state@{state}}
+\index{state@{state}!conn_struct@{conn\_\-struct}}
+\subsubsection[{state}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf conn\_\-struct::state}}\label{structconn__struct_31586e2740a974795312dd85dbbf8216}
+
+
+
+
+Referenced by connection\_\-log(), DE\_\-process\_\-packet(), expire\_\-conn(), init\_\-conn(), and switch\_\-state().\index{conn\_\-struct@{conn\_\-struct}!target@{target}}
+\index{target@{target}!conn_struct@{conn\_\-struct}}
+\subsubsection[{target}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf target}$\ast$ {\bf conn\_\-struct::target}\hspace{0.3cm}{\tt  [read]}}\label{structconn__struct_ce404d0f4aa1ec4437220f7f3bfaca19}
+
+
+
+
+Referenced by DE\_\-process\_\-packet(), init\_\-conn(), and setup\_\-redirection().\index{conn\_\-struct@{conn\_\-struct}!total\_\-byte@{total\_\-byte}}
+\index{total\_\-byte@{total\_\-byte}!conn_struct@{conn\_\-struct}}
+\subsubsection[{total\_\-byte}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf conn\_\-struct::total\_\-byte}}\label{structconn__struct_2efc6942d17b64eb7afb445ba2bcda47}
+
+
+
+
+Referenced by connection\_\-log(), and init\_\-conn().\index{conn\_\-struct@{conn\_\-struct}!total\_\-packet@{total\_\-packet}}
+\index{total\_\-packet@{total\_\-packet}!conn_struct@{conn\_\-struct}}
+\subsubsection[{total\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf conn\_\-struct::total\_\-packet}}\label{structconn__struct_94dcb124e72116fda69de2d4c2a19d09}
+
+
+
+
+Referenced by connection\_\-log(), DE\_\-process\_\-packet(), and init\_\-conn().
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf types.h}\end{CompactItemize}

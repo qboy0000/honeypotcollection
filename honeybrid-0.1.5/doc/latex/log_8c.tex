@@ -1,0 +1,169 @@
+\section{log.c File Reference}
+\label{log_8c}\index{log.c@{log.c}}
+Log function for honeybrid.  
+
+
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$syslog.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$fcntl.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$unistd.h$>$}\par
+{\tt \#include $<$glib.h$>$}\par
+{\tt \#include $<$time.h$>$}\par
+{\tt \#include $<$sys/time.h$>$}\par
+{\tt \#include $<$err.h$>$}\par
+{\tt \#include \char`\"{}tables.h\char`\"{}}\par
+{\tt \#include \char`\"{}log.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+char $\ast$ {\bf log\_\-header} (const char $\ast$function\_\-name, int id)
+\begin{CompactList}\small\item\em return a header for debug log messages, including the timestamp and the name of the function \item\end{CompactList}\item 
+char $\ast$ {\bf now} (void)
+\begin{CompactList}\small\item\em return the current timestamp as a string \item\end{CompactList}\item 
+int {\bf honeylog} (char $\ast$sdata, char $\ast$ddata, int level, unsigned id)
+\begin{CompactList}\small\item\em add a log entry in the singly linked list \item\end{CompactList}\item 
+int {\bf open\_\-debug\_\-log} (void)
+\item 
+int {\bf close\_\-connection\_\-log} (void)
+\item 
+void {\bf open\_\-connection\_\-log} (void)
+\begin{CompactList}\small\item\em open the file honeybrid.log \item\end{CompactList}\item 
+void {\bf rotate\_\-connection\_\-log} (int signal\_\-nb)
+\begin{CompactList}\small\item\em rotate the file honeybrid.log every hour \item\end{CompactList}\item 
+void {\bf connection\_\-log} (struct {\bf conn\_\-struct} $\ast$conn)
+\begin{CompactList}\small\item\em compile a single line of final statistics for every connection handled by honeybrid: Basic flow information: start timestamp, source IP, source Port, destination IP, destination Port, protocol, cumulative flags if TCP INVALID information: duration, reason, \doxyref{packet}{p.}{structpacket}, byte INIT information: duration, \doxyref{packet}{p.}{structpacket}, byte DECIDE information: duration, rule, \doxyref{packet}{p.}{structpacket} id, high interaction ip and port REPLAY information: duration, problem, \doxyref{packet}{p.}{structpacket}, byte FORWARD information: duration, \doxyref{packet}{p.}{structpacket}, byte \item\end{CompactList}\end{CompactItemize}
+\subsection*{Variables}
+\begin{CompactItemize}
+\item 
+unsigned long {\bf last\_\-rotation}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Log function for honeybrid. 
+
+\begin{Desc}
+\item[Author:]Julien Vehent, 2007 
+
+Thomas Coquelin, 2008 \end{Desc}
+
+
+\subsection{Function Documentation}
+\index{log.c@{log.c}!close\_\-connection\_\-log@{close\_\-connection\_\-log}}
+\index{close\_\-connection\_\-log@{close\_\-connection\_\-log}!log.c@{log.c}}
+\subsubsection[{close\_\-connection\_\-log}]{\setlength{\rightskip}{0pt plus 5cm}int close\_\-connection\_\-log (void)}\label{log_8c_1ae92e71479564f8439adc5636c15212}
+
+
+
+
+Referenced by close\_\-conn\_\-tree().\index{log.c@{log.c}!connection\_\-log@{connection\_\-log}}
+\index{connection\_\-log@{connection\_\-log}!log.c@{log.c}}
+\subsubsection[{connection\_\-log}]{\setlength{\rightskip}{0pt plus 5cm}void connection\_\-log (struct {\bf conn\_\-struct} $\ast$ {\em conn})}\label{log_8c_119d17dcedbaee5d6a932e7f0b08f3e9}
+
+
+compile a single line of final statistics for every connection handled by honeybrid: Basic flow information: start timestamp, source IP, source Port, destination IP, destination Port, protocol, cumulative flags if TCP INVALID information: duration, reason, \doxyref{packet}{p.}{structpacket}, byte INIT information: duration, \doxyref{packet}{p.}{structpacket}, byte DECIDE information: duration, rule, \doxyref{packet}{p.}{structpacket} id, high interaction ip and port REPLAY information: duration, problem, \doxyref{packet}{p.}{structpacket}, byte FORWARD information: duration, \doxyref{packet}{p.}{structpacket}, byte 
+
+connection\_\-stat 
+
+if log rotation is configured, then we call \doxyref{rotate\_\-connection\_\-log()}{p.}{log_8c_25996e403c2f80833b1b8d701826480f}
+
+Output according to the format configured
+
+g\_\-printerr(\char`\"{}\%s\char`\"{},logbuf);
+
+ROBIN - 20090326-1007 according to valgrind output 
+
+References config, CONTROL, DECISION, conn\_\-struct::decision\_\-rule, DROP, FORWARD, conn\_\-struct::id, INIT, conn\_\-struct::key, conn\_\-struct::protocol, PROXY, REPLAY, conn\_\-struct::replay\_\-problem, rotate\_\-connection\_\-log(), conn\_\-struct::start\_\-microtime, conn\_\-struct::start\_\-timestamp, conn\_\-struct::stat\_\-byte, conn\_\-struct::stat\_\-packet, conn\_\-struct::stat\_\-time, conn\_\-struct::state, conn\_\-struct::total\_\-byte, and conn\_\-struct::total\_\-packet.
+
+Referenced by expire\_\-conn().\index{log.c@{log.c}!honeylog@{honeylog}}
+\index{honeylog@{honeylog}!log.c@{log.c}}
+\subsubsection[{honeylog}]{\setlength{\rightskip}{0pt plus 5cm}int honeylog (char $\ast$ {\em sdata}, \/  char $\ast$ {\em ddata}, \/  int {\em level}, \/  unsigned {\em id})}\label{log_8c_0fd055c418f71f29cf0f2b53a051d48f}
+
+
+add a log entry in the singly linked list 
+
+honeylog
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em static}]string pointer \item[\mbox{$\leftarrow$} {\em dynamicaly}]allocated string pointer \item[\mbox{$\leftarrow$} {\em log}]level of event \item[\mbox{$\leftarrow$} {\em connection}]id\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]OK when done, NOK on failure \end{Desc}
+
+
+filter events upon their log level 
+
+References LOG\_\-LEVEL, NOK, and OK.\index{log.c@{log.c}!log\_\-header@{log\_\-header}}
+\index{log\_\-header@{log\_\-header}!log.c@{log.c}}
+\subsubsection[{log\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ log\_\-header (const char $\ast$ {\em function\_\-name}, \/  int {\em id})}\label{log_8c_8a84b75ac92d0036fd17d2c2705cfcc4}
+
+
+return a header for debug log messages, including the timestamp and the name of the function 
+
+log\_\-header 
+
+References now().\index{log.c@{log.c}!now@{now}}
+\index{now@{now}!log.c@{log.c}}
+\subsubsection[{now}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ now (void)}\label{log_8c_525a63699478a5fa4357ef2d774a2b24}
+
+
+return the current timestamp as a string 
+
+now 
+
+References now().
+
+Referenced by log\_\-header(), mod\_\-control(), mod\_\-hash(), mod\_\-source(), and now().\index{log.c@{log.c}!open\_\-connection\_\-log@{open\_\-connection\_\-log}}
+\index{open\_\-connection\_\-log@{open\_\-connection\_\-log}!log.c@{log.c}}
+\subsubsection[{open\_\-connection\_\-log}]{\setlength{\rightskip}{0pt plus 5cm}void open\_\-connection\_\-log (void)}\label{log_8c_4a1770ab07387e6e7c9bc7b7d188e336}
+
+
+open the file honeybrid.log 
+
+open log file 
+
+Enable line buffer 
+
+References config, err(), errx(), and warnx().
+
+Referenced by main().\index{log.c@{log.c}!open\_\-debug\_\-log@{open\_\-debug\_\-log}}
+\index{open\_\-debug\_\-log@{open\_\-debug\_\-log}!log.c@{log.c}}
+\subsubsection[{open\_\-debug\_\-log}]{\setlength{\rightskip}{0pt plus 5cm}int open\_\-debug\_\-log (void)}\label{log_8c_7a776449460252a9e0bdc4b407f3709a}
+
+
+
+
+References config, err(), errx(), and warnx().
+
+Referenced by main().\index{log.c@{log.c}!rotate\_\-connection\_\-log@{rotate\_\-connection\_\-log}}
+\index{rotate\_\-connection\_\-log@{rotate\_\-connection\_\-log}!log.c@{log.c}}
+\subsubsection[{rotate\_\-connection\_\-log}]{\setlength{\rightskip}{0pt plus 5cm}void rotate\_\-connection\_\-log (int {\em signal\_\-nb})}\label{log_8c_25996e403c2f80833b1b8d701826480f}
+
+
+rotate the file honeybrid.log every hour 
+
+rotate\_\-connection\_\-log 
+
+logfile\_\-name = g\_\-new0(char, 256); logfile\_\-name = g\_\-hash\_\-table\_\-lookup(config,\char`\"{}log\_\-file\char`\"{}); new\_\-name = malloc(sizeof(logfile\_\-name) + 64); sprintf(new\_\-name,\char`\"{}\%s.\%d\%02d\%02d\_\-\%02d\%02d\char`\"{}, logfile\_\-name, (1900+tm-$>$tm\_\-year), (1+tm-$>$tm\_\-mon), tm-$>$tm\_\-mday, tm-$>$tm\_\-hour, tm-$>$tm\_\-min);
+
+g\_\-free(logfile\_\-name); free(new\_\-name);
+
+The last step is to update last\_\-rotation
+
+References config, L, last\_\-rotation, LOG\_\-ALL, LOG\_\-HIGH, LOG\_\-LOG, and LOG\_\-MED.
+
+Referenced by connection\_\-log(), and init\_\-signal().
+
+\subsection{Variable Documentation}
+\index{log.c@{log.c}!last\_\-rotation@{last\_\-rotation}}
+\index{last\_\-rotation@{last\_\-rotation}!log.c@{log.c}}
+\subsubsection[{last\_\-rotation}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long {\bf last\_\-rotation}}\label{log_8c_46205d36f39d112b58f9efd0a16c29a1}
+
+
+
+
+Referenced by rotate\_\-connection\_\-log().

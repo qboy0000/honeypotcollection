@@ -1,0 +1,162 @@
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/honeybrid.c:106: Warning: explicit link request to 'include' could not be resolved
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/decision_engine.c:43: Warning: argument 'a' of command @param is not found in the argument list of DE_build_subtree(const gchar *expr)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/honeybrid.c:106: Warning: explicit link request to 'include' could not be resolved
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/honeybrid.c:72: Warning: Found unknown command `\Author'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/honeybrid.c:73: Warning: Found unknown command `\Author'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/honeybrid.c:74: Warning: Found unknown command `\Author'
+<init_variables>:1: Warning: argument 'GCompareDataFunc' of command @param is not found in the argument list of init_variables()
+<init_variables>:1: Warning: argument 'GDestroyNotify' of command @param is not found in the argument list of init_variables()
+<init_variables>:1: Warning: argument 'GDestroyNotify' of command @param is not found in the argument list of init_variables()
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/honeybrid.c:1002: Warning: argument 'number' of command @param is not found in the argument list of main(int argc, char *argv[])
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/honeybrid.c:1002: Warning: argument 'table' of command @param is not found in the argument list of main(int argc, char *argv[])
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/honeybrid.c:106: Warning: explicit link request to 'include' could not be resolved
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/log.c:88: Warning: argument 'static' of command @param is not found in the argument list of honeylog(char *sdata, char *ddata, int level, unsigned id)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/log.c:88: Warning: argument 'dynamicaly' of command @param is not found in the argument list of honeylog(char *sdata, char *ddata, int level, unsigned id)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/log.c:88: Warning: argument 'log' of command @param is not found in the argument list of honeylog(char *sdata, char *ddata, int level, unsigned id)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/log.c:88: Warning: argument 'connection' of command @param is not found in the argument list of honeylog(char *sdata, char *ddata, int level, unsigned id)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/log.c:88: Warning: The following parameters of honeylog(char *sdata, char *ddata, int level, unsigned id) are not documented:
+  parameter 'sdata'
+  parameter 'ddata'
+  parameter 'level'
+  parameter 'id'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/log.c:88: Warning: argument 'static' of command @param is not found in the argument list of honeylog(char *sdata, char *ddata, int level, unsigned id)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/log.c:88: Warning: argument 'dynamicaly' of command @param is not found in the argument list of honeylog(char *sdata, char *ddata, int level, unsigned id)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/log.c:88: Warning: argument 'log' of command @param is not found in the argument list of honeylog(char *sdata, char *ddata, int level, unsigned id)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/log.c:88: Warning: argument 'connection' of command @param is not found in the argument list of honeylog(char *sdata, char *ddata, int level, unsigned id)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/log.c:88: Warning: The following parameters of honeylog(char *sdata, char *ddata, int level, unsigned id) are not documented:
+  parameter 'sdata'
+  parameter 'ddata'
+  parameter 'level'
+  parameter 'id'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_control.c:38: Warning: argument 'pkts' of command @param is not found in the argument list of mod_control(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_control.c:38: Warning: argument 'struct' of command @param is not found in the argument list of mod_control(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_control.c:38: Warning: argument 'set' of command @param is not found in the argument list of mod_control(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_control.c:38: Warning: The following parameters of mod_control(struct mod_args args) are not documented:
+  parameter 'args'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_counter.c:40: Warning: argument 'struct' of command @param is not found in the argument list of mod_counter(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_counter.c:40: Warning: argument 'set' of command @param is not found in the argument list of mod_counter(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_hash.c:85: Warning: argument 'struct' of command @param is not found in the argument list of mod_hash(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_hash.c:85: Warning: argument 'user_data' of command @param is not found in the argument list of mod_hash(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_hash.c:85: Warning: argument 'not' of command @param is not found in the argument list of mod_hash(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_hash.c:85: Warning: argument 'set' of command @param is not found in the argument list of mod_hash(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_random.c:44: Warning: argument 'struct' of command @param is not found in the argument list of mod_random(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_source.c:40: Warning: argument 'struct' of command @param is not found in the argument list of mod_source(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_source.c:40: Warning: argument 'user_data' of command @param is not found in the argument list of mod_source(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_source.c:40: Warning: argument 'not' of command @param is not found in the argument list of mod_source(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_source.c:40: Warning: argument 'set' of command @param is not found in the argument list of mod_source(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_yesno.c:38: Warning: argument 'struct' of command @param is not found in the argument list of mod_yesno(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_yesno.c:38: Warning: argument 'set' of command @param is not found in the argument list of mod_yesno(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_control.c:38: Warning: argument 'pkts' of command @param is not found in the argument list of mod_control(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_control.c:38: Warning: argument 'struct' of command @param is not found in the argument list of mod_control(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_control.c:38: Warning: argument 'set' of command @param is not found in the argument list of mod_control(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_control.c:38: Warning: The following parameters of mod_control(struct mod_args args) are not documented:
+  parameter 'args'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_counter.c:40: Warning: argument 'struct' of command @param is not found in the argument list of mod_counter(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_counter.c:40: Warning: argument 'set' of command @param is not found in the argument list of mod_counter(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_hash.c:85: Warning: argument 'struct' of command @param is not found in the argument list of mod_hash(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_hash.c:85: Warning: argument 'user_data' of command @param is not found in the argument list of mod_hash(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_hash.c:85: Warning: argument 'not' of command @param is not found in the argument list of mod_hash(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_hash.c:85: Warning: argument 'set' of command @param is not found in the argument list of mod_hash(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_random.c:44: Warning: argument 'struct' of command @param is not found in the argument list of mod_random(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_source.c:40: Warning: argument 'struct' of command @param is not found in the argument list of mod_source(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_source.c:40: Warning: argument 'user_data' of command @param is not found in the argument list of mod_source(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_source.c:40: Warning: argument 'not' of command @param is not found in the argument list of mod_source(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_source.c:40: Warning: argument 'set' of command @param is not found in the argument list of mod_source(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_yesno.c:38: Warning: argument 'struct' of command @param is not found in the argument list of mod_yesno(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/mod_yesno.c:38: Warning: argument 'set' of command @param is not found in the argument list of mod_yesno(struct mod_args args)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/netcode.c:141: Warning: argument 'the' of command @param is not found in the argument list of forward(struct pkt_struct *pkt)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/netcode.c:207: Warning: argument 'the' of command @param is not found in the argument list of reply_reset(struct packet p)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/netcode.c:81: Warning: argument 'the' of command @param is not found in the argument list of send_raw(struct iphdr *p)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/netcode.c:141: Warning: argument 'the' of command @param is not found in the argument list of forward(struct pkt_struct *pkt)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/netcode.c:207: Warning: argument 'the' of command @param is not found in the argument list of reply_reset(struct packet p)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/netcode.c:81: Warning: argument 'the' of command @param is not found in the argument list of send_raw(struct iphdr *p)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:21: Warning: Found unknown command `\Author'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:239: Warning: argument 'return' of command @param is not found in the argument list of close_pcap_context()
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:34: Warning: argument '0' of command @param is not found in the argument list of create_pcap_filename(int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:74: Warning: argument 'DLT_RAW' of command @param is not found in the argument list of init_pcap_context()
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:74: Warning: argument 'assume' of command @param is not found in the argument list of init_pcap_context()
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:74: Warning: argument 'BUFSIZE' of command @param is not found in the argument list of init_pcap_context()
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:74: Warning: argument 'max' of command @param is not found in the argument list of init_pcap_context()
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:74: Warning: argument 'pcap_main_desc' of command @param is not found in the argument list of init_pcap_context()
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:74: Warning: argument 'a' of command @param is not found in the argument list of init_pcap_context()
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:74: Warning: argument 'output_file_name' of command @param is not found in the argument list of init_pcap_context()
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:74: Warning: argument 'str' of command @param is not found in the argument list of init_pcap_context()
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:74: Warning: argument 'the' of command @param is not found in the argument list of init_pcap_context()
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'nfq_data' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'payload' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'packet' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument '0' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: The following parameters of record_pkt(struct nfq_data *tb, char *p, int mode) are not documented:
+  parameter 'tb'
+  parameter 'p'
+<unknown>:29: Warning: Found unknown command `\0'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'pcap_output_current' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'descriptor' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'phdr' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'pcap' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'payload' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'packet' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'pcap_output_current' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'descriptor' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'phdr' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'pcap' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'const' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: The following parameters of record_pkt(struct nfq_data *tb, char *p, int mode) are not documented:
+  parameter 'tb'
+  parameter 'p'
+  parameter 'mode'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:239: Warning: argument 'return' of command @param is not found in the argument list of close_pcap_context()
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'nfq_data' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'payload' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'packet' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument '0' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: The following parameters of record_pkt(struct nfq_data *tb, char *p, int mode) are not documented:
+  parameter 'tb'
+  parameter 'p'
+<unknown>:29: Warning: Found unknown command `\0'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'pcap_output_current' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'descriptor' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'phdr' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'pcap' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'payload' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'packet' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'pcap_output_current' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'descriptor' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'phdr' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'pcap' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: argument 'const' of command @param is not found in the argument list of record_pkt(struct nfq_data *tb, char *p, int mode)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/pcap_tool.c:133: Warning: The following parameters of record_pkt(struct nfq_data *tb, char *p, int mode) are not documented:
+  parameter 'tb'
+  parameter 'p'
+  parameter 'mode'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:637: Warning: argument 'the' of command @param is not found in the argument list of addr2int(char *address)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:637: Warning: The following parameters of addr2int(char *address) are not documented:
+  parameter 'address'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:815: Warning: argument 'a' of command @param is not found in the argument list of expire_conn(gpointer key, struct conn_struct *conn, gint *expiration_delay)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:815: Warning: argument 'a' of command @param is not found in the argument list of expire_conn(gpointer key, struct conn_struct *conn, gint *expiration_delay)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:871: Warning: argument 'a' of command @param is not found in the argument list of free_conn(gpointer key, gpointer trash)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:871: Warning: argument 'user' of command @param is not found in the argument list of free_conn(gpointer key, gpointer trash)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:719: Warning: argument 'the' of command @param is not found in the argument list of lookup_honeypot_addr(gchar *testkey, int list)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:719: Warning: argument 'the' of command @param is not found in the argument list of lookup_honeypot_addr(gchar *testkey, int list)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:719: Warning: The following parameters of lookup_honeypot_addr(gchar *testkey, int list) are not documented:
+  parameter 'testkey'
+  parameter 'list'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:664: Warning: argument 'the' of command @param is not found in the argument list of test_honeypot_addr(char *key, int list)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:664: Warning: argument 'the' of command @param is not found in the argument list of test_honeypot_addr(char *key, int list)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:664: Warning: The following parameters of test_honeypot_addr(char *key, int list) are not documented:
+  parameter 'key'
+  parameter 'list'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:815: Warning: argument 'a' of command @param is not found in the argument list of expire_conn(gpointer key, struct conn_struct *conn, gint *expiration_delay)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:815: Warning: argument 'a' of command @param is not found in the argument list of expire_conn(gpointer key, struct conn_struct *conn, gint *expiration_delay)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:871: Warning: argument 'a' of command @param is not found in the argument list of free_conn(gpointer key, gpointer trash)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:871: Warning: argument 'user' of command @param is not found in the argument list of free_conn(gpointer key, gpointer trash)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:719: Warning: argument 'the' of command @param is not found in the argument list of lookup_honeypot_addr(gchar *testkey, int list)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:719: Warning: argument 'the' of command @param is not found in the argument list of lookup_honeypot_addr(gchar *testkey, int list)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:719: Warning: The following parameters of lookup_honeypot_addr(gchar *testkey, int list) are not documented:
+  parameter 'testkey'
+  parameter 'list'
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:664: Warning: argument 'the' of command @param is not found in the argument list of test_honeypot_addr(char *key, int list)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:664: Warning: argument 'the' of command @param is not found in the argument list of test_honeypot_addr(char *key, int list)
+/home/robin/robin/work/gsoc/honeybrid-1.0/src/tables.c:664: Warning: The following parameters of test_honeypot_addr(char *key, int list) are not documented:
+  parameter 'key'
+  parameter 'list'
