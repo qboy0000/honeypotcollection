@@ -49,3 +49,6 @@
 [submodule "rdpy"]
 	path = rdpy
 	url = https://github.com/citronneur/rdpy.git
+[submodule "MongoDB-HoneyProxyPy"]
+	path = MongoDB-HoneyProxyPy
+	url = ../MongoDB-HoneyProxyPy.git

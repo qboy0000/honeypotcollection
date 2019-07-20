@@ -23,7 +23,8 @@ git submodule foreach git pull
 10. [miniprint](https://github.com/sa7mon/miniprint) 打印机蜜罐
 11. [Artillery](https://github.com/BinaryDefense/artillery) 炮兵监控工具和警报系统的组合
 12. [rdpy](https://github.com/citronneur/rdpy) RDP
-13. 
+13. [MongoDB-HoneyProxyPy](https://github.com/jwxa2015/MongoDB-HoneyProxyPy) 自研的MongoDB蜜罐代理
+
 # 平台
 1. [MHN](https://github.com/threatstream/mhn)
 2. [tpot](https://github.com/EpistasisLab/tpot.git)
