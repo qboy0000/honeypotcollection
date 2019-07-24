@@ -52,3 +52,6 @@
 [submodule "MongoDB-HoneyProxyPy"]
 	path = MongoDB-HoneyProxyPy
 	url = ../MongoDB-HoneyProxyPy.git
+[submodule "ciscoasa_honeypot"]
+	path = ciscoasa_honeypot
+	url = https://github.com/Cymmetria/ciscoasa_honeypot.git
