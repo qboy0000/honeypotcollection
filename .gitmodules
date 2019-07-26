@@ -55,3 +55,6 @@
 [submodule "ciscoasa_honeypot"]
 	path = ciscoasa_honeypot
 	url = https://github.com/Cymmetria/ciscoasa_honeypot.git
+[submodule "mailoney"]
+	path = mailoney
+	url = https://github.com/awhitehatter/mailoney.git
