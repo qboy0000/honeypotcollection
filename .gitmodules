@@ -58,3 +58,6 @@
 [submodule "mailoney"]
 	path = mailoney
 	url = https://github.com/awhitehatter/mailoney.git
+[submodule "honeything"]
+	path = honeything
+	url = https://github.com/omererdem/honeything.git
