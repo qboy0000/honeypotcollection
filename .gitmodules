@@ -64,3 +64,6 @@
 [submodule "ADBHoney"]
 	path = ADBHoney
 	url = https://github.com/huuck/ADBHoney.git
+[submodule "platform/CHN-Server"]
+	path = platform/CHN-Server
+	url = https://github.com/CommunityHoneyNetwork/CHN-Server.git
