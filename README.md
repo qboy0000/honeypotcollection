@@ -32,7 +32,7 @@ git submodule foreach git pull
 1. [MHN](https://github.com/threatstream/mhn)
 2. [tpot](https://github.com/EpistasisLab/tpot.git)
 3. [SpiderFoot](https://github.com/smicallef/spiderfoot) 一个开源智能（OSINT）自动化工具。其目标是自动收集有关给定目标的情报过程 [官网](http：//www.spiderfoot.net)
-4. [CHN-Server][https://github.com/CommunityHoneyNetwork/CHN-Server]
+4. [CHN-Server](https://github.com/CommunityHoneyNetwork/CHN-Server)
 
 ## 待合并的蜜罐有
 * [Nova](https://github.com/DataSoft/Nova.git)
