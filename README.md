@@ -27,6 +27,7 @@ git submodule foreach git pull
 14. [ciscoasa](https://github.com/cymmetria/ciscoasa_honeypot) Cisco ASA component capable of detecting CVE-2018-0101, a DoS and remote code execution vulnerability. [官网](https://community.cymmetria.com/)
 15. [mailoney](https://github.com/awhitehatter/mailoney.git) SMTP蜜罐
 16. [honeything](https://github.com/omererdem/honeything) 
+17. [elasticpot](https://gitlab.com/bontchev/elasticpot) Elasticsearch 蜜罐
 
 # 平台
 1. [MHN](https://github.com/threatstream/mhn)
