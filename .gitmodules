@@ -73,3 +73,6 @@
 [submodule "elasticpot"]
 	path = elasticpot
 	url = https://gitlab.com/bontchev/elasticpot.git
+[submodule "sticky_elephant"]
+	path = sticky_elephant
+	url = https://github.com/betheroot/sticky_elephant.git

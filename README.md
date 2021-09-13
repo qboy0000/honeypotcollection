@@ -28,6 +28,8 @@ git submodule foreach git pull
 15. [mailoney](https://github.com/awhitehatter/mailoney.git) SMTP蜜罐
 16. [honeything](https://github.com/omererdem/honeything) 
 17. [elasticpot](https://gitlab.com/bontchev/elasticpot) Elasticsearch 蜜罐
+18. [sticky_elephant](https://github.com/betheroot/sticky_elephant.git) PostgreSQL
+
 
 # 平台
 1. [MHN](https://github.com/threatstream/mhn)
