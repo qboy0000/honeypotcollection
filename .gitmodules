@@ -76,3 +76,6 @@
 [submodule "sticky_elephant"]
 	path = sticky_elephant
 	url = https://github.com/betheroot/sticky_elephant.git
+[submodule "phpmyadmin_honeypot"]
+	path = phpmyadmin_honeypot
+	url = https://github.com/gfoss/phpmyadmin_honeypot
