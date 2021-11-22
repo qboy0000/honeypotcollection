@@ -79,3 +79,6 @@
 [submodule "phpmyadmin_honeypot"]
 	path = phpmyadmin_honeypot
 	url = https://github.com/gfoss/phpmyadmin_honeypot
+[submodule "MysqlHoneypot"]
+	path = MysqlHoneypot
+	url = https://github.com/qigpig/MysqlHoneypot.git
