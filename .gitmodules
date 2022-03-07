@@ -82,3 +82,6 @@
 [submodule "MysqlHoneypot"]
 	path = MysqlHoneypot
 	url = https://github.com/qigpig/MysqlHoneypot.git
+[submodule "HoneySMB"]
+	path = HoneySMB
+	url = https://gitee.com/qboy0000/HoneySMB.git
