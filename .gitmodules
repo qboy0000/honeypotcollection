@@ -85,3 +85,6 @@
 [submodule "HoneySMB"]
 	path = HoneySMB
 	url = https://gitee.com/qboy0000/HoneySMB.git
+[submodule "honeypot-ftp"]
+	path = honeypot-ftp
+	url = https://github.com/alexbredo/honeypot-ftp.git
