@@ -88,3 +88,6 @@
 [submodule "honeypot-ftp"]
 	path = honeypot-ftp
 	url = https://github.com/alexbredo/honeypot-ftp.git
+[submodule "RedisHoneyPot"]
+	path = RedisHoneyPot
+	url = https://github.com/cypwnpwnsocute/RedisHoneyPot.git
